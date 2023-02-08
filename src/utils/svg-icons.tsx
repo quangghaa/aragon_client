@@ -24,6 +24,15 @@ function Connect() {
     )
 }
 
+function Down() {
+    return (
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M18.785 8.782a.725.725 0 00-1.038 0L12 14.632l-5.746-5.85a.725.725 0 00-1.039 0 .757.757 0 000 1.057l6.266 6.38a.726.726 0 001.038 0l6.266-6.38a.757.757 0 000-1.057z">
+            </path>
+            </svg>
+    )
+}
+
 function Star() {
     return (
         <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -33,4 +42,22 @@ function Star() {
     )
 }
 
-export {Logo, Setting, Connect, Star};
+function Close() {
+    return (
+        <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path fill="currentColor" stroke="currentColor" stroke-width="0.5" d="M17.858 6.142a.485.485 0 00-.685 0L6.142 17.172a.485.485 0 10.686.686l11.03-11.03a.485.485 0 000-.686z"></path><path fill="currentColor" stroke="currentColor" stroke-width="0.5" d="M17.858 17.173l-5.515-5.516-5.516-5.515a.485.485 0 10-.685.685l11.03 11.031a.483.483 0 00.686 0 .485.485 0 000-.685z">
+            </path>
+        </svg>
+    )
+}
+
+function Back() {
+    return (
+        <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path fill="currentColor" stroke="currentColor" stroke-width="0.2" d="M18.434 11.434H5.566a.566.566 0 000 1.132h12.869a.565.565 0 100-1.132z"></path><path fill="currentColor" stroke="currentColor" stroke-width="0.2" d="M6.366 12l4.426-4.426a.565.565 0 10-.8-.8L5.166 11.6a.566.566 0 000 .8l4.826 4.826a.564.564 0 00.8 0 .565.565 0 000-.8L6.366 12z">
+            </path>
+        </svg>
+    )
+}
+
+export {Logo, Setting, Connect, Star, Down, Close, Back};

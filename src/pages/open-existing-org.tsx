@@ -5,15 +5,16 @@ import { DatePicker, message } from 'antd';
 import Header from '../components/header';
 import Main from '../components/main';
 import Explore from '../components/explore';
+import ExistingOrg from '../components/existing-org';
 
-function Welcome() {
+function OpenExistingOrg() {
 
   return (
     <>
       <h1 className='title'>Welcome to Aragon</h1>
       <div className='subtitle'>Create your own organization in a few minutes</div>
       <div className='main-content'>
-        <Main />
+        <ExistingOrg />
         <Explore />
       </div>
       <p className='more-info'>
@@ -26,4 +27,4 @@ function Welcome() {
   );
 }
 
-export default Welcome;
+export default OpenExistingOrg;

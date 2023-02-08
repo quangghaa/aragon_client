@@ -8,6 +8,16 @@ import frame from "../assets/frame.png"
 import fort from "../assets/fortmatic.svg"
 import port from "../assets/portis.svg"
 import wc from "../assets/walletconnect.png"
+import navhome from "../assets/home.svg"
+import navvote from "../assets/voteicon.svg"
+import finance from "../assets/calendar.svg"
+import perm from "../assets/perms.svg"
+import app from "../assets/apps.svg"
+import org from "../assets/navsetting.svg"
+import homeimg1 from "../assets/homeimg1.png"
+import homeimg2 from "../assets/homeimg2.png"
+import homeimg3 from "../assets/homeimg3.png"
+import walletProvider from "../assets/wallet-provider.png"
 
 function Logo() {
     return (
@@ -63,7 +73,68 @@ function WalletConnect() {
     )
 }
 
+function NavHome() {
+    return (
+        <img src={navhome} alt="home-icon" className="nav-icon-style" />
+    )
+}
 
+function NavVote() {
+    return (
+        <img src={navvote} alt="vote-icon" className="nav-icon-style" />
+    )
+}
+
+function Finance() {
+    return (
+        <img src={finance} alt="finance-icon" className="nav-icon-style" />
+    )
+}
+
+function Permission() {
+    return (
+        <img src={perm} alt="perm-icon" className="nav-icon-style" />
+    )
+}
+
+function NavApp() {
+    return (
+        <img src={app} alt="app-icon" className="nav-icon-style" />
+    )
+}
+
+function NavOrg() {
+    return (
+        <img src={org} alt="org-icon" className="nav-icon-style" />
+    )
+}
+
+function HomeImg1() {
+    return (
+        <img src={homeimg1} alt="home-img-1" className="home-img-style" />
+    )
+}
+
+function HomeImg2() {
+    return (
+        <img src={homeimg2} alt="home-img-2" className="home-img-style" />
+    )
+}
+
+function HomeImg3() {
+    return (
+        <img src={homeimg3} alt="home-img-3" className="home-img-style" />
+    )
+}
+
+function WalletProvider() {
+    return (
+        <img src={walletProvider} alt="wallet-provider" className="wallet-provider-style" />
+    )
+}
 
 export {Logo, ImageCreate, ImageOpen, ExploreItem,
-    Metamask, Frame, Fortmatic, Portis, WalletConnect};
+    Metamask, Frame, Fortmatic, Portis, WalletConnect,
+    NavHome, NavVote, Finance, Permission, NavApp, NavOrg,
+    HomeImg1, HomeImg2, HomeImg3,
+    WalletProvider};

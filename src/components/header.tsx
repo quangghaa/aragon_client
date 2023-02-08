@@ -1,6 +1,7 @@
 import React from "react";
 import {Logo} from "../utils/image";
 import {Connect, Setting} from "../utils/svg-icons";
+import ConnectForm from "./connect-form";
 
 function Header() {
     function connectEvent(e: any) {
@@ -22,9 +23,10 @@ function Header() {
             }
           }
         }
-      }
+    }
 
     return (
+        <>
         <div className="header">
             <div className="logo-box">
                 <Logo />
@@ -43,6 +45,9 @@ function Header() {
                 </div>
             </div>
         </div>
+
+        <ConnectForm />
+        </>
     )
 }
 

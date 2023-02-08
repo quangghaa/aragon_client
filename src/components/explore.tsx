@@ -1,14 +1,21 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { ExploreItem } from "../utils/image";
 import { Star } from "../utils/svg-icons";
 
 function Explore() {
+    const navigate = useNavigate()
+
+    function clickEvent() {
+        navigate("/explore1")
+    }
+
     return (
         <div className="explore">
             <h1 className="e-title">explore</h1>
             <ul className="e-list">
                 <li className="e-item">
-                    <div className="e-info">
+                    <div className="e-info" onClick={() => clickEvent()}>
                         <div className="image-item">
                             <ExploreItem />
                         </div>
