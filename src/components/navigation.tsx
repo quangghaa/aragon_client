@@ -1,8 +1,23 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Finance, NavApp, NavHome, NavOrg, NavVote, Permission } from "../utils/image";
 import { Down } from "../utils/svg-icons";
 
 function Navigation() {
+    const navigate = useNavigate()
+
+    function toHome() {
+        navigate("/home")
+    }
+
+    function toVotePage() {
+        navigate("/voting")
+    }
+
+    function toFinance() {
+        navigate("/finance")
+    }
+    
     return (
         <nav className="ex-nav">
             <h1 className="nav-title">apps</h1>
@@ -13,7 +28,7 @@ function Navigation() {
                         <span className="nav-icon-box">
                             <NavHome />
                         </span>
-                        <span className="nav-item-name">Home</span>
+                        <span className="nav-item-name" onClick={toHome}>Home</span>
                     </div>
                 </div>
 
@@ -22,7 +37,7 @@ function Navigation() {
                         <span className="nav-icon-box">
                             <NavVote />
                         </span>
-                        <span className="nav-item-name">Voting</span>
+                        <span className="nav-item-name" onClick={toVotePage}>Voting</span>
                     </div>
                     <ul className="child-list">
                         <li className="nav-child-item">ant (50%)</li>
@@ -32,7 +47,7 @@ function Navigation() {
                         <span className="nav-icon-box">
                             <Finance />
                         </span>
-                        <span className="nav-item-name">
+                        <span className="nav-item-name" onClick={toFinance}>
                             Finance
                         </span>
                     </div>

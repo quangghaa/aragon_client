@@ -1,12 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Back } from "../utils/svg-icons";
 
 function ExistingOrg() {
+    const navigate = useNavigate()
+
+    function backClick(e: any) {
+        navigate("/")
+    }
+
     return (
         <div className="eo">
             <div className="eo-header">
                 <div className="back-box">
-                    <button className="back-btn">
+                    <button className="back-btn" onClick={(e: any) => backClick(e)}>
                         <span className="back-icon-box"><Back /></span>
                         <span className="back-name">Back</span>
                     </button>
