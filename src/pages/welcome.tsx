@@ -8,6 +8,20 @@ import Explore from '../components/explore';
 
 function Welcome() {
 
+  window.onclick = function (event: any) {
+    console.log("Welcome page clicked")
+    if (!event.target.matches('.close-item')) {
+      var dropdowns = document.getElementsByClassName("connect-modal");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show-modal')) {
+          openDropdown.classList.remove('show-modal');
+        }
+      }
+    }
+  }
+
   return (
     <>
       <h1 className='title'>Welcome to Aragon</h1>

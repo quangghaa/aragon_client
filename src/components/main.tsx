@@ -18,20 +18,6 @@ function Main() {
         navigate("/open")
     }
 
-    window.onclick = function(event: any) {
-        console.log("modal outer click")
-        if (!event.target.matches('.close-item')) {
-          var dropdowns = document.getElementsByClassName("connect-modal");
-          var i;
-          for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show-modal')) {
-              openDropdown.classList.remove('show-modal');
-            }
-          }
-        }
-    }
-
     return (
         <>
         <div className="main">

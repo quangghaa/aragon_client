@@ -18,6 +18,8 @@ import homeimg1 from "../assets/homeimg1.png"
 import homeimg2 from "../assets/homeimg2.png"
 import homeimg3 from "../assets/homeimg3.png"
 import walletProvider from "../assets/wallet-provider.png"
+import eth from "../assets/eth.png"
+import usdt from "../assets/usdt.png"
 
 function Logo() {
     return (
@@ -133,8 +135,20 @@ function WalletProvider() {
     )
 }
 
+function ETH() {
+    return (
+        <img src={eth} alt="eth" className="ft-style" />
+    )
+}
+
+function USDT() {
+    return (
+        <img src={usdt} alt="usdt" className="ft-style" />
+    )
+}
+
 export {Logo, ImageCreate, ImageOpen, ExploreItem,
     Metamask, Frame, Fortmatic, Portis, WalletConnect,
     NavHome, NavVote, Finance, Permission, NavApp, NavOrg,
     HomeImg1, HomeImg2, HomeImg3,
-    WalletProvider};
+    WalletProvider, ETH, USDT};

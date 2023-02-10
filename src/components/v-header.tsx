@@ -2,7 +2,7 @@ import React from "react";
 import { Down } from "../utils/svg-icons";
 
 import { DatePicker, Space } from 'antd';
-import VButtonPopup from "./v-btn-popup";
+import {VButtonPopup} from "./v-btn-popup";
 import NewvoteModal from "./newvote-modal";
 
 
@@ -13,31 +13,6 @@ function VHeader() {
         e.stopPropagation();
         var id = (document.getElementById("status-popup-id")) as HTMLSelectElement;
         id.classList.toggle("show-v-popup");
-    }
-
-    window.onclick = function (event: any) {
-        if (!event.target.matches('.v-nav-btn')) {
-            var dropdowns = document.getElementsByClassName("v-btn-popup");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show-v-popup')) {
-                    openDropdown.classList.remove('show-v-popup');
-                }
-            }
-        }
-
-        // close modal
-        if (!event.target.matches('.v-new-vote-btn')) {
-            var dropdowns = document.getElementsByClassName("vm-bg");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-              var openDropdown = dropdowns[i];
-              if (openDropdown.classList.contains('vm-show')) {
-                openDropdown.classList.remove('vm-show');
-              }
-            }
-        }
     }
 
     function openVoteModal(e: any) {
