@@ -1,9 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Voting from "../pages/voting";
 import { NavVote } from "../utils/image";
 import { Pass } from "../utils/svg-icons";
 
 function VContent() {
+    const navigate = useNavigate()
+
+    function toDetail() {
+        navigate("/vote-detail")
+    }
+
     return (
         <section className="vote-section">
             <h2 className="vs-title">
@@ -13,7 +20,7 @@ function VContent() {
                 </span>
             </h2>
             <div className="vote-list">
-                <div className="vote-item">
+                <div className="vote-item" onClick={toDetail}>
                     <div className="vi-logo">
                         <a href="#" className="vi-logo-wrapper">
                             <div className="vi-logo-box">

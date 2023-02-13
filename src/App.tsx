@@ -15,6 +15,7 @@ import PermissionDetail from './pages/permission-detail';
 import AppCenter from './pages/app-center';
 import OrgSetting from './pages/org-setting';
 import AppCenterDetail from './pages/app-center-detail';
+import VotingDetail from './pages/voting-detail';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
               <Route path="/app-center" element={<AppCenter />} />
               <Route path="/org-setting" element={<OrgSetting />} />
               <Route path="/app-center-detail" element={<AppCenterDetail />} />
+              <Route path="/vote-detail" element={<VotingDetail />} />
           </Routes>
         </BrowserRouter>
       </div>
