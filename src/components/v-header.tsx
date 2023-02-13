@@ -1,7 +1,7 @@
 import React from "react";
 import { Down } from "../utils/svg-icons";
 
-import { DatePicker, Space } from 'antd';
+import { DatePicker, Select, Space } from 'antd';
 import {VButtonPopup} from "./v-btn-popup";
 import NewvoteModal from "./newvote-modal";
 
@@ -21,6 +21,10 @@ function VHeader() {
         id.classList.toggle("vm-show");
     }
 
+    function handleChange(value: any) {
+        console.log("select value: ", value)
+    }
+
     return (
         <>
         <div className="v-header-wrapper">
@@ -35,21 +39,46 @@ function VHeader() {
 
             <div className="v-nav">
                 <div className="v-nav-box">
-                    <button className="v-nav-btn" onClick={(e: any) => vBtnClick(e)}>
-                        <div className="v-btn-name">Status</div>
-                        <div className="v-btn-icon"><Down /></div>
-                        <VButtonPopup />
-                    </button>
+                    <div className="temp-class">
+                        <Select
+                        defaultValue="1"
+                        style={{ width: 128 }}
+                        onChange={handleChange}
+                        options={[
+                            { value: '1', label: 'All' },
+                            { value: '2', label: 'Open' },
+                            { value: '3', label: 'Closed' },
+                        ]}
+                        />
+                    </div>
 
-                    <button className="v-nav-btn">
-                        <div className="v-btn-name">Outcome</div>
-                        <div className="v-btn-icon"><Down /></div>
-                    </button>
+                    <div className="temp-class">
+                        <Select
+                        defaultValue="1"
+                        style={{ width: 128 }}
+                        onChange={handleChange}
+                        options={[
+                            { value: '1', label: 'All' },
+                            { value: '2', label: 'Passed' },
+                            { value: '3', label: 'Rejected' },
+                            { value: '4', label: 'Enacted' },
+                            { value: '5', label: 'Pending' },
+                        ]}
+                        />
+                    </div>
 
-                    <button className="v-nav-btn">
-                        <div className="v-btn-name">App</div>
-                        <div className="v-btn-icon"><Down /></div>
-                    </button>
+                    <div className="temp-class">
+                        <Select
+                        defaultValue="1"
+                        style={{ width: 128 }}
+                        onChange={handleChange}
+                        options={[
+                            { value: '1', label: 'All' },
+                            { value: '2', label: 'Voting' },
+                            { value: '3', label: 'External' },
+                        ]}
+                        />
+                    </div>
 
                     <div className="calendar-box">
                         <RangePicker className="x" />

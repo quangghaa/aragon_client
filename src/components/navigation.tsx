@@ -17,6 +17,18 @@ function Navigation() {
     function toFinance() {
         navigate("/finance")
     }
+
+    function toPermission() {
+        navigate("/permission")
+    }
+
+    function toAppCenter() {
+        navigate("/app-center")
+    }
+
+    function toOrgSetting() {
+        navigate("/org-setting")
+    }
     
     return (
         <nav className="ex-nav">
@@ -58,19 +70,19 @@ function Navigation() {
             <div className="system-box">
                 <h1 className="sys-title">system <span><Down /></span></h1>
                 <div className="system-list">
-                    <div className="nav-item">
+                    <div className="nav-item" onClick={toPermission}>
                         <span className="nav-icon-box">
                             <Permission />
                         </span>
                         <span className="nav-item-name">Permissions</span>
                     </div>
-                    <div className="nav-item">
+                    <div className="nav-item" onClick={toAppCenter}>
                         <span className="nav-icon-box">
                             <NavApp />
                         </span>
                         <span className="nav-item-name">App Center</span>
                     </div>
-                    <div className="nav-item">
+                    <div className="nav-item" onClick={toOrgSetting}>
                         <span className="nav-icon-box">
                             <NavOrg />
                         </span>

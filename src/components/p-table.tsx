@@ -1,9 +1,10 @@
 import { Select } from "antd";
 import React from "react";
+import { NavVote } from "../utils/image";
 import { DotDotDot, Down } from "../utils/svg-icons";
 import {VButtonPopup} from "./v-btn-popup";
 
-function FTable() {
+function PTable() {
     function vBtnClick(e: any) {
         e.stopPropagation();
         var id = (document.getElementById("status-popup-id")) as HTMLSelectElement;
@@ -19,16 +20,19 @@ function FTable() {
             <thead className="ftb-head">
                 <tr>
                     <th className="th-item">
-                        date
+                        
                     </th>
                     <th className="th-item">
-                        source/recipient
+                        Action
                     </th>
                     <th className="th-item">
-                        reference
+                        on app
+                    </th>
+                    <th className="th-item">
+                        ASSIGNED TO ENTITY
                     </th>
                     <th className="th-item th-amount">
-                        amount
+                        managed by
                     </th>
                     <th className="th-item">
                         
@@ -40,34 +44,54 @@ function FTable() {
                 <tr className="body-row">
                     <td className="tb-item">
                         <div className="tb-item-box">
-                            <time className="time-box">2022-12-26</time>
+                            
                         </div>
                     </td>
 
                     <td className="tb-item">
                         <div className="tb-item-box">
-                            <button className="sr-btn">
-                                <div className="srb-btn-box">
-                                    <div className="srb-icon-box">
-                                        <canvas className="identicon" width="24" height="24" style={{width: "24px", height: "24px"}}></canvas>
+                            Create new votes
+                        </div>
+                    </td>
+
+                    <td className="tb-item">
+                        <div className="tb-item-box">
+                            <div className="vote-with-icon-box">
+                                <button className="vote-with-icon">
+                                    <div className="vwi-small-box">
+                                        <span className="vwi-icon"><NavVote /></span>
+                                        <span className="vwi-text">Voting</span>
                                     </div>
-                                    <span className="srb-btn-text">0x8EdA…e290</span>
-                                </div>
-                            </button>
+                                </button>
+                            </div>
                         </div>
                     </td>
 
                     <td className="tb-item">
                         <div className="tb-item-box">
-                            <div className="reference">
-                                membership
+                            <div className="vote-with-icon-box">
+                                <button className="vote-with-icon">
+                                    <div className="vwi-small-box">
+                                        <span className="vwi-icon"><NavVote /></span>
+                                        <span className="vwi-text">Voting</span>
+                                    </div>
+                                </button>
                             </div>
                         </div>
                     </td>
 
                     <td className="tb-item">
                         <div className="tb-item-box tb-amount">
-                            <span className="item-amount">+0.0001&nbsp;eth</span>
+                            <div className="item-select-box">
+                                <div className="vote-with-icon-box">
+                                    <button className="vote-with-icon">
+                                        <div className="vwi-small-box">
+                                            <span className="vwi-icon"><NavVote /></span>
+                                            <span className="vwi-text">Voting</span>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </td>
 
@@ -79,7 +103,7 @@ function FTable() {
                                     <DotDotDot />
                                 </div>
                                 <div className="tb-item-btn-icon"><Down /></div>
-                                <VButtonPopup /> 
+                                <VButtonPopup />
                             </button>
                             </div>
                         </div>
@@ -90,34 +114,54 @@ function FTable() {
                 <tr className="body-row">
                     <td className="tb-item">
                         <div className="tb-item-box">
-                            <time className="time-box">2022-12-26</time>
+                            
                         </div>
                     </td>
 
                     <td className="tb-item">
                         <div className="tb-item-box">
-                            <button className="sr-btn">
-                                <div className="srb-btn-box">
-                                    <div className="srb-icon-box">
-                                        <canvas className="identicon" width="24" height="24" style={{width: "24px", height: "24px"}}></canvas>
+                            Create new votes
+                        </div>
+                    </td>
+
+                    <td className="tb-item">
+                        <div className="tb-item-box">
+                            <div className="vote-with-icon-box">
+                                <button className="vote-with-icon">
+                                    <div className="vwi-small-box">
+                                        <span className="vwi-icon"><NavVote /></span>
+                                        <span className="vwi-text">Voting</span>
                                     </div>
-                                    <span className="srb-btn-text">0x8EdA…e290</span>
-                                </div>
-                            </button>
+                                </button>
+                            </div>
                         </div>
                     </td>
 
                     <td className="tb-item">
                         <div className="tb-item-box">
-                            <div className="reference">
-                                membership
+                            <div className="vote-with-icon-box">
+                                <button className="vote-with-icon">
+                                    <div className="vwi-small-box">
+                                        <span className="vwi-icon"><NavVote /></span>
+                                        <span className="vwi-text">Voting</span>
+                                    </div>
+                                </button>
                             </div>
                         </div>
                     </td>
 
                     <td className="tb-item">
                         <div className="tb-item-box tb-amount">
-                            <span className="item-amount">+0.0001&nbsp;eth</span>
+                            <div className="item-select-box">
+                                <div className="vote-with-icon-box">
+                                    <button className="vote-with-icon">
+                                        <div className="vwi-small-box">
+                                            <span className="vwi-icon"><NavVote /></span>
+                                            <span className="vwi-text">Voting</span>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </td>
 
@@ -140,4 +184,4 @@ function FTable() {
     )
 }
 
-export default FTable;
+export default PTable;

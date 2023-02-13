@@ -20,6 +20,10 @@ import homeimg3 from "../assets/homeimg3.png"
 import walletProvider from "../assets/wallet-provider.png"
 import eth from "../assets/eth.png"
 import usdt from "../assets/usdt.png"
+import permVoting from "../assets/perm-voting.svg"
+import permFinance from "../assets/perm-finance.svg"
+import permVault from "../assets/perm-vault.svg"
+
 
 function Logo() {
     return (
@@ -147,8 +151,27 @@ function USDT() {
     )
 }
 
+function PermVoting() {
+    return (
+        <img src={permVoting} alt="perm-voting" className="perm-icon-style" />
+    )
+}
+
+function PermFinance() {
+    return (
+        <img src={permFinance} alt="perm-finance" className="perm-icon-style" />
+    )
+}
+
+function PermVault() {
+    return (
+        <img src={permVault} alt="perm-vault" className="perm-icon-style" />
+    )
+}
+
 export {Logo, ImageCreate, ImageOpen, ExploreItem,
     Metamask, Frame, Fortmatic, Portis, WalletConnect,
     NavHome, NavVote, Finance, Permission, NavApp, NavOrg,
     HomeImg1, HomeImg2, HomeImg3,
-    WalletProvider, ETH, USDT};
+    WalletProvider, ETH, USDT,
+    PermVoting, PermFinance, PermVault};

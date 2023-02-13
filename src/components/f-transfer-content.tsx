@@ -1,4 +1,4 @@
-import { DatePicker } from "antd";
+import { DatePicker, Select } from "antd";
 import React from "react";
 import { Down, Export } from "../utils/svg-icons";
 import FTable from "./f-table";
@@ -19,6 +19,10 @@ function FTransferContent() {
         id.classList.toggle("show-v-popup");
     }
 
+    function handleChange() {
+        console.log("handle onchange")
+    }
+
     return (
         <div className="ft-content">
             <div className="ftc-header-wrapper">
@@ -33,17 +37,37 @@ function FTransferContent() {
                 </div>
 
                 <div className="v-nav-box ft-vnb">
-                    <button className="v-nav-btn" onClick={(e: any) => fBtnTypeClick(e)}>
-                        <div className="v-btn-name">Type</div>
-                        <div className="v-btn-icon"><Down /></div>
-                        <FButtonTypePopup />
-                    </button>
+                    <div className="temp-class">
+                        <Select
+                        defaultValue="1"
+                        style={{ width: 128 }}
+                        onChange={handleChange}
+                        options={[
+                            { value: '1', label: 'All' },
+                            { value: '2', label: 'Incomming' },
+                            { value: '3', label: 'Outgoing' },
+                        ]}
+                        />
+                    </div>
 
-                    <button className="v-nav-btn">
-                        <div className="v-btn-name" onClick={(e: any) => fBtnTokenClick(e)}>Token</div>
-                        <div className="v-btn-icon"><Down /></div>
-                        <FButtonTokenPopup />
-                    </button>
+                    <div className="temp-class">
+                        <Select
+                        defaultValue="1"
+                        style={{ width: 128 }}
+                        onChange={handleChange}
+                        options={[
+                            { value: '1', label: 'All tokens' },
+                            { value: '2', label: 'ETH' },
+                            { value: '3', label: 'ANJ' },
+                            { value: '4', label: 'ANT' },
+                            { value: '5', label: 'DAI' },
+                            { value: '6', label: 'DANA' },
+                            { value: '7', label: 'SAI' },
+                            { value: '8', label: 'USDC' },
+                            { value: '9', label: 'USDT' },
+                        ]}
+                        />
+                    </div>
 
                     <div className="calendar-box">
                         <RangePicker className="x" />

@@ -115,9 +115,11 @@ function NewTransModal() {
                     <form id="withdrawal-form" className="vm-form form-hidden">
                         <div className="question-field">
                             <label className="question-label">recipient (must be a valid ethereum address) <span className="required">*</span></label>
-                            <input type="text" placeholder="" className="question-input" />
-                            <div className="tm-search-icon-box">
-                                <Search />
+                            <div className="question-input-box">
+                                <input type="text" placeholder="" className="question-input" />
+                                <div className="tm-search-icon-box">
+                                    <Search />
+                                </div>
                             </div>
                         </div>
 

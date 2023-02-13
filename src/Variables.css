@@ -1,0 +1,13 @@
+:root {
+    /* sizes */
+
+    /* font */
+    
+
+    /* colors */
+    --default-font-color: rgb(33, 43, 54);
+    --border-color: rgb(8, 190, 229);
+    --shadow: rgb(0 0 0 / 5%) 0px 2px 3px;
+    --left-highlight-color: rgb(8, 190, 229);
+    --light-gray-bg: rgb(235, 250, 253);
+}
