@@ -7,7 +7,7 @@ import Main from '../components/main';
 import Explore from '../components/explore';
 import ExistingOrg from '../components/existing-org';
 
-function OpenExistingOrg() {
+function OpenExistingOrg(props: any) {
 
   return (
     <>
@@ -15,7 +15,7 @@ function OpenExistingOrg() {
       <div className='subtitle'>Create your own organization in a few minutes</div>
       <div className='main-content'>
         <ExistingOrg />
-        <Explore />
+        <Explore network={props.network}/>
       </div>
       <p className='more-info'>
         Do you need more information about Aragon?

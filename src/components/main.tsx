@@ -4,7 +4,7 @@ import OpenExistingOrg from "../pages/open-existing-org";
 import { ImageCreate, ImageOpen } from "../utils/image";
 import ConnectModal from "./connect-modal";
 
-function Main() {
+function Main(props: any) {
     const navigate = useNavigate()
 
     function openConnectModal(e: any) {

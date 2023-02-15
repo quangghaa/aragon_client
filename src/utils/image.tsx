@@ -23,6 +23,10 @@ import usdt from "../assets/usdt.png"
 import permVoting from "../assets/perm-voting.svg"
 import permFinance from "../assets/perm-finance.svg"
 import permVault from "../assets/perm-vault.svg"
+import settingBtn1 from "../assets/setting-btn-1.svg"
+import settingBtn2 from "../assets/setting-btn-1.svg"
+import settingBtn3 from "../assets/setting-btn-1.svg"
+import noNotification from "../assets/no-notification.png"
 
 
 function Logo() {
@@ -169,9 +173,35 @@ function PermVault() {
     )
 }
 
+function SettingBtn1() {
+    return (
+        <img src={settingBtn1} alt="setting-btn-1" className="setting-btn-style" />
+    )
+}
+
+function SettingBtn2() {
+    return (
+        <img src={settingBtn2} alt="setting-btn-2" className="setting-btn-style" />
+    )
+}
+
+function SettingBtn3() {
+    return (
+        <img src={settingBtn3} alt="setting-btn-3" className="setting-btn-style" />
+    )
+}
+
+function NoNotification() {
+    return (
+        <img src={noNotification} alt="no-notification" className="no-notification-style" />
+    )
+}
+
 export {Logo, ImageCreate, ImageOpen, ExploreItem,
     Metamask, Frame, Fortmatic, Portis, WalletConnect,
     NavHome, NavVote, Finance, Permission, NavApp, NavOrg,
     HomeImg1, HomeImg2, HomeImg3,
     WalletProvider, ETH, USDT,
-    PermVoting, PermFinance, PermVault};
+    PermVoting, PermFinance, PermVault,
+    SettingBtn1, SettingBtn2, SettingBtn3,
+    NoNotification};

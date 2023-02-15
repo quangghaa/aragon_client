@@ -6,7 +6,7 @@ import Header from '../components/header';
 import Main from '../components/main';
 import Explore from '../components/explore';
 
-function Welcome() {
+function Welcome(props: any) {
 
   window.onclick = function (event: any) {
     console.log("Welcome page clicked")
@@ -20,19 +20,34 @@ function Welcome() {
         }
       }
     }
+
+    // close connect account modal
+    console.log("Event: ", event.target)
+    if (!event.target.matches('.XXX')) {
+      console.log("Event: ", event.target)
+      var dropdowns = document.getElementsByClassName("connect-form");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
   }
+  
 
   return (
     <>
       <h1 className='title'>Welcome to Aragon</h1>
       <div className='subtitle'>Create your own organization in a few minutes</div>
       <div className='main-content'>
-        <Main />
-        <Explore />
+        <Main network={props.network} />
+        <Explore setPage={props.setPage} network={props.network} />
       </div>
       <p className='more-info'>
         Do you need more information about Aragon?
-        <a href='#' className='visit-style'>
+        <a href='https://aragon.org/' className='visit-style'>
           &nbsp;Visit our homepage
         </a>
       </p>
