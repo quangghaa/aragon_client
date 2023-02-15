@@ -179,6 +179,12 @@ function SettingBtn1() {
     )
 }
 
+function CustomLabelBtn() {
+    return (
+        <img src={settingBtn1} alt="custom-label-btn" width={20} />
+    )
+}
+
 function SettingBtn2() {
     return (
         <img src={settingBtn2} alt="setting-btn-2" className="setting-btn-style" />
@@ -204,4 +210,4 @@ export {Logo, ImageCreate, ImageOpen, ExploreItem,
     WalletProvider, ETH, USDT,
     PermVoting, PermFinance, PermVault,
     SettingBtn1, SettingBtn2, SettingBtn3,
-    NoNotification};
+    NoNotification, CustomLabelBtn};

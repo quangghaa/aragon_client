@@ -4,7 +4,7 @@ import FHeader from "../components/f-header";
 import Navigation from "../components/navigation";
 function Finance() {
     window.onclick = function (event: any) {
-        console.log("Finance page clicked")
+        console.log("Finance page clicked: ", event.target.className)
         if (!event.target.matches('.v-nav-btn')) {
             var dropdowns = document.getElementsByClassName("v-btn-popup");
             var i;

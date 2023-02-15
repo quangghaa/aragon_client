@@ -32,7 +32,7 @@ function App() {
         <div className='line'></div>
         
         <BrowserRouter> 
-        <Header page={page} network={network} setNet={setNetwork} />
+        <Header page={page} setPage={setPage} network={network} setNet={setNetwork} />
           <Routes>
               <Route path="/" element={<Welcome setPage={setPage} network={network}/>} />
               <Route path="/:id" element={<ExplorePage />} />

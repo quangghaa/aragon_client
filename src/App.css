@@ -3287,21 +3287,92 @@ position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* padding: 16px; */
 }
 
 .edit-label-btn {
-  border: 1px solid black;
+  border: 1px solid rgb(221, 228, 233);
   border-radius: 5px;
   width: initial;
   padding: 0;
+  height: 38px;
 }
 
 .c-padding {
   padding: 0 10px;
 }
 
+.pd-16 {
+  padding: 16px
+}
 
+.source-popup {
 
+  width: 400px;
+  position: absolute;
+  top: -100px;
+  right: -160px;
+}
+
+.source-box {
+  width: calc(100% - 80px);
+  padding:0 40px;
+
+  height: 40px;
+  border: 1px solid rgb(221, 228, 233);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.wrap-text {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.copy-btn {
+  position: absolute;
+  right: 0;
+    padding: 0px;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 4px;
+    border: 0px;
+    outline: 0px;
+    cursor: pointer;
+
+    display: inline-flex;
+    overflow: hidden;
+    color: rgb(33, 43, 54);
+    /* height: 24px; */
+    background: rgb(235, 250, 253);
+    width: 40px;
+    height: 40px;
+}
+
+.copy-icon {
+  text-align: right;
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+  /* color: rgba(235, 250, 253, 0.219); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hide-x {
+  visibility: hidden;
+}
 
 
 

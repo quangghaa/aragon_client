@@ -1,6 +1,7 @@
+import { CopyOutlined } from "@ant-design/icons";
 import { Modal, Popover } from "antd";
-import React, { useState } from "react";
-import { SettingBtn1 } from "../utils/image";
+import React, { useEffect, useState } from "react";
+import { CustomLabelBtn, SettingBtn1 } from "../utils/image";
 import { DotDotDot, DotEditLabel, DotTransaction, Down } from "../utils/svg-icons";
 import { VButtonPopup } from "./v-btn-popup";
 
@@ -15,6 +16,7 @@ interface Transfer {
 function FTable() {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedIndex, setSelectedIndex] = useState(-1);
 
     const handleOk = () => {
         var id = (document.getElementById("c-label")) as HTMLInputElement
@@ -66,50 +68,98 @@ function FTable() {
                 reference: "membership",
                 amount: 0.0001
             },
+            {
+                label: "",
+                date: "2022-12-26",
+                source: "0x8EdA…e290",
+                reference: "membership",
+                amount: 0.0001
+            },
+            {
+                label: "",
+                date: "2022-12-27",
+                source: "0x8EdA…e291",
+                reference: "membership",
+                amount: 0.0001
+            },
+            {
+                label: "",
+                date: "2022-12-28",
+                source: "0x8EdA…e292",
+                reference: "membership",
+                amount: 0.0001
+            },
+            {
+                label: "",
+                date: "2022-12-29",
+                source: "0x8EdA…e293",
+                reference: "membership",
+                amount: 0.0001
+            },
         ] as Transfer[]
     )
 
     const [rowIndex, setRowIndex] = useState(-1)
 
-    function selectRow(index: any) {
+    function selectRow(e: any, index: any) {
+        // var id = document.getElementById("setting-id") as HTMLElement
+        // console.log("Check id: ", id)
+        // id.classList.add("hide-x")
+        
+        console.log("selected ind",index)
+        setSelectedIndex(index)
         setRowIndex(index)
+        
     }
 
     function demo(ind: any) {
         setRowIndex(ind)
+
         setIsModalOpen(true)
-        console.log("DEMO >> ", ind)
+        setSelectedIndex(-1)
     }
 
-    const dotBtn = (ind: any) => (
-        <div className="dot-btn-wrapper">
-            <button className="dot-btn">
-                <span><DotTransaction /></span>
-                <span className="dot-btn-name">View transaction</span>
-            </button>
-
-            <button className="dot-btn" onClick={() => demo(ind)}>
-                <span><DotEditLabel /></span>
-                <span className="dot-btn-name">Edit custom label</span>
-            </button>
-        </div>
-    )
+    const dotBtn = (ind: any) => {
+        return (
+            <>
+            <div className="dot-btn-wrapper" style={isModalOpen ? {display:"none"}: {}}>
+                <button className="dot-btn">
+                    <span><DotTransaction /></span>
+                    <span className="dot-btn-name">View transaction</span>
+                </button>
+    
+                <button className="dot-btn" onClick={() => demo(ind)}>
+                    <span><DotEditLabel /></span>
+                    <span className="dot-btn-name">Edit custom label</span>
+                </button>
+            </div>
+            </>
+        )
+    }
+    
 
     const sourcePopup = (v: any) => (
-        <div id="setting-id" className="setting-popup-wrapper">
+        <div id="source-popup-id" className="setting-popup-wrapper source-popup">
             <h1 className="cf-title">
                 <div className="">{trans[rowIndex].label.length == 0 ? "" : trans[rowIndex].label}</div>
                 <div className="custom-label-tag">custom label</div>
             </h1>
-            <div>
-                <div>COPY</div>
+            <div className="pd-16">
+                <div className="source-box">
+                    <span className="wrap-text">{trans[rowIndex].source}</span>
+                    <button className="copy-btn">
+                        <span className="copy-icon">
+                            <CopyOutlined />
+                        </span>
+                    </button>
+                </div>
                 <div className="edit-label-row">
                     <button className="setting-item-btn edit-label-btn">
                         <div className="sib-content-box c-padding">
                             <div>
-                                <SettingBtn1 />
+                                <CustomLabelBtn />
                             </div>
-                            <div className="sibc-text">Custom labels</div>
+                            <div className="sibc-text">Edit custom labels</div>
                         </div>
                     </button>
                     <a href="#">See on explorer</a>
@@ -191,7 +241,7 @@ function FTable() {
                                         <div className="tb-item-box">
                                             <div className="item-select-box">
                                                 <Popover id="setting-id" placement="bottomRight" content={() => dotBtn(i)} trigger="click">
-                                                    <button className="tb-item-btn-box" onClick={() => selectRow(i)}>
+                                                    <button className="tb-item-btn-box" onClick={(e: any) => selectRow(e, i)}>
                                                         <div className="tb-item-btn-text">
                                                             <DotDotDot />
                                                         </div>

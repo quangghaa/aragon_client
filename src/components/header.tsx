@@ -39,6 +39,7 @@ function Header(props: any) {
 
     const navigate = useNavigate()
     function toHome() {
+        props.setPage("home")
         navigate("/")
     }
 
