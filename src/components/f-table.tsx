@@ -16,12 +16,9 @@ interface Transfer {
 function FTable() {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [selectedIndex, setSelectedIndex] = useState(-1);
 
     const handleOk = () => {
         var id = (document.getElementById("c-label")) as HTMLInputElement
-        console.log("LABEL: ", id.value)
-
         if (id.value.length == 0) {
             setIsModalOpen(false);
             return
@@ -102,21 +99,17 @@ function FTable() {
     const [rowIndex, setRowIndex] = useState(-1)
 
     function selectRow(e: any, index: any) {
-        // var id = document.getElementById("setting-id") as HTMLElement
-        // console.log("Check id: ", id)
-        // id.classList.add("hide-x")
-        
-        console.log("selected ind",index)
-        setSelectedIndex(index)
         setRowIndex(index)
-        
     }
 
     function demo(ind: any) {
         setRowIndex(ind)
 
         setIsModalOpen(true)
-        setSelectedIndex(-1)
+    }
+
+    function sourceEditClick(ind: any) {
+        setIsModalOpen(true)
     }
 
     const dotBtn = (ind: any) => {
@@ -138,15 +131,15 @@ function FTable() {
     }
     
 
-    const sourcePopup = (v: any) => (
-        <div id="source-popup-id" className="setting-popup-wrapper source-popup">
+    const sourcePopup = (ind: any) => (
+        <div id="source-popup-id" className="setting-popup-wrapper source-popup" style={isModalOpen ? {display:"none"}: {}}>
             <h1 className="cf-title">
-                <div className="">{trans[rowIndex].label.length == 0 ? "" : trans[rowIndex].label}</div>
+                <div className="">{(trans[rowIndex] == undefined || trans[rowIndex].label.length == 0) ? "" : trans[rowIndex].label}</div>
                 <div className="custom-label-tag">custom label</div>
             </h1>
             <div className="pd-16">
                 <div className="source-box">
-                    <span className="wrap-text">{trans[rowIndex].source}</span>
+                    <span className="wrap-text">{trans[rowIndex] == undefined ? "" : trans[rowIndex].source}</span>
                     <button className="copy-btn">
                         <span className="copy-icon">
                             <CopyOutlined />
@@ -154,7 +147,7 @@ function FTable() {
                     </button>
                 </div>
                 <div className="edit-label-row">
-                    <button className="setting-item-btn edit-label-btn">
+                    <button className="setting-item-btn edit-label-btn" onClick={() => sourceEditClick(ind)}>
                         <div className="sib-content-box c-padding">
                             <div>
                                 <CustomLabelBtn />
