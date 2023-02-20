@@ -1,12 +1,46 @@
-import { Modal, Popover, Switch } from "antd";
+import { Modal, Popover, Result, Switch } from "antd";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Fortmatic, Frame, Logo, Metamask, NoNotification, Portis, SettingBtn1, SettingBtn2, SettingBtn3, WalletConnect } from "../utils/image";
 import { Bell, Connect, Setting } from "../utils/svg-icons";
 import ConnectForm from "./connect-form";
+import {Contract, ethers, Signer} from 'ethers';
 import NetworkModal from "./network-modal";
+import BallotAbi from "../backend/artifacts/contracts/Ballot.sol/Ballot.json";
+import BallotAddress from "../backend//BallotAddress.json"
 
 function Header(props: any) {
+    
+    const [WalletAddress , setWalletAddress] = useState('');
+    const [ConnectStatus , setConnectStatus] = useState(false);
+    const [myBallotContract , setMyBallotContract] = useState();
+    const ConnectMetaMask = async () =>{
+        if((window as any).ethereum){
+            const MetaMaskAccount = await (window as any).ethereum.request({ method: 'eth_requestAccounts' })
+            .then((accounts : string[]) => {
+                setWalletAddress(accounts[0]);
+            });
+            // setWalletAddress(MetaMaskAccount.address);
+            setConnectStatus(true);
+            console.log('connect MetaMask');
+            console.log(WalletAddress);
+            console.log(ConnectStatus);
+            console.log((window as any).ethereum.isConnected());
+            const provider = new ethers.providers.Web3Provider((window as any).ethereum)
+            // Set signer
+            loadContract(provider)
+        }
+    }
+    const loadContract = async (signer : any) =>{
+        const myBallot : any = new ethers.Contract(
+            BallotAddress.address,
+            BallotAbi.abi,
+            signer,
+        );
+        console.log(myBallot);
+        const ContractMoney : any = await myBallot.Retrieve();
+        console.log(ContractMoney)
+    }
     function connectEvent(e: any) {
         e.stopPropagation();
         console.log("connect event click")
@@ -53,9 +87,9 @@ function Header(props: any) {
                 use account from
             </h1>
             <div className="wallet-box">
-                <div className="w-item">
+                <div className="w-item" onClick={ConnectMetaMask}>
                     <Metamask />
-                    <div className="w-name" >Metamask</div>
+                    <div className="w-name" >MetaMask</div>
                 </div>
                 <div className="w-item">
                     <Frame />
@@ -194,10 +228,17 @@ function Header(props: any) {
                         <button id="network-btn-id" className="btn name" onClick={showModal}>{props.network.name}</button>
                         
                         <Popover id="wl-id" placement="bottomRight" content={connectPopup} trigger="click">
-                            <button className="btn connect connect-space">
+                            {/* <button className="btn connect connect-space">
                                 <span className="connect-icon"><Connect /></span>
                                 Connect account
-                            </button>
+                            </button> */}
+                            {ConnectStatus ? (<button className="btn connect connect-space">
+                                <span className="connect-icon"><Connect /></span>
+                                Connected : {WalletAddress}
+                            </button>):(<button className="btn connect connect-space">
+                                <span className="connect-icon"><Connect /></span>
+                                Connect account
+                            </button>)}
                         </Popover>
 
                     </div>
