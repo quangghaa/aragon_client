@@ -22,6 +22,7 @@ function Welcome(props: any) {
     }
 
     // close connect account modal
+    console.log("Event: ", event.target)
     if (!event.target.matches('.XXX')) {
       console.log("Event: ", event.target)
       var dropdowns = document.getElementsByClassName("connect-form");
