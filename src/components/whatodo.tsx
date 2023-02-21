@@ -25,24 +25,7 @@ function WhatTodo() {
                     </div>
                     <p className="todo-name">New Payment</p>
                 </div>
-                <div className="todo-item">
-                    <div className="todo-img-box">
-                        <HomeImg3 />
-                    </div>
-                    <p className="todo-name">New Payment</p>
-                </div>
-                <div className="todo-item">
-                    <div className="todo-img-box">
-                        <HomeImg3 />
-                    </div>
-                    <p className="todo-name">New Payment</p>
-                </div>
-                <div className="todo-item">
-                    <div className="todo-img-box">
-                        <HomeImg3 />
-                    </div>
-                    <p className="todo-name">New Payment</p>
-                </div>
+                
             </div>
         </>
     )

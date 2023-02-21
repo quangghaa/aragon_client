@@ -14,8 +14,10 @@ function ExplorePage() {
           <Navigation />
         </div>
         <div className='ex-content pd-x-48'>
-          <h1 className='exc-title'>What do you want to do?</h1>
-          <WhatTodo />
+          <div className='exc-wrapper'>
+            <h1 className='exc-title'>What do you want to do?</h1>
+            <WhatTodo />
+          </div>
         </div>
       </div>
     </>

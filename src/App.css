@@ -642,13 +642,21 @@ ul li {
 
 .ex-content {
   flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  display: grid;
+  align-items: center;
+  /* flex-direction: column; */
   position: relative;
   z-index: 1;
   background: url("./assets/eagle.svg") 50% 100% / 1241px 833px no-repeat fixed;
   justify-content: center;
   align-items: center;
+}
+
+.exc-wrapper {
+  position: relative;
+  width: 1104px;
+  padding: 48px 0;
 }
 
 .exc-title {
