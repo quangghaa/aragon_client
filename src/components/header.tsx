@@ -6,14 +6,17 @@ import { Bell, Connect, Setting } from "../utils/svg-icons";
 import ConnectForm from "./connect-form";
 import {Contract, ethers, Signer} from 'ethers';
 import NetworkModal from "./network-modal";
-import BallotAbi from "../backend/artifacts/contracts/Ballot.sol/Ballot.json";
-import BallotAddress from "../backend//BallotAddress.json"
+import VoteFactoryAbi from "../backend/VoteFactory.json";
+import VoteFactoryAddress from "../backend/VoteFactory-address.json"
+import SimpleTransactionAddress from "../backend/SimpleTransaction-address.json"
+import SimpleTransactionAbi from "../backend/SimpleTransaction.json"
 
 function Header(props: any) {
     
     const [WalletAddress , setWalletAddress] = useState('');
     const [ConnectStatus , setConnectStatus] = useState(false);
-    const [myBallotContract , setMyBallotContract] = useState();
+    const [VoteFactory , setMyVoteFactory] = useState({});
+    const [simpleTransaction, setSimpleTransaction] = useState({})
     const ConnectMetaMask = async () =>{
         if((window as any).ethereum){
             const MetaMaskAccount = await (window as any).ethereum.request({ method: 'eth_requestAccounts' })
@@ -32,14 +35,22 @@ function Header(props: any) {
         }
     }
     const loadContract = async (signer : any) =>{
-        const myBallot : any = new ethers.Contract(
-            BallotAddress.address,
-            BallotAbi.abi,
+        const mySimpleTransaction = new ethers.Contract(
+            SimpleTransactionAddress.address,
+            SimpleTransactionAbi.abi,
             signer,
-        );
-        console.log(myBallot);
-        const ContractMoney : any = await myBallot.Retrieve();
-        console.log(ContractMoney)
+          )
+          setSimpleTransaction(mySimpleTransaction)
+          const Balance = await mySimpleTransaction.Retrieve(WalletAddress);
+          console.log(Balance);
+        const myVoteFactory = new ethers.Contract(
+            VoteFactoryAddress.address,
+            VoteFactoryAbi.abi,
+            signer
+            )
+            setMyVoteFactory(myVoteFactory);
+            const myBalance = await myVoteFactory.Retrieve(WalletAddress)
+            console.log(myBalance)
     }
     function connectEvent(e: any) {
         e.stopPropagation();
