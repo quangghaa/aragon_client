@@ -16,28 +16,40 @@ import AppCenter from './pages/app-center';
 import OrgSetting from './pages/org-setting';
 import AppCenterDetail from './pages/app-center-detail';
 import VotingDetail from './pages/voting-detail';
-
+import { ethers } from 'ethers';
+import VoteFactoryAbi from "./backend/VoteFactory.json";
+import VoteFactoryAddress from "./backend/VoteFactory-address.json"
+import SimpleTransactionAddress from "./backend/SimpleTransaction-address.json"
+import SimpleTransactionAbi from "./backend/SimpleTransaction.json"
 interface Network {
   name: string,
   type: 0,
 }
 
 function App() {
-  const [network, setNetwork] = useState({name: "Ethereum", type: 0} as Network)
-  const [page, setPage] = useState("home")
-
+  const [network, setNetwork] = useState({name: "Ethereum", type: 0} as Network);
+  const [page, setPage] = useState("home");
+  const [OwnerAddress , setOwnerAddress] = useState("");
+  const [IsOwnerAddress , setIsOwnerAddress] = useState(false);
+  const [VoteFactory , setMyVoteFactory] = useState({});
+  const [simpleTransaction, setSimpleTransaction] = useState({});
   return (
     <>
       <div className='App'>
         <div className='line'></div>
         
         <BrowserRouter> 
-        <Header page={page} setPage={setPage} network={network} setNet={setNetwork} />
+        <Header page={page} setPage={setPage} network={network} setNet={setNetwork}
+        voteFactory ={VoteFactory} SetMyVoteFactory={setMyVoteFactory}
+        SimpleTransaction = {simpleTransaction} SetSimpleTransaction={setSimpleTransaction}
+        ownerAddress={OwnerAddress} SetOwnerAddress={setOwnerAddress} isOwnerAddress={IsOwnerAddress} SetIsOwnerAddress={setIsOwnerAddress}/>
           <Routes>
               <Route path="/" element={<Welcome setPage={setPage} network={network}/>} />
               <Route path="/:id" element={<ExplorePage />} />
               <Route path="/open" element={<OpenExistingOrg network={network} />} />
-              <Route path="/voting" element={<Voting />} />
+              <Route path="/voting" element={<Voting 
+                isOwnerAddress={IsOwnerAddress} voteFactory ={VoteFactory} 
+               />} />
               <Route path="/finance" element={<Finance />} />
               <Route path="/permission" element={<Permissions />} />
               <Route path="/permission-detail" element={<PermissionDetail />} />

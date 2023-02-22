@@ -10,28 +10,44 @@ import VoteFactoryAbi from "../backend/VoteFactory.json";
 import VoteFactoryAddress from "../backend/VoteFactory-address.json"
 import SimpleTransactionAddress from "../backend/SimpleTransaction-address.json"
 import SimpleTransactionAbi from "../backend/SimpleTransaction.json"
+import { text } from "stream/consumers";
 
 function Header(props: any) {
-    
+    let OwnerAddress = props.ownerAddress;
+    let setOwnerAddress = props.SetOwnerAddress;
+    let IsOwnerAddress = props.isOwnerAddress;
+    let setIsOwnerAddress = props.SetIsOwnerAddress
     const [WalletAddress , setWalletAddress] = useState('');
     const [ConnectStatus , setConnectStatus] = useState(false);
-    const [VoteFactory , setMyVoteFactory] = useState({});
-    const [simpleTransaction, setSimpleTransaction] = useState({})
+    // const [VoteFactory , setMyVoteFactory] = useState({});
+    let simpleTransaction = props.SimpleTransaction
+    let setMyVoteFactory= props.SetMyVoteFactory;
+    let setSimpleTransaction=props.SetSimpleTransaction
+    // const [simpleTransaction, setSimpleTransaction] = useState({})
+    setOwnerAddress(VoteFactoryAddress.OwnerWalletAddress)
+    // console.log(OwnerAddress)
     const ConnectMetaMask = async () =>{
         if((window as any).ethereum){
             const MetaMaskAccount = await (window as any).ethereum.request({ method: 'eth_requestAccounts' })
             .then((accounts : string[]) => {
                 setWalletAddress(accounts[0]);
+                
             });
+            if(WalletAddress == OwnerAddress.toLowerCase()){
+                setIsOwnerAddress(true);
+                console.log('done',IsOwnerAddress)
+            }
+            // console.log(OwnerAddress)
             // setWalletAddress(MetaMaskAccount.address);
             setConnectStatus(true);
-            console.log('connect MetaMask');
-            console.log(WalletAddress);
-            console.log(ConnectStatus);
-            console.log((window as any).ethereum.isConnected());
+            // console.log('connect MetaMask');
+            // console.log(WalletAddress);
+            // console.log(ConnectStatus);
+            // console.log((window as any).ethereum.isConnected());
             const provider = new ethers.providers.Web3Provider((window as any).ethereum)
             // Set signer
-            loadContract(provider)
+            const signer = provider.getSigner()
+            loadContract(signer)
         }
     }
     const loadContract = async (signer : any) =>{
@@ -41,16 +57,16 @@ function Header(props: any) {
             signer,
           )
           setSimpleTransaction(mySimpleTransaction)
-          const Balance = await mySimpleTransaction.Retrieve(WalletAddress);
-          console.log(Balance);
+        //   const Balance = await mySimpleTransaction.Retrieve(WalletAddress);
+        //   console.log(Balance);
         const myVoteFactory = new ethers.Contract(
             VoteFactoryAddress.address,
             VoteFactoryAbi.abi,
             signer
             )
             setMyVoteFactory(myVoteFactory);
-            const myBalance = await myVoteFactory.Retrieve(WalletAddress)
-            console.log(myBalance)
+            // const myBalance = await myVoteFactory.Retrieve(WalletAddress)
+            // console.log(myBalance)
     }
     function connectEvent(e: any) {
         e.stopPropagation();
