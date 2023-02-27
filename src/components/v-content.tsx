@@ -5,15 +5,28 @@ import Voting from "../pages/voting";
 import { NavVote } from "../utils/image";
 import { Pass } from "../utils/svg-icons";
 
-function VContent() {
-    const navigate = useNavigate()
-
+function VContent(props : any) {
+    const navigate = useNavigate();
+    const PollQuestion = props.Question;
+    console.log(PollQuestion);
+    const IsNewPoll =props.isNewPoll;
     function toDetail() {
         navigate("/vote-detail")
     }
-
-    const [list, setList] = useState([1, 2, 3, 4, 5, 6])
-
+    const [testList , setTestList] = useState([1]);
+    // const [list, setList] = useState([1, 2, 3, 4, 5, 6])
+    let list = [1, 2, 3, 4, 5, 6];
+    if(IsNewPoll){
+            let i =0 ;
+            list.forEach(()=>{
+                i++;
+                
+            })
+            let MyNumber :number = testList[i-1]+1;
+            console.log(MyNumber);
+            list.push(MyNumber);
+            console.log(list);
+    }
     return (
         <section className="vote-section">
             <h2 className="vs-title">
@@ -37,7 +50,7 @@ function VContent() {
                                 </div>
 
                                 <div className="vi-content">
-                                    <span className="vi-id">#38</span>
+                                    <span className="vi-id">#{i+1}</span>
                                     <span className="vi-content-text">
                                         Do you approve AGP-143: Fundraising Maintenance? (Link: https://raw.githubusercontent.com/aragon/AGPs/bf5a8eb0a3436072bcb5b2fa818c94cd507e2121/AGPs/AGP-143.md) (SHA256: 69d7e593d6324358b40e2aa61dfef636f4c04a11d8afaae012e79a1ae4161e0f)
                                     </span>

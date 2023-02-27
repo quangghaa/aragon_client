@@ -1,18 +1,23 @@
 import React from "react";
 import { Down } from "../utils/svg-icons";
-
-import { DatePicker, Select, Space } from 'antd';
+import { DatePicker, Select, Space , Button, Modal , Alert , Form , InputNumber} from 'antd';
 import {VButtonPopup} from "./v-btn-popup";
 import NewvoteModal from "./newvote-modal";
 import { useState } from "react";
-
 function VHeader(props : any) {
     let checkOwner = props.CheckOwner;
-    console.log(checkOwner);
     const { RangePicker } = DatePicker;
     let MyQuestion = props.Question;
     let MySetQuestion = props.SetQuestion;
     const [QuestionExist , SetQuestionExist] = useState(false);
+    const [OpenModal , setOpenModal] = useState(false);
+    const [VoterCheck , setVoterCheck] = useState(false);
+    const [MyNumberOfVoter , setMyNumberOfVoter] =useState(0);
+    const VoteFactoryContract = props.VoteFactory;
+    const SetCheckNewPoll = props.SetIsNewPoll;
+    function OpenAddVoter (){
+        setOpenModal(true);
+    }
     let NewPoll = props.CreatePool;
     function vBtnClick(e: any) {
         e.stopPropagation();
@@ -29,7 +34,43 @@ function VHeader(props : any) {
     function handleChange(value: any) {
         console.log("select value: ", value)
     }
-
+    function CreatePollError (){
+        return(
+            alert("you do not have permission to create polls")
+        )
+    }
+    //CREATE DYNAMIC INPUT
+    const [formFields, setFormFields] = useState([
+        "",
+      ])
+      const handleFormChange = (event : any, index : any) => {
+        let data : any = [...formFields];
+        data[index]= event.target.value;
+        setFormFields(data);
+      }
+      const submit =  (e : any) => {
+        let i=0;
+        e.preventDefault();
+        formFields.forEach(async () => {
+            await VoteFactoryContract.addVoter(formFields[i], 1);
+            i++;
+        });
+        console.log(typeof(formFields))
+        console.log(formFields);
+        setOpenModal(false);
+      }
+    
+      const addFields = () => {
+        let myAdd = "";
+    
+        setFormFields([...formFields,myAdd] )
+      }
+    
+      const removeFields = (index : any) => {
+        let data = [...formFields];
+        data.splice(index, 1)
+        setFormFields(data)
+      }
     return (
         <>
         <div className="v-header-wrapper">
@@ -38,9 +79,41 @@ function VHeader(props : any) {
                     <h1 className="v-title">Voting</h1>
                 </div>
                 <div className="v-new-vote">
-                    {/* <button className="v-new-vote-btn" >Add voter</button> */}
-                    {checkOwner ? <button className="v-new-vote-btn" onClick={(e:any) => openVoteModal(e)}>New vote</button> : null}
-                    {QuestionExist ? <button className="Add-voter-btn" >Add voter</button> : null}
+                    {checkOwner ? <button className="v-new-vote-btn" onClick={(e:any) => openVoteModal(e)}>New poll</button> : null}
+                     {checkOwner ? <Button type="primary" className="Add-voter-btn" onClick={() => setOpenModal(true)}>
+                        Add Voter
+                    </Button> : null}
+                    <Modal 
+                        title="Add Voters  Address"
+                        style={{top:100}}
+                        open={OpenModal}
+                        onOk={submit}
+                        onCancel={() => setOpenModal(false)}
+                        width={1000}
+                        className="addVoter"
+                    >
+                        {/* submit number of voter */}
+                        <div className="Add Voter" >
+                            <form onSubmit={submit}>
+                                {formFields.map((form, index) => {
+                                return (
+                                    <div key={index}>
+                                    <input
+                                        name='address'
+                                        placeholder='Address'
+                                        onChange={event => handleFormChange(event, index)}
+                                        
+                                        className = "add-voter-input"
+                                    />
+                                    
+                                    <button onClick={() => removeFields(index)} className="v-new-vote-btn">Remove</button>
+                                    </div>
+                                )
+                                })}
+                            </form>
+                            <button onClick={addFields} className="v-new-vote-btn">Add More..</button>
+                        </div>
+                    </Modal>
                 </div>
             </div>
 
@@ -93,7 +166,7 @@ function VHeader(props : any) {
                 </div>
             </div>
         </div>
-        <NewvoteModal finnalQuestion={MyQuestion} FinnalSetQuestion={MySetQuestion} setCheckQuestion = {SetQuestionExist} FinnalCreatePoll ={NewPoll}/>
+        <NewvoteModal SetMyCheckNewPoll={SetCheckNewPoll} finnalQuestion={MyQuestion} FinnalSetQuestion={MySetQuestion} setCheckQuestion = {SetQuestionExist} FinnalCreatePoll ={VoteFactoryContract}/>
         </>
     )
 }

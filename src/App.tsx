@@ -33,6 +33,7 @@ function App() {
   const [IsOwnerAddress , setIsOwnerAddress] = useState(false);
   const [VoteFactory , setMyVoteFactory] = useState({});
   const [simpleTransaction, setSimpleTransaction] = useState({});
+  
   return (
     <>
       <div className='App'>
@@ -42,7 +43,8 @@ function App() {
         <Header page={page} setPage={setPage} network={network} setNet={setNetwork}
         voteFactory ={VoteFactory} SetMyVoteFactory={setMyVoteFactory}
         SimpleTransaction = {simpleTransaction} SetSimpleTransaction={setSimpleTransaction}
-        ownerAddress={OwnerAddress} SetOwnerAddress={setOwnerAddress} isOwnerAddress={IsOwnerAddress} SetIsOwnerAddress={setIsOwnerAddress}/>
+        ownerAddress={OwnerAddress} SetOwnerAddress={setOwnerAddress} isOwnerAddress={IsOwnerAddress} SetIsOwnerAddress={setIsOwnerAddress}
+        />
           <Routes>
               <Route path="/" element={<Welcome setPage={setPage} network={network}/>} />
               <Route path="/:id" element={<ExplorePage />} />

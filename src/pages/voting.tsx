@@ -5,9 +5,9 @@ import VHeader from "../components/v-header";
 
 function Voting(props : any) {
     let IsOwnerAddress = props.isOwnerAddress
-    console.log(IsOwnerAddress);
     const [question , setQuestion] = useState("");
     let VoteFactoryContract = props.voteFactory;
+    const [IsNewPoll , setIsNewPoll] = useState(false);
     window.onclick = function (event: any) {
         console.log("Voting page clicked")
         
@@ -44,8 +44,8 @@ function Voting(props : any) {
                 </div>
                 <div className="voting-bg">
                     <div className="voting">
-                        <VHeader CheckOwner={IsOwnerAddress} Question={question} SetQuestion={setQuestion} CreatePool={VoteFactoryContract}/>
-                        <VContent />
+                        <VHeader CheckOwner={IsOwnerAddress} Question={question} SetQuestion={setQuestion} VoteFactory={VoteFactoryContract} SetIsNewPoll={setIsNewPoll}/>
+                        <VContent isNewPoll={IsNewPoll} Question={question}/>
                     </div>
                 </div>
             </div>

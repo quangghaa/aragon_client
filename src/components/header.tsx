@@ -11,7 +11,7 @@ import VoteFactoryAddress from "../backend/VoteFactory-address.json"
 import SimpleTransactionAddress from "../backend/SimpleTransaction-address.json"
 import SimpleTransactionAbi from "../backend/SimpleTransaction.json"
 import { text } from "stream/consumers";
-
+import { useEthers, useEtherBalance } from "@usedapp/core";
 function Header(props: any) {
     let OwnerAddress = props.ownerAddress;
     let setOwnerAddress = props.SetOwnerAddress;
@@ -25,31 +25,38 @@ function Header(props: any) {
     let setSimpleTransaction=props.SetSimpleTransaction
     // const [simpleTransaction, setSimpleTransaction] = useState({})
     setOwnerAddress(VoteFactoryAddress.OwnerWalletAddress)
-    // console.log(OwnerAddress)
+    if(WalletAddress == OwnerAddress.toLowerCase()){
+        setIsOwnerAddress(true);
+    }else {
+        setIsOwnerAddress(false);
+    }
     const ConnectMetaMask = async () =>{
         if((window as any).ethereum){
             const MetaMaskAccount = await (window as any).ethereum.request({ method: 'eth_requestAccounts' })
-            .then((accounts : string[]) => {
-                setWalletAddress(accounts[0]);
+            // .then((accounts : string[]) => {
+            //     setWalletAddress(accounts[0]);
                 
-            });
-            if(WalletAddress == OwnerAddress.toLowerCase()){
-                setIsOwnerAddress(true);
-                console.log('done',IsOwnerAddress)
-            }
-            // console.log(OwnerAddress)
-            // setWalletAddress(MetaMaskAccount.address);
-            setConnectStatus(true);
-            // console.log('connect MetaMask');
-            // console.log(WalletAddress);
-            // console.log(ConnectStatus);
-            // console.log((window as any).ethereum.isConnected());
+            // });
+            .then(HandleAccountCHange);
+            
             const provider = new ethers.providers.Web3Provider((window as any).ethereum)
-            // Set signer
             const signer = provider.getSigner()
             loadContract(signer)
         }
     }
+    //Handle change Account
+
+    (window as any).ethereum.on('accountsChanged', HandleAccountCHange);
+
+    function HandleAccountCHange (accounts : any){
+        if(accounts.length == 0){
+            alert("Please connect Meta Mask")
+        }else if(accounts[0] !== WalletAddress){
+            setWalletAddress(accounts[0]);            
+            setConnectStatus(true);
+        }
+    }
+
     const loadContract = async (signer : any) =>{
         const mySimpleTransaction = new ethers.Contract(
             SimpleTransactionAddress.address,
@@ -114,7 +121,7 @@ function Header(props: any) {
                 use account from
             </h1>
             <div className="wallet-box">
-                <div className="w-item" onClick={ConnectMetaMask}>
+                <div className="w-item" id="enableEthereumButton" onClick={ConnectMetaMask}>
                     <Metamask />
                     <div className="w-name" >MetaMask</div>
                 </div>

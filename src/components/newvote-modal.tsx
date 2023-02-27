@@ -6,7 +6,8 @@ function NewvoteModal(props : any) {
     let question= props.finnalQuestion;
     let setQuestion=props.FinnalSetQuestion;
     let Questioncheck = props.setCheckQuestion;
-    let MyPoll = props.FinnalCreatePoll
+    let MyPoll = props.FinnalCreatePoll;
+    let setCheckNewPoll = props.SetMyCheckNewPoll;
     const CatchQuestion = async (e:any) =>{
         e.preventDefault();
         let message : any = document.getElementById('vote question') as HTMLInputElement | null;
@@ -15,7 +16,7 @@ function NewvoteModal(props : any) {
             setQuestion(message.value);
             // console.log(MyPoll);
             await MyPoll.createPoll("1st Poll", question)
-                
+            setCheckNewPoll(true);
             console.log("here we go")
             let polls = await MyPoll.getListPoll()
             console.log(polls)
