@@ -18,4 +18,22 @@ function QuestionIcon() {
     )
 }
 
-export {ColorETHIcon, InfoIcon, QuestionIcon}
+function SwapIcon() {
+    return (
+        <svg style={{width:"25px"}} viewBox="0 0 32 32" display="inline-block" focusable="false" role="presentation"><g fill="currentColor"><path d="M18.4308 6.40002L22.271 11.2003H6.39984L4.79999 14.4L25.6 14.4003C26.215 14.4003 26.7756 14.0478 27.0421 13.4934C27.3085 12.9391 27.2336 12.2811 26.8494 11.8008L22.5288 6.40002H18.4308Z"></path><path d="M9.47124 25.6003H13.5692L9.729 20.8H25.6002L27.2 17.6003L6.4 17.6C5.78495 17.6 5.22435 17.9526 4.95792 18.5069C4.69149 19.0613 4.7664 19.7193 5.15061 20.1995L9.47124 25.6003Z"></path></g></svg>
+    )
+}
+
+function ResetIcon() {
+    return (
+        <svg style={{width:"16px"}} viewBox="0 0 16 15" display="inline-block" focusable="false" role="presentation"><path d="M14.4027 10.8298C15.8352 7.6001 14.6285 3.74335 11.4999 1.93704C10.0464 1.09788 8.41707 0.839208 6.88035 1.0891L7.40171 3.03483C8.43934 2.909 9.52498 3.10624 10.4999 3.66909C12.6706 4.92235 13.546 7.55749 12.6566 9.82176L11.321 9.05066L11.696 13.5973L15.821 11.6487L14.4027 10.8298Z" fill="currentColor"></path><path d="M4.49986 14.0614C1.37124 12.2551 0.164503 8.39833 1.59707 5.16859L0.178711 4.3497L4.30371 2.40114L4.67871 6.94777L3.34313 6.17667C2.45369 8.44094 3.32915 11.0761 5.49986 12.3293C6.47475 12.8922 7.56039 13.0894 8.59802 12.9636L9.11937 14.9093C7.58266 15.1592 5.95333 14.9006 4.49986 14.0614Z" fill="currentColor"></path></svg>
+    )
+}
+
+function SmallArrowIcon() {
+    return (
+        <svg viewBox="0 0 12 9" display="inline-block" focusable="false" role="presentation" width="10px" height="7px"><path d="M1 4.5H11M11 4.5L8 8M11 4.5L8 1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    )
+}
+
+export {ColorETHIcon, InfoIcon, QuestionIcon, SwapIcon, ResetIcon, SmallArrowIcon}

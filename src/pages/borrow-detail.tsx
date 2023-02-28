@@ -18,7 +18,7 @@ function BorrowDetail(props: any) {
                 <div className='ex-nav-wrapper'>
                     <Navigation />
                 </div>
-                <div className="borrow-bg">
+                <div className="borrow-bg borrow-padding">
                     <div className="borrow">
                         <BDHead />
                         <BDBody />
