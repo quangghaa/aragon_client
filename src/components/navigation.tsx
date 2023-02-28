@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { BorrowIcon } from "../utils/borrow";
 import { Finance, NavApp, NavHome, NavOrg, NavVote, Permission } from "../utils/image";
 import { Down } from "../utils/svg-icons";
 
@@ -28,6 +29,10 @@ function Navigation() {
 
     function toOrgSetting() {
         navigate("/org-setting")
+    }
+
+    function toBorrow() {
+        navigate("/borrow")
     }
     
     return (
@@ -61,6 +66,15 @@ function Navigation() {
                         </span>
                         <span className="nav-item-name" onClick={toFinance}>
                             Finance
+                        </span>
+                    </div>
+
+                    <div className="nav-item back-2px">
+                        <span className="nav-icon-box">
+                            <BorrowIcon />
+                        </span>
+                        <span className="nav-item-name" onClick={toBorrow}>
+                            Borrow
                         </span>
                     </div>
                 </div>

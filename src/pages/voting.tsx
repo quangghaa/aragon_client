@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navigation from "../components/navigation";
 import VContent from "../components/v-content";
 import VHeader from "../components/v-header";
@@ -35,6 +35,10 @@ function Voting(props : any) {
             }
         }
     }
+
+    useEffect(() => {
+        props.setPage("voting")
+    }, [])
 
     return (
         <>

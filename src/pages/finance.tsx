@@ -1,8 +1,9 @@
-import React from "react";
+import { PropertySafetyFilled } from "@ant-design/icons";
+import React, { useEffect } from "react";
 import FContent from "../components/f-content";
 import FHeader from "../components/f-header";
 import Navigation from "../components/navigation";
-function Finance() {
+function Finance(props: any) {
     window.onclick = function (event: any) {
         console.log("Finance page clicked: ", event.target.className)
         if (!event.target.matches('.v-nav-btn')) {
@@ -56,6 +57,10 @@ function Finance() {
         // close type button popup
         
     }
+
+    useEffect(() => {
+        props.setPage("finance")
+    }, [])
 
     return (
         <>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import logo from './logo.svg';
 import { DatePicker, message } from 'antd';
@@ -36,6 +36,9 @@ function Welcome(props: any) {
     }
   }
   
+  useEffect(() => {
+    props.setPage("home")
+  }, [])
 
   return (
     <>
