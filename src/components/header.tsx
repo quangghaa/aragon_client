@@ -6,40 +6,74 @@ import { Bell, Connect, Setting } from "../utils/svg-icons";
 import ConnectForm from "./connect-form";
 import {Contract, ethers, Signer} from 'ethers';
 import NetworkModal from "./network-modal";
-import BallotAbi from "../backend/artifacts/contracts/Ballot.sol/Ballot.json";
-import BallotAddress from "../backend//BallotAddress.json"
-
+import VoteFactoryAbi from "../backend/VoteFactory.json";
+import VoteFactoryAddress from "../backend/VoteFactory-address.json"
+import SimpleTransactionAddress from "../backend/SimpleTransaction-address.json"
+import SimpleTransactionAbi from "../backend/SimpleTransaction.json"
+import { text } from "stream/consumers";
+import { useEthers, useEtherBalance } from "@usedapp/core";
 function Header(props: any) {
-    
+    let OwnerAddress = props.ownerAddress;
+    let setOwnerAddress = props.SetOwnerAddress;
+    let IsOwnerAddress = props.isOwnerAddress;
+    let setIsOwnerAddress = props.SetIsOwnerAddress
     const [WalletAddress , setWalletAddress] = useState('');
     const [ConnectStatus , setConnectStatus] = useState(false);
-    const [myBallotContract , setMyBallotContract] = useState();
+    // const [VoteFactory , setMyVoteFactory] = useState({});
+    let simpleTransaction = props.SimpleTransaction
+    let setMyVoteFactory= props.SetMyVoteFactory;
+    let setSimpleTransaction=props.SetSimpleTransaction
+    // const [simpleTransaction, setSimpleTransaction] = useState({})
+    setOwnerAddress(VoteFactoryAddress.OwnerWalletAddress)
+    if(WalletAddress == OwnerAddress.toLowerCase()){
+        setIsOwnerAddress(true);
+    }else {
+        setIsOwnerAddress(false);
+    }
     const ConnectMetaMask = async () =>{
         if((window as any).ethereum){
             const MetaMaskAccount = await (window as any).ethereum.request({ method: 'eth_requestAccounts' })
-            .then((accounts : string[]) => {
-                setWalletAddress(accounts[0]);
-            });
-            // setWalletAddress(MetaMaskAccount.address);
-            setConnectStatus(true);
-            console.log('connect MetaMask');
-            console.log(WalletAddress);
-            console.log(ConnectStatus);
-            console.log((window as any).ethereum.isConnected());
+            // .then((accounts : string[]) => {
+            //     setWalletAddress(accounts[0]);
+                
+            // });
+            .then(HandleAccountCHange);
+            
             const provider = new ethers.providers.Web3Provider((window as any).ethereum)
-            // Set signer
-            loadContract(provider)
+            const signer = provider.getSigner()
+            loadContract(signer)
         }
     }
+    //Handle change Account
+
+    (window as any).ethereum.on('accountsChanged', HandleAccountCHange);
+
+    function HandleAccountCHange (accounts : any){
+        if(accounts.length == 0){
+            alert("Please connect Meta Mask")
+        }else if(accounts[0] !== WalletAddress){
+            setWalletAddress(accounts[0]);            
+            setConnectStatus(true);
+        }
+    }
+
     const loadContract = async (signer : any) =>{
-        const myBallot : any = new ethers.Contract(
-            BallotAddress.address,
-            BallotAbi.abi,
+        const mySimpleTransaction = new ethers.Contract(
+            SimpleTransactionAddress.address,
+            SimpleTransactionAbi.abi,
             signer,
-        );
-        console.log(myBallot);
-        const ContractMoney : any = await myBallot.Retrieve();
-        console.log(ContractMoney)
+          )
+          setSimpleTransaction(mySimpleTransaction)
+        //   const Balance = await mySimpleTransaction.Retrieve(WalletAddress);
+        //   console.log(Balance);
+        const myVoteFactory = new ethers.Contract(
+            VoteFactoryAddress.address,
+            VoteFactoryAbi.abi,
+            signer
+            )
+            setMyVoteFactory(myVoteFactory);
+            // const myBalance = await myVoteFactory.Retrieve(WalletAddress)
+            // console.log(myBalance)
     }
     function connectEvent(e: any) {
         e.stopPropagation();
@@ -87,7 +121,7 @@ function Header(props: any) {
                 use account from
             </h1>
             <div className="wallet-box">
-                <div className="w-item" onClick={ConnectMetaMask}>
+                <div className="w-item" id="enableEthereumButton" onClick={ConnectMetaMask}>
                     <Metamask />
                     <div className="w-name" >MetaMask</div>
                 </div>

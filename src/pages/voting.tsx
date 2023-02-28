@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Navigation from "../components/navigation";
 import VContent from "../components/v-content";
 import VHeader from "../components/v-header";
 
-function Voting() {
+function Voting(props : any) {
+    let IsOwnerAddress = props.isOwnerAddress
+    const [question , setQuestion] = useState("");
+    let VoteFactoryContract = props.voteFactory;
+    const [IsNewPoll , setIsNewPoll] = useState(false);
     window.onclick = function (event: any) {
         console.log("Voting page clicked")
+        
         if (!event.target.matches('.v-nav-btn')) {
             var dropdowns = document.getElementsByClassName("v-btn-popup");
             var i;
@@ -39,8 +44,8 @@ function Voting() {
                 </div>
                 <div className="voting-bg">
                     <div className="voting">
-                        <VHeader />
-                        <VContent />
+                        <VHeader CheckOwner={IsOwnerAddress} Question={question} SetQuestion={setQuestion} VoteFactory={VoteFactoryContract} SetIsNewPoll={setIsNewPoll}/>
+                        <VContent isNewPoll={IsNewPoll} Question={question}/>
                     </div>
                 </div>
             </div>
