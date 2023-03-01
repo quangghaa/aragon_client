@@ -1,0 +1,62 @@
+.d-nav-wrapper {
+    display: block;
+    width: 50%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.token-nav {
+    box-sizing: border-box;
+    margin: 0px 0px 32px;
+    min-width: 0px;
+    justify-content: space-around;
+    display: flex;
+}
+
+.token-btn {
+    box-sizing: border-box;
+    margin: 0px;
+    min-width: 0px;
+    appearance: none;
+    display: inline-block;
+    text-align: center;
+    line-height: inherit;
+    text-decoration: none;
+    font-size: inherit;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background: unset;
+    border: unset;
+    color: inherit;
+    cursor: pointer;
+    font-family: Inter, "Helvetica Neue", sans-serif;
+}
+
+.token-btn-content {
+    box-sizing: border-box;
+    margin: 0px;
+    min-width: 0px;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+}
+
+.tbc-icon {}
+
+.tbc-text {
+    box-sizing: border-box;
+    margin: 0px;
+    min-width: 0px;
+    font-weight: 600;
+    color: var(--theme-ui-colors-neutral80, #787A9B);
+}
+
+.d-body {
+    box-sizing: border-box;
+    margin: 0px;
+    min-width: 0px;
+    background-color: var(--theme-ui-colors-neutral10,#FFFFFF);
+    border-radius: 16px;
+    box-shadow: rgb(0 0 0 / 10%) 0px 0px 8px;
+    border: 1px solid rgb(209 209 209);
+}
