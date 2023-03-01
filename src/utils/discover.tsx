@@ -24,4 +24,28 @@ function LDIcon() {
     )
 }
 
-export {HRIcon, HMIcon, MYEIcon, LDIcon}
+function CheckIcon() {
+    return (
+        <svg style={{width: "10px", color:"var(--theme-ui-colors-success100,#1AAB9B)", margin:"auto", transition: "opacity 100ms ease 0s;"}} viewBox="0 0 16 14" display="inline-block" focusable="false" role="presentation"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.8096 1.0476C15.3356 1.49471 15.3995 2.28358 14.9524 2.80959L6.45244 12.8096C6.21697 13.0866 5.87255 13.2474 5.50898 13.25C5.14541 13.2526 4.79872 13.0968 4.5593 12.8232L1.0593 8.82316C0.604694 8.30361 0.657341 7.51391 1.17689 7.0593C1.69643 6.6047 2.48614 6.65735 2.94074 7.17689L5.4863 10.0861L13.0476 1.19046C13.4947 0.664455 14.2836 0.600493 14.8096 1.0476Z" fill="currentColor"></path></svg>
+    )
+}
+
+function StarIcon() {
+    return (
+        <svg className="star-icon-style" viewBox="0 0 16 15" display="inline-block" focusable="false" role="presentation"><svg width="16" height="15" viewBox="0 0 16 15"><path d="M7.28261 1.71283C7.57606 1.11824 8.42394 1.11824 8.71739 1.71284L10.165 4.64603C10.2815 4.88214 10.5068 5.0458 10.7674 5.08366L14.0043 5.55402C14.6605 5.64937 14.9225 6.45574 14.4477 6.91857L12.1054 9.20174C11.9169 9.38553 11.8308 9.65033 11.8753 9.90985L12.4283 13.1337C12.5404 13.7873 11.8544 14.2856 11.2675 13.9771L8.37227 12.455C8.13921 12.3324 7.86079 12.3324 7.62773 12.455L4.73249 13.9771C4.14559 14.2856 3.45965 13.7873 3.57174 13.1337L4.12468 9.90985C4.16919 9.65033 4.08315 9.38553 3.8946 9.20174L1.55231 6.91857C1.07749 6.45574 1.3395 5.64937 1.99568 5.55402L5.23265 5.08366C5.49321 5.0458 5.71847 4.88214 5.835 4.64603L7.28261 1.71283Z" stroke-linejoin="round"></path></svg></svg>
+    )
+}
+
+function ETHIcon36() {
+    return (
+        <svg style={{width: "36px"}} viewBox="0 0 32 32" display="inline-block" focusable="false" role="presentation"><path d="M16 29.3332C23.3638 29.3332 29.3333 23.3636 29.3333 15.9998C29.3333 8.63604 23.3638 2.6665 16 2.6665C8.63616 2.6665 2.66663 8.63604 2.66663 15.9998C2.66663 23.3636 8.63616 29.3332 16 29.3332Z" fill="rgb(113, 113, 235)"></path><path d="M15.9999 8V19.0509L10.6667 16.1484L15.9999 8Z" fill="white"></path><path d="M15.9999 8L21.3332 16.1484L15.9999 19.0509V8Z" fill="white"></path><path d="M15.9998 19.9811V23.9999L10.6666 17.08L15.9998 19.9811Z" fill="white"></path><path d="M15.9998 23.9999V19.9811L21.3333 17.08L15.9998 23.9999Z" fill="white"></path></svg>
+    )
+}
+
+function ForwardIcon() {
+    return (
+        <svg className="for-icon-style" viewBox="0 0 18 18" display="inline-block" focusable="false" role="presentation"><path d="M12.0741 12L17.0741 8L12.0741 4V12ZM3.07407 17C3.07407 17 5.0741 9.5 12.0741 9.5V6.5C1.57407 6.5 3.07407 17 3.07407 17Z"></path></svg>
+    )
+}
+
+export {HRIcon, HMIcon, MYEIcon, LDIcon, CheckIcon, StarIcon, ETHIcon36, ForwardIcon}

@@ -3522,7 +3522,7 @@ position: relative;
 
 .br-head {
   box-sizing: border-box;
-    margin: 1.5rem 0px 32px;
+    margin: 1.5rem 0px 0px;
     min-width: 0px;
     justify-self: center;
     -webkit-box-align: center;
