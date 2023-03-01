@@ -34,6 +34,10 @@ function Navigation() {
     function toBorrow() {
         navigate("/borrow")
     }
+
+    function toDiscover() {
+        navigate("/discover")
+    }
     
     return (
         <nav className="ex-nav">
@@ -75,6 +79,15 @@ function Navigation() {
                         </span>
                         <span className="nav-item-name" onClick={toBorrow}>
                             Borrow
+                        </span>
+                    </div>
+
+                    <div className="nav-item back-2px">
+                        <span className="nav-icon-box">
+                            <BorrowIcon />
+                        </span>
+                        <span className="nav-item-name" onClick={toDiscover}>
+                            Discover
                         </span>
                     </div>
                 </div>

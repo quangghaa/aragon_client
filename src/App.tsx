@@ -23,6 +23,7 @@ import SimpleTransactionAddress from "./backend/SimpleTransaction-address.json"
 import SimpleTransactionAbi from "./backend/SimpleTransaction.json"
 import Borrow from './pages/borrow';
 import BorrowDetail from './pages/borrow-detail';
+import Discover from './pages/discover';
 interface Network {
   name: string,
   type: 0,
@@ -76,6 +77,7 @@ function App() {
             <Route path="/vote-detail" element={<VotingDetail />} />
             <Route path="/borrow" element={<Borrow setPage={setPage} />} />
             <Route path="/borrow/:id" element={<BorrowDetail setPage={setPage} />} />
+            <Route path="/discover" element={<Discover setPage={setPage} />} />
           </Routes>
         </BrowserRouter>
       </div>
