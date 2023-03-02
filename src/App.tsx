@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState , useEffect ,useRef} from 'react';
 import './App.css';
 import { Layout, Space } from 'antd';
 import Welcome from './pages/welcome';
@@ -50,32 +50,51 @@ function App() {
     }
   }, [page])
 
+  const [NumberOfPoll , setNumberOfPoll] = useState([] as number[]);
+  const [newPollID , setNewPollID] = useState(0);
+  const [CheckLogIn , setCheckLogIn] = useState(false);
+  const [NumberOfVoters , setNumberOfVoter] = useState(0);
+  const [polls , setPolls] = useState([] as any[]);
+  const [Agree , setAgree] = useState(1 as number);
+  const [Disagree , setDisagree] = useState(1 as number);
+  const [Voted , setVoted] = useState(false);
+    const i = useRef(0);
+    const m = useRef(0);
+    const [MyCount , setMyCount] = useState(0);
   return (
     <>
       <div id="app-id" className='App'>
         <div className='line'></div>
-
-        <BrowserRouter>
-          <Header page={page} setPage={setPage} network={network} setNet={setNetwork}
-            voteFactory={VoteFactory} SetMyVoteFactory={setMyVoteFactory}
-            SimpleTransaction={simpleTransaction} SetSimpleTransaction={setSimpleTransaction}
-            ownerAddress={OwnerAddress} SetOwnerAddress={setOwnerAddress} isOwnerAddress={IsOwnerAddress} SetIsOwnerAddress={setIsOwnerAddress}
-          />
+        
+        <BrowserRouter> 
+        <Header page={page} setPage={setPage} network={network} setNet={setNetwork}
+        voteFactory ={VoteFactory} SetMyVoteFactory={setMyVoteFactory}
+        SimpleTransaction = {simpleTransaction} SetSimpleTransaction={setSimpleTransaction}
+        ownerAddress={OwnerAddress} SetOwnerAddress={setOwnerAddress} isOwnerAddress={IsOwnerAddress} SetIsOwnerAddress={setIsOwnerAddress}
+        SetCheckLogIn = {setCheckLogIn} setIsVoted={setVoted}
+        />
           <Routes>
-            <Route path="/" element={<Welcome setPage={setPage} network={network} />} />
-            <Route path="/:id" element={<ExplorePage />} />
-            <Route path="/open" element={<OpenExistingOrg network={network} />} />
-            <Route path="/voting" element={<Voting setPage={setPage}
-              isOwnerAddress={IsOwnerAddress} voteFactory={VoteFactory}
-            />} />
-            <Route path="/finance" element={<Finance setPage={setPage} />} />
-            <Route path="/permission" element={<Permissions />} />
-            <Route path="/permission-detail" element={<PermissionDetail />} />
-            <Route path="/app-center" element={<AppCenter />} />
-            <Route path="/org-setting" element={<OrgSetting />} />
-            <Route path="/app-center-detail" element={<AppCenterDetail />} />
-            <Route path="/vote-detail" element={<VotingDetail />} />
-            <Route path="/borrow" element={<Borrow setPage={setPage} />} />
+              <Route path="/" element={<Welcome setPage={setPage} network={network}/>} />
+              <Route path="/:id" element={<ExplorePage />} />
+              <Route path="/open" element={<OpenExistingOrg network={network} />} />
+              <Route path="/voting" element={<Voting setPage={setPage} numberOfPoll={NumberOfPoll} SetNumberOfPoll={setNumberOfPoll}
+                isOwnerAddress={IsOwnerAddress} voteFactory ={VoteFactory} 
+                CreatePollID = {newPollID} SetCreatePollID={setNewPollID}
+                checkLogIn = {CheckLogIn}   MyNumberOfVoter={NumberOfVoters}
+                myPolls = {polls} setMyPolls = {setPolls} MyI={i} MyM={m} Count={MyCount} SetCount={setMyCount}
+                SetNumberOfVoter={setNumberOfVoter} NumberOfVoter ={NumberOfVoters}
+               />} />
+              <Route path="/finance"  element={<Finance setPage={setPage} />} />
+              <Route path="/permission" element={<Permissions  />} />
+              <Route path="/permission-detail" element={<PermissionDetail />} />
+              <Route path="/app-center" element={<AppCenter />} />
+              <Route path="/org-setting" element={<OrgSetting />} />
+              <Route path="/app-center-detail" element={<AppCenterDetail />} />
+              <Route path="/vote-detail" element={<VotingDetail AgreeVoter={Agree} SetAgreeVoter={setAgree} MyPolls={polls} 
+              DisagreeVoter={Disagree} SetDisagreeVoter={setDisagree}
+              MyNumberOfVoter={NumberOfVoters} PollID={newPollID} IsAccountVoted={Voted} SetIsAccountVoted={setVoted}
+              isOwnerAddress={IsOwnerAddress} voteFactory ={VoteFactory}/>} />
+              <Route path="/borrow" element={<Borrow setPage={setPage} />} />
             <Route path="/borrow/:id" element={<BorrowDetail setPage={setPage} />} />
             <Route path="/discover" element={<Discover setPage={setPage} />} />
           </Routes>

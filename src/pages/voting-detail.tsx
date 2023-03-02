@@ -10,7 +10,18 @@ import PDetailHeader from "../components/p-detail-header";
 import PHeader from "../components/p-header";
 import VDetailContent from "../components/v-detail-content";
 import VDetailHeader from "../components/v-detail-header";
-function VotingDetail() {
+function VotingDetail(props : any) {
+    let VoteContract = props.voteFactory;
+    let checkOwner = props.isOwnerAddress;
+    let polls = props.MyPolls;
+    let NumberOfVoter = props.MyNumberOfVoter;
+    let agree = props.Agree;
+    let setAgree = props.SetAgreeVoter;
+    let disagree = props.DisagreeVoter;
+    let setDisagree = props.SetDisagreeVoter;
+    let myPollID = props.PollID;
+    let CheckVoted = props.IsAccountVoted;
+    let setCheckVoted = props.SetIsAccountVoted;
     window.onclick = function (event: any) {
         console.log("Permission page clicked")
         if (!event.target.matches('.v-nav-btn')) {
@@ -61,7 +72,9 @@ function VotingDetail() {
                 <div className="voting-bg">
                     <div className="voting">
                         <VDetailHeader />
-                        <VDetailContent />
+                        <VDetailContent AgreeVoter={agree} setAgreeVoter={setAgree} MyPolls={polls} 
+                        DisagreeVoter={disagree} setDisagreeVoter={setDisagree} PollID={myPollID}
+                        MyNumberOfVoter={NumberOfVoter} check={checkOwner} voteContract={VoteContract} setIsAccountVoted={setCheckVoted} IsAccountVoted={CheckVoted}/>
                     </div>
                 </div>
             </div>

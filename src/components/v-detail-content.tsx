@@ -1,16 +1,55 @@
 import { Progress } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavVote, PermVoting } from "../utils/image";
 import { Back, Clock, FTIQuestion, Pass } from "../utils/svg-icons";
 
-function VDetailContent() {
+function VDetailContent(props : any) {
     const navigate = useNavigate()
-
+    let checkOwner = props.check;
+    let VoteContract=props.voteContract;
+    let polls = props.MyPolls;
+    let NumberOfVoter = props.MyNumberOfVoter;
+    let Agree = props.AgreeVoter;
+    let setAgree = props.setAgreeVoter;
+    let Disagree = props.DisagreeVoter;
+    let setDisagree = props.setDisagreeVoter;
+    let MyPollID = props.PollID;
+    let CheckAccountVoted = props.IsAccountVoted;
+    let setCheckAccountVoted = props.setIsAccountVoted;
+    const [MyNumberAgree , setMyNumberAgree] = useState(0);
+    const [MyNumberDisagree, setMyNumberDisagree] = useState(0);
+    // console.log('Number of voters',NumberOfVoter);
+//     const  GetListPolls = () =>{
+//         // console.log(typeof(NumberOfVoter));
+//         setMyNumberAgree(MyNumberAgree+1);
+//         console.log(MyNumberAgree)
+//    }
     function backClick(e: any) {
+        e.preventDefault();
         navigate("/voting")
     }
-
+    const agreeVoter= async ()=>{
+        if(CheckAccountVoted){
+            alert("you already voted")
+        }else{
+            setMyNumberAgree(MyNumberAgree+1);
+            await VoteContract.doVote(true,MyPollID);
+            setAgree(MyNumberAgree);
+            console.log('Agree Voter', MyNumberAgree , 'Number of voters' , NumberOfVoter);
+            setCheckAccountVoted(true)
+        }
+    }
+    const diagreeVoter = async () =>{
+        if(CheckAccountVoted){
+            alert("you already voted")
+        }else{
+            setMyNumberDisagree(MyNumberDisagree+1);
+            await VoteContract.doVote(false,MyPollID);
+            setDisagree(MyNumberDisagree);
+            setCheckAccountVoted(true)
+        }
+    }
     return (
         <div>
             <div className="eo-header pd-back-header">
@@ -35,17 +74,23 @@ function VDetailContent() {
                         </div>
 
                         <section className="ds-content">
-                            <h1 className="dc-id">
-                                <span className="dc-id-text">Vote #39</span>
-                            </h1>
-
+                            <div className="Vote-option-container">
+                                <div>
+                                    <h1 className="dc-id">
+                                        <span className="dc-id-text">Vote #39</span>
+                                    </h1>
+                                </div>
+                                {checkOwner ? null : <div>
+                                <button className="v-new-vote-btn" style={{marginRight: '30px'} } onClick={agreeVoter}>Yes</button>
+                                <button className="v-new-vote-btn" onClick={diagreeVoter}>No</button>
+                                </div>}
+                                {/* <button className="v-new-vote-btn" onClick={GetListPolls}>Get list polls</button> */}
+                            </div>
                             <div className="des-cre-section">
                                 <div className="des-section">
                                     <h1 className="des-sec-title">description</h1>
                                     <span className="des-sec-text">
-                                        Do you approve AGP-143: Fundraising Maintenance? (Link:
-                                        <a href="#">https://raw.githubusercontent.com/aragon/AGPs/bf5a8eb0a3436072bcb5b2fa818c94cd507e2121/AGPs/AGP-143.md</a>
-                                        ) (SHA256: 69d7e593d6324358b40e2aa61dfef636f4c04a11d8afaae012e79a1ae4161e0f)
+                                        {/* {polls.length > 0 ? <p>{polls[i].proposal}</p> : <p>sai</p>} */}
                                     </span>
                                 </div>
 
@@ -59,7 +104,7 @@ function VDetailContent() {
                         <div className="progress-vote-section">
                             <h1 className="des-sec-title">votes</h1>
                             <div className="mb">
-                                <Progress percent={100} />
+                                <Progress percent={(MyNumberAgree/NumberOfVoter)*100} />
                             </div>
 
                             <div className="yesno-box">
@@ -118,11 +163,11 @@ function VDetailContent() {
 
                         <div className="vd-pd-box-content">
                             <div className="per-box">
-                                99.68%
+                                {(MyNumberAgree/NumberOfVoter)*100}
                                 <span className="per-light-text">(&gt;50% needed)</span>
                             </div>
                             <div className="pro-box">
-                                <Progress percent={100} />    
+                                <Progress percent={(MyNumberAgree/NumberOfVoter)*100} />    
                             </div>
                         </div>
                     </section>
@@ -137,11 +182,11 @@ function VDetailContent() {
 
                         <div className="vd-pd-box-content">
                             <div className="per-box">
-                                2.3%
+                                {(MyNumberDisagree/NumberOfVoter)*100}
                                 <span className="per-light-text">(&gt;0% needed)</span>
                             </div>
                             <div className="pro-box">
-                                <Progress percent={2} />    
+                                <Progress percent={(MyNumberDisagree/NumberOfVoter)*100} />    
                             </div>
                         </div>
                     </section>
