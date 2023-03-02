@@ -9,12 +9,16 @@ function VHeader(props : any) {
     const { RangePicker } = DatePicker;
     let MyQuestion = props.Question;
     let MySetQuestion = props.SetQuestion;
+    let PollID = props.MyPollID;
+    let SetPollID = props.SetMyPollID;
+    let setMyNumberOfQuestion = props.setNumberOfVoter;
     const [QuestionExist , SetQuestionExist] = useState(false);
     const [OpenModal , setOpenModal] = useState(false);
     const [VoterCheck , setVoterCheck] = useState(false);
     const [MyNumberOfVoter , setMyNumberOfVoter] =useState(0);
     const VoteFactoryContract = props.VoteFactory;
     const SetCheckNewPoll = props.SetIsNewPoll;
+    const NumberOfVoter=props.MyNumberOfVoter;
     function OpenAddVoter (){
         setOpenModal(true);
     }
@@ -48,16 +52,18 @@ function VHeader(props : any) {
         data[index]= event.target.value;
         setFormFields(data);
       }
-      const submit =  (e : any) => {
+      const submit = async (e : any) => {
         let i=0;
         e.preventDefault();
         formFields.forEach(async () => {
-            await VoteFactoryContract.addVoter(formFields[i], 1);
+            await VoteFactoryContract.addVoter(formFields[i], PollID);
             i++;
         });
-        console.log(typeof(formFields))
-        console.log(formFields);
+        // console.log(typeof(formFields))
+        // console.log(formFields);
+        setMyNumberOfQuestion(NumberOfVoter+formFields.length)
         setOpenModal(false);
+        console.log(await VoteFactoryContract.getListPoll(),formFields)
       }
     
       const addFields = () => {
@@ -83,6 +89,7 @@ function VHeader(props : any) {
                      {checkOwner ? <Button type="primary" className="Add-voter-btn" onClick={() => setOpenModal(true)}>
                         Add Voter
                     </Button> : null}
+                    {/* <button className="v-new-vote-btn" onClick={(e:any) => GetListPolls()}>Get list poll</button> */}
                     <Modal 
                         title="Add Voters  Address"
                         style={{top:100}}
@@ -166,7 +173,9 @@ function VHeader(props : any) {
                 </div>
             </div>
         </div>
-        <NewvoteModal SetMyCheckNewPoll={SetCheckNewPoll} finnalQuestion={MyQuestion} FinnalSetQuestion={MySetQuestion} setCheckQuestion = {SetQuestionExist} FinnalCreatePoll ={VoteFactoryContract}/>
+        <NewvoteModal MyPollID={PollID} SetMyNumberOfVotes={setMyNumberOfQuestion}
+        SetMyPollID={SetPollID} SetMyCheckNewPoll={SetCheckNewPoll} finnalQuestion={MyQuestion} FinnalSetQuestion={MySetQuestion}
+         setCheckQuestion = {SetQuestionExist} FinnalCreatePoll ={VoteFactoryContract}/>
         </>
     )
 }

@@ -3498,6 +3498,11 @@ position: relative;
     transition-duration: 50ms;
     transition-timing-function: ease-in-out;
 }
+.Vote-option-container{
+  display: flex;
+  justify-content: space-between;
+
+}
 
 .back-2px {
   transform: translateX(-2px);

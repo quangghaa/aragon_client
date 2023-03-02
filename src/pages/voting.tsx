@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Navigation from "../components/navigation";
 import VContent from "../components/v-content";
 import VHeader from "../components/v-header";
@@ -7,6 +7,22 @@ function Voting(props : any) {
     let IsOwnerAddress = props.isOwnerAddress
     const [question , setQuestion] = useState("");
     let VoteFactoryContract = props.voteFactory;
+    let PollID = props.CreatePollID;
+    let setPollID = props.SetCreatePollID;
+    let CheckLogin = props.checkLogIn;
+    let SetMyNumberOfVoter = props.SetNumberOfVoter;
+    let NumberOfVoter = props.MyNumberOfVoter
+    // const [myList , setMyList] = useState([0]);
+    let myList = props.numberOfPoll;
+    let setMyList = props.SetNumberOfPoll;
+    let polls = props.myPolls;
+    let setPolls = props.setMyPolls;
+    let i=props.MyI;
+    let m=props.MyM;
+    let MyCount = props.Count;
+    let setMyCount = props.SetCount;
+
+    const CurrentPoll = useRef(0);
     const [IsNewPoll , setIsNewPoll] = useState(false);
     window.onclick = function (event: any) {
         console.log("Voting page clicked")
@@ -48,8 +64,8 @@ function Voting(props : any) {
                 </div>
                 <div className="voting-bg">
                     <div className="voting">
-                        <VHeader CheckOwner={IsOwnerAddress} Question={question} SetQuestion={setQuestion} VoteFactory={VoteFactoryContract} SetIsNewPoll={setIsNewPoll}/>
-                        <VContent isNewPoll={IsNewPoll} Question={question}/>
+                        <VHeader MyNumberOfVoter={NumberOfVoter} setNumberOfVoter={SetMyNumberOfVoter} MyPollID={PollID} SetMyPollID={setPollID} CheckOwner={IsOwnerAddress} Question={question} SetQuestion={setQuestion} VoteFactory={VoteFactoryContract} SetIsNewPoll={setIsNewPoll}/>
+                        <VContent checkOwner={IsOwnerAddress} myCount={MyCount} SetMyCount ={setMyCount} MyI={i} MyM={m} MyPoll={polls} SetMyPoll={setPolls} VoteFactory={VoteFactoryContract} isNewPoll={IsNewPoll} Question={question} MyPollID={PollID} MyList={myList} SetMyList={setMyList}/>
                     </div>
                 </div>
             </div>

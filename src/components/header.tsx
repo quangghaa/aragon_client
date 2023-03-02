@@ -16,7 +16,9 @@ function Header(props: any) {
     let OwnerAddress = props.ownerAddress;
     let setOwnerAddress = props.SetOwnerAddress;
     let IsOwnerAddress = props.isOwnerAddress;
-    let setIsOwnerAddress = props.SetIsOwnerAddress
+    let setIsOwnerAddress = props.SetIsOwnerAddress;
+    let setCheckLogIn = props.SetCheckLogIn
+    let setCheckVoted = props.setIsVoted;
     const [WalletAddress , setWalletAddress] = useState('');
     const [ConnectStatus , setConnectStatus] = useState(false);
     // const [VoteFactory , setMyVoteFactory] = useState({});
@@ -42,6 +44,7 @@ function Header(props: any) {
             const provider = new ethers.providers.Web3Provider((window as any).ethereum)
             const signer = provider.getSigner()
             loadContract(signer)
+            setCheckLogIn(true)
         }
     }
     //Handle change Account
@@ -55,6 +58,7 @@ function Header(props: any) {
             setWalletAddress(accounts[0]);            
             setConnectStatus(true);
         }
+        setCheckVoted(false);
     }
 
     const loadContract = async (signer : any) =>{
