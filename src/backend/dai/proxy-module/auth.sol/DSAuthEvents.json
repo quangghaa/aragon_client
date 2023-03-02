@@ -1,0 +1,37 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "DSAuthEvents",
+  "sourceName": "contracts/stable-coin/dai/proxy-module/auth.sol",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "authority",
+          "type": "address"
+        }
+      ],
+      "name": "LogSetAuthority",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "LogSetOwner",
+      "type": "event"
+    }
+  ],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220909f55c791019ca9a76c40bc35da76b707f2067983f455abc15a9b33d05c720a64736f6c63430008110033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220909f55c791019ca9a76c40bc35da76b707f2067983f455abc15a9b33d05c720a64736f6c63430008110033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
