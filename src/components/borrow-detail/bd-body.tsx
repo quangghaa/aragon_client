@@ -9,70 +9,103 @@ import {
   SwapIcon,
 } from "../../utils/borrow-detail";
 
-import DssProxyActionAbi from "../../backend/dai/liquidation-auction-module/DssProxyActions.sol/DssProxyActions.json";
-import GemJoinAbi from "../../backend/dai/liquidation-auction-module/join.sol/GemJoin.json";
-import VatAddress from "../../backend/address/Vat-address.json";
-import BatAdress from "../../backend/address/BAT-address.json";
-import BatAbi from "../../backend/dai/liquidation-auction-module/token.sol/DSToken.json";
-import CDPManagerAddress from "../../backend/address/DssCdpManager-address.json";
-import JugAddress from "../../backend/address/Jug-address.json";
-import DaiJoinAddress from "../../backend/address/DAI-address.json";
-import MedianAbi from "../../backend/dai/oracle-module/median.sol/Median.json";
-import MedianAddress from "../../backend/address/Median-address.json";
+import DssProxyActionAbi from "../../abis/dai/liquidation-auction-module/DssProxyActions.sol/DssProxyActions.json";
+import VatAddress from "../../abis/Vat-address.json";
+import BatAdress from "../../abis/BAT-address.json";
+import BatAbi from "../../abis/dai/liquidation-auction-module/token.sol/DSToken.json";
+import CDPManagerAddress from "../../abis/DssCdpManager-address.json";
+import JugAddress from "../../abis/Jug-address.json";
+import DaiJoinAddress from "../../abis/DAI-address.json";
+import MedianAbi from "../../abis/dai/oracle-module/median.sol/Median.json";
+import MedianAddress from "../../abis/Median-address.json";
+import { deployGemContract, requestAuth, requestFund } from "../../apis/api";
 declare global {
   interface Window {
     ethereum: any;
   }
 }
-const privateKey =
-  "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80";
-const node_provider = new ethers.providers.JsonRpcProvider(
-  "http://127.0.0.1:8545/"
-);
-const contractOwner = new ethers.Wallet(privateKey, node_provider);
-
 function BDBody(props: any) {
   const openLockGemAndDraw = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     // Set signer
     const signer = provider.getSigner();
-    console.log("signer", signer);
+    const signerAddress = await signer.getAddress();
+    console.log("signer", signerAddress);
+
+    //Get Proxy contract from abi and bytecode
     const DssProxyAction = new ContractFactory(
       DssProxyActionAbi.abi,
       DssProxyActionAbi.bytecode,
       signer
     );
+    //Signer deploy Proxy contract
     const dssProxyAction = await DssProxyAction.deploy();
-
-    //Get
-    const gemJoins = new ContractFactory(
-      GemJoinAbi.abi,
-      GemJoinAbi.bytecode,
-      contractOwner
-    );
+    console.log("dssProxy Address", dssProxyAction.address);
     const median = new ethers.Contract(
       MedianAddress.address,
       MedianAbi.abi,
       signer
     );
     const priceType = await median.getWat();
-    const gemJoin = await gemJoins.deploy(
-      VatAddress.address,
-      priceType,
-      BatAdress.address
-    );
-    console.log("GemJoin deploy at:", gemJoin.address);
 
+    //Deploy GemJoin by contract owner(must done in Backend)
+    //Send DeployGem params to Backend
+    const deployGemRequest = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        vatAddress: VatAddress.address,
+        priceType: priceType,
+        batAddress: BatAdress.address,
+      }),
+    };
+    const gemAddress = await deployGemContract(deployGemRequest);
+    console.log("gemAddress", gemAddress);
+
+    //ToDo: switch case for each GemToken
+    //For simplicity hardFix gem is Bat Token
+    //Get Deployed Bat Contract from abi and Address
     const bat = new ethers.Contract(BatAdress.address, BatAbi.abi, signer);
 
     //Approve for DssProxy action permission transfer BAT
     await bat.approve_max(dssProxyAction.address);
 
+    //Auth for signer permission
+    const authRequest = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        requester: signerAddress,
+        permission: "root-user",
+      }),
+    };
+
+    await requestAuth(authRequest);
+
+    //ToDo: move request fund to another flow (must done before Lock gem and draw Dai)
+    //Contract owner mint Bat To signer(must done in BackEnd)
+    //Send Request Fund to Backend
+    const fundRequest = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        receiver: signerAddress,
+        amount: "100",
+        gemAddress: BatAdress.address,
+      }),
+    };
+
+    await requestFund(fundRequest);
+
+    //ToDO: Check account balance must greater than Lock Amount Before Lock
+    //ToDo: Check amount Dai Draw is available compare to liquidation ratio
+
+    //ToDo: get numer Bat and Dai From text field
     //Lock 1.5 BAT and draw Dai
     await dssProxyAction.openLockGemAndDraw(
       CDPManagerAddress.address,
       JugAddress.address,
-      gemJoin.address,
+      gemAddress,
       DaiJoinAddress.address,
       priceType,
       ethers.utils.parseEther("1.5"),

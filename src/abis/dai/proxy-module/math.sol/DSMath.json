@@ -1,0 +1,10 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "DSMath",
+  "sourceName": "contracts/dai/proxy-module/math.sol",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea264697066735822122084fe6a2cab4d5c1f9505b10b2b2303d8b83ea059e7b75cedbc134383b33fa19264736f6c63430008110033",
+  "deployedBytecode": "0x6080604052600080fdfea264697066735822122084fe6a2cab4d5c1f9505b10b2b2303d8b83ea059e7b75cedbc134383b33fa19264736f6c63430008110033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

@@ -1,0 +1,37 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "DSAuthEvents",
+  "sourceName": "contracts/dai/liquidation-auction-module/auth.sol",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "authority",
+          "type": "address"
+        }
+      ],
+      "name": "LogSetAuthority",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "LogSetOwner",
+      "type": "event"
+    }
+  ],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea264697066735822122041113cb79c557f1c94748386906d9415f6947f964b9ded112e4997aef084fdf264736f6c63430008110033",
+  "deployedBytecode": "0x6080604052600080fdfea264697066735822122041113cb79c557f1c94748386906d9415f6947f964b9ded112e4997aef084fdf264736f6c63430008110033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
