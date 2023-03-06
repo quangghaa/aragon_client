@@ -1,0 +1,10 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "DSMath",
+  "sourceName": "contracts/dai/oracle-module/math.sol",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212208ff39b9372a4171a223ff0c409933eb0812fc4af047b67f09abf6afb771de5a364736f6c63430008110033",
+  "deployedBytecode": "0x6080604052600080fdfea26469706673582212208ff39b9372a4171a223ff0c409933eb0812fc4af047b67f09abf6afb771de5a364736f6c63430008110033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

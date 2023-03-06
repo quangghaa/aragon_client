@@ -1,4 +1,5 @@
 import { Progress } from "antd";
+import { ethers } from "ethers";
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Voting from "../pages/voting";
@@ -15,8 +16,6 @@ function VContent(props : any) {
     let CheckOwner = props.checkOwner;
     let items = [] as any;
     const VoteContract = props.VoteFactory;
-    // let polls : any = [];
-    // const [polls , setPolls] = useState([] as any);
     let polls = props.MyPoll;
     let setPolls = props.SetMyPoll;
     let i = props.MyI;
@@ -24,26 +23,30 @@ function VContent(props : any) {
     let counting = 0;
     let count = props.myCount;
     let setCount = props.SetMyCount;
-    // const [MyList , setMyList] = useState([] as number[]);
     function toDetail() {
         navigate("/vote-detail")
     }
-    const [testList , setTestList] = useState([1]);
     const update = async () => {
         let myPolls : any = await VoteContract.getListPoll()
         setCount( myPolls.length);
-        myPolls.forEach(()=>{
-            if(count>m.current){
+        for(let k=0;k<myPolls.length;k++){
+            if(myPolls.length>m.current){
                 polls.push(myPolls[m.current]);
                 
                 m.current++;
             }
+        }
+        // myPolls.forEach(()=>{
+        //     if(count>m.current){
+        //         polls.push(myPolls[m.current]);
+                
+        //         m.current++;
+        //     }
             
             
-        })
+        // })
         setPolls(Object.assign([],polls));
         console.log('already added',polls);
-        // console.log(Object.keys(polls[0]));
         while(i.current<count){
                     
                     list.push(i.current);
@@ -53,11 +56,14 @@ function VContent(props : any) {
         console.log(typeof(polls[0]))
         await VoteContract.startVote(PollID);
         console.log('started poll id :' , PollID);
-        // console.log(polls[0].proposal);
     }
     const stopVote = async () =>{
         await VoteContract.endVote(PollID)
         console.log('Ended pollID :' , PollID);
+    }
+    const Count = async () =>{
+        const NumberOfAgreeVoter = await VoteContract.getListPoll();
+        console.log('This is number of agree voter',ethers.BigNumber.from(NumberOfAgreeVoter[0].countResult));
     }
     return (
         <section className="vote-section">
@@ -68,6 +74,7 @@ function VContent(props : any) {
                 </span>
                 <div>
                 {CheckOwner ?<button onClick={update} className="v-new-vote-btn">Start Vote</button> : null}
+                <button onClick={Count} className="v-new-vote-btn">Counting</button>
                 {CheckOwner ?<button onClick={stopVote} className="v-new-vote-btn">End Vote</button> : null}
             </div>
             </h2>

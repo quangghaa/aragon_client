@@ -17,10 +17,8 @@ import OrgSetting from './pages/org-setting';
 import AppCenterDetail from './pages/app-center-detail';
 import VotingDetail from './pages/voting-detail';
 import { ethers } from 'ethers';
-import VoteFactoryAbi from "./backend/VoteFactory.json";
-import VoteFactoryAddress from "./backend/VoteFactory-address.json"
-import SimpleTransactionAddress from "./backend/SimpleTransaction-address.json"
-import SimpleTransactionAbi from "./backend/SimpleTransaction.json"
+import VoteFactoryAbi from "./abis/VoteFactory.json";
+import VoteFactoryAddress from "./abis/VoteFactory-address.json"
 import Borrow from './pages/borrow';
 import BorrowDetail from './pages/borrow-detail';
 import Discover from './pages/discover';
@@ -35,8 +33,6 @@ function App() {
   const [OwnerAddress, setOwnerAddress] = useState("");
   const [IsOwnerAddress, setIsOwnerAddress] = useState(false);
   const [VoteFactory, setMyVoteFactory] = useState({});
-  const [simpleTransaction, setSimpleTransaction] = useState({});
-
   useEffect(() => {
     var aId = (document.getElementById("app-id")) as HTMLElement
     if(aId != null && page == "borrow") {
@@ -67,11 +63,19 @@ function App() {
         <div className='line'></div>
         
         <BrowserRouter> 
-        <Header page={page} setPage={setPage} network={network} setNet={setNetwork}
-        voteFactory ={VoteFactory} SetMyVoteFactory={setMyVoteFactory}
-        SimpleTransaction = {simpleTransaction} SetSimpleTransaction={setSimpleTransaction}
-        ownerAddress={OwnerAddress} SetOwnerAddress={setOwnerAddress} isOwnerAddress={IsOwnerAddress} SetIsOwnerAddress={setIsOwnerAddress}
-        SetCheckLogIn = {setCheckLogIn} setIsVoted={setVoted}
+        <Header 
+        page={page} 
+        setPage={setPage} 
+        network={network} 
+        setNet={setNetwork}
+        voteFactory ={VoteFactory} 
+        SetMyVoteFactory={setMyVoteFactory}
+        ownerAddress={OwnerAddress} 
+        SetOwnerAddress={setOwnerAddress} 
+        isOwnerAddress={IsOwnerAddress} 
+        SetIsOwnerAddress={setIsOwnerAddress}
+        SetCheckLogIn = {setCheckLogIn} 
+        setIsVoted={setVoted}
         />
           <Routes>
               <Route path="/" element={<Welcome setPage={setPage} network={network}/>} />

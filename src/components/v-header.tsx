@@ -55,12 +55,14 @@ function VHeader(props : any) {
       const submit = async (e : any) => {
         let i=0;
         e.preventDefault();
-        formFields.forEach(async () => {
+        // formFields.forEach(async () => {
+        //     await VoteFactoryContract.addVoter(formFields[i], PollID);
+        //     i++;
+        // });
+        for(i;i<formFields.length;i++){
             await VoteFactoryContract.addVoter(formFields[i], PollID);
-            i++;
-        });
-        // console.log(typeof(formFields))
-        // console.log(formFields);
+        }
+        
         setMyNumberOfQuestion(NumberOfVoter+formFields.length)
         setOpenModal(false);
         console.log(await VoteFactoryContract.getListPoll(),formFields)
