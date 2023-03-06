@@ -1,5 +1,5 @@
 import { Progress } from "antd";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavVote, PermVoting } from "../utils/image";
 import { Back, Clock, FTIQuestion, Pass } from "../utils/svg-icons";
@@ -17,14 +17,10 @@ function VDetailContent(props : any) {
     let MyPollID = props.PollID;
     let CheckAccountVoted = props.IsAccountVoted;
     let setCheckAccountVoted = props.setIsAccountVoted;
-    const [MyNumberAgree , setMyNumberAgree] = useState(0);
-    const [MyNumberDisagree, setMyNumberDisagree] = useState(0);
-    // console.log('Number of voters',NumberOfVoter);
-//     const  GetListPolls = () =>{
-//         // console.log(typeof(NumberOfVoter));
-//         setMyNumberAgree(MyNumberAgree+1);
-//         console.log(MyNumberAgree)
-//    }
+    // const [MyNumberAgree , setMyNumberAgree] = useState(0);
+    const MyNumberAgree = useRef(0);
+    // const [MyNumberDisagree, setMyNumberDisagree] = useState(0);
+    const MyNumberDisagree = useRef(0);
     function backClick(e: any) {
         e.preventDefault();
         navigate("/voting")
@@ -33,7 +29,8 @@ function VDetailContent(props : any) {
         if(CheckAccountVoted){
             alert("you already voted")
         }else{
-            setMyNumberAgree(MyNumberAgree+1);
+            // setMyNumberAgree(MyNumberAgree+1);
+            MyNumberAgree.current=MyNumberAgree.current+1;
             await VoteContract.doVote(true,MyPollID);
             setAgree(MyNumberAgree);
             console.log('Agree Voter', MyNumberAgree , 'Number of voters' , NumberOfVoter);
@@ -44,7 +41,8 @@ function VDetailContent(props : any) {
         if(CheckAccountVoted){
             alert("you already voted")
         }else{
-            setMyNumberDisagree(MyNumberDisagree+1);
+            // setMyNumberDisagree(MyNumberDisagree+1);
+            MyNumberDisagree.current=MyNumberDisagree.current+1;
             await VoteContract.doVote(false,MyPollID);
             setDisagree(MyNumberDisagree);
             setCheckAccountVoted(true)
@@ -104,7 +102,7 @@ function VDetailContent(props : any) {
                         <div className="progress-vote-section">
                             <h1 className="des-sec-title">votes</h1>
                             <div className="mb">
-                                <Progress percent={(MyNumberAgree/NumberOfVoter)*100} />
+                                <Progress percent={(MyNumberAgree.current/NumberOfVoter)*100} />
                             </div>
 
                             <div className="yesno-box">
@@ -163,11 +161,11 @@ function VDetailContent(props : any) {
 
                         <div className="vd-pd-box-content">
                             <div className="per-box">
-                                {(MyNumberAgree/NumberOfVoter)*100}
+                                {(MyNumberAgree.current/NumberOfVoter)*100}
                                 <span className="per-light-text">(&gt;50% needed)</span>
                             </div>
                             <div className="pro-box">
-                                <Progress percent={(MyNumberAgree/NumberOfVoter)*100} />    
+                                <Progress percent={(MyNumberAgree.current/NumberOfVoter)*100} />    
                             </div>
                         </div>
                     </section>
@@ -182,11 +180,11 @@ function VDetailContent(props : any) {
 
                         <div className="vd-pd-box-content">
                             <div className="per-box">
-                                {(MyNumberDisagree/NumberOfVoter)*100}
+                                {(MyNumberDisagree.current/NumberOfVoter)*100}
                                 <span className="per-light-text">(&gt;0% needed)</span>
                             </div>
                             <div className="pro-box">
-                                <Progress percent={(MyNumberDisagree/NumberOfVoter)*100} />    
+                                <Progress percent={(MyNumberDisagree.current/NumberOfVoter)*100} />    
                             </div>
                         </div>
                     </section>
