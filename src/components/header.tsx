@@ -6,10 +6,9 @@ import { Bell, Connect, Setting } from "../utils/svg-icons";
 import ConnectForm from "./connect-form";
 import {Contract, ethers, Signer} from 'ethers';
 import NetworkModal from "./network-modal";
-import VoteFactoryAbi from "../backend/VoteFactory.json";
-import VoteFactoryAddress from "../backend/VoteFactory-address.json"
-import SimpleTransactionAddress from "../backend/SimpleTransaction-address.json"
-import SimpleTransactionAbi from "../backend/SimpleTransaction.json"
+import VoteFactoryAbi from "../abis/VoteFactory.json";
+import VoteFactoryAddress from "../abis/VoteFactory-address.json"
+import contractOwnerAddress from "../abis/contractOwner.json";
 import { text } from "stream/consumers";
 import { useEthers, useEtherBalance } from "@usedapp/core";
 function Header(props: any) {
@@ -26,7 +25,7 @@ function Header(props: any) {
     let setMyVoteFactory= props.SetMyVoteFactory;
     let setSimpleTransaction=props.SetSimpleTransaction
     // const [simpleTransaction, setSimpleTransaction] = useState({})
-    setOwnerAddress(VoteFactoryAddress.OwnerWalletAddress)
+    setOwnerAddress(contractOwnerAddress.ownerAddress)
     if(WalletAddress == OwnerAddress.toLowerCase()){
         setIsOwnerAddress(true);
     }else {
@@ -62,14 +61,6 @@ function Header(props: any) {
     }
 
     const loadContract = async (signer : any) =>{
-        const mySimpleTransaction = new ethers.Contract(
-            SimpleTransactionAddress.address,
-            SimpleTransactionAbi.abi,
-            signer,
-          )
-          setSimpleTransaction(mySimpleTransaction)
-        //   const Balance = await mySimpleTransaction.Retrieve(WalletAddress);
-        //   console.log(Balance);
         const myVoteFactory = new ethers.Contract(
             VoteFactoryAddress.address,
             VoteFactoryAbi.abi,

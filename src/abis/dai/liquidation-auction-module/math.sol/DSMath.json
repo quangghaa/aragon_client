@@ -1,0 +1,10 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "DSMath",
+  "sourceName": "contracts/dai/liquidation-auction-module/math.sol",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220b42a14f344bbced1870b16310623a9db84291f9811f120b18b7ea5023f50ad9664736f6c63430008110033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220b42a14f344bbced1870b16310623a9db84291f9811f120b18b7ea5023f50ad9664736f6c63430008110033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

@@ -1,0 +1,37 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "DSAuthEvents",
+  "sourceName": "contracts/dai/oracle-module/auth.sol",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "authority",
+          "type": "address"
+        }
+      ],
+      "name": "LogSetAuthority",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "LogSetOwner",
+      "type": "event"
+    }
+  ],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212201ca073ac16eb34cd4bc869aa847478b022876502b4dd882f53d946080934f85a64736f6c63430008110033",
+  "deployedBytecode": "0x6080604052600080fdfea26469706673582212201ca073ac16eb34cd4bc869aa847478b022876502b4dd882f53d946080934f85a64736f6c63430008110033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
