@@ -3559,6 +3559,9 @@ position: relative;
     cursor: pointer;
     font-size: 18px;
 }
+.end-vote-btn{
+  margin-left: 20px;
+}
 
 
 

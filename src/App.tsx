@@ -97,7 +97,9 @@ function App() {
               <Route path="/vote-detail" element={<VotingDetail AgreeVoter={Agree} SetAgreeVoter={setAgree} MyPolls={polls} 
               DisagreeVoter={Disagree} SetDisagreeVoter={setDisagree}
               MyNumberOfVoter={NumberOfVoters} PollID={newPollID} IsAccountVoted={Voted} SetIsAccountVoted={setVoted}
-              isOwnerAddress={IsOwnerAddress} voteFactory ={VoteFactory}/>} />
+              isOwnerAddress={IsOwnerAddress} voteFactory ={VoteFactory}
+              CreatePollID = {newPollID}
+              />} />
               <Route path="/borrow" element={<Borrow setPage={setPage} />} />
             <Route path="/borrow/:id" element={<BorrowDetail setPage={setPage} />} />
             <Route path="/discover" element={<Discover setPage={setPage} />} />

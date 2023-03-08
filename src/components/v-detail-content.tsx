@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavVote, PermVoting } from "../utils/image";
 import { Back, Clock, FTIQuestion, Pass } from "../utils/svg-icons";
-
+import contractOwnerAddress from "../abis/contractOwner.json";
 function VDetailContent(props : any) {
     const navigate = useNavigate()
     let checkOwner = props.check;
@@ -75,7 +75,7 @@ function VDetailContent(props : any) {
                             <div className="Vote-option-container">
                                 <div>
                                     <h1 className="dc-id">
-                                        <span className="dc-id-text">Vote #39</span>
+                                        <span className="dc-id-text">Vote #{MyPollID+1}</span>
                                     </h1>
                                 </div>
                                 {checkOwner ? null : <div>
@@ -94,7 +94,7 @@ function VDetailContent(props : any) {
 
                                 <div className="cre-section">
                                     <h1 className="des-sec-title">create by</h1>
-                                    <span className="dex-sec-hash">0xE53c…380e</span>
+                                    <span className="dex-sec-hash">{contractOwnerAddress.ownerAddress}</span>
                                 </div>
                             </div>
                         </section>
@@ -110,7 +110,7 @@ function VDetailContent(props : any) {
                                     <div className="yn-col-a">
                                         <div className="draw-dash"></div>
                                         <div className="yn-col-text">Yes</div>
-                                        <div className="yn-col-value">100%</div>
+                                        <div className="yn-col-value">{(MyNumberAgree.current/NumberOfVoter)*100}%</div>
                                     </div>
 
                                     <div className="yn-col-b">
@@ -122,7 +122,7 @@ function VDetailContent(props : any) {
                                     <div className="yn-col-a">
                                         <div className="draw-dash red-dash"></div>
                                         <div className="yn-col-text">No</div>
-                                        <div className="yn-col-value">0%</div>
+                                        <div className="yn-col-value">{((MyNumberAgree.current/NumberOfVoter))*100}%</div>
                                     </div>
 
                                     <div className="yn-col-b">
