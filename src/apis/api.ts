@@ -1,6 +1,6 @@
 //ToDo: switch case for each url to prevent duplicate
 
-export async function deployGemContract(requestOptions: any): Promise<any> {
+export async function deployGemJoinContract(requestOptions: any): Promise<any> {
   // POST request using fetch with async/await
   const url = "http://localhost:8080/deployGem";
   const response = await fetch(url, requestOptions);
