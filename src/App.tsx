@@ -26,7 +26,10 @@ interface Network {
   name: string,
   type: 0,
 }
-
+interface MyCount {
+  agree : number,
+  disagree : number,
+}
 function App() {
   const [network, setNetwork] = useState({ name: "Ethereum", type: 0 } as Network);
   const [page, setPage] = useState("home");
@@ -96,8 +99,10 @@ function App() {
               <Route path="/app-center-detail" element={<AppCenterDetail />} />
               <Route path="/vote-detail" element={<VotingDetail AgreeVoter={Agree} SetAgreeVoter={setAgree} MyPolls={polls} 
               DisagreeVoter={Disagree} SetDisagreeVoter={setDisagree}
+              IsLogedIn={CheckLogIn}
               MyNumberOfVoter={NumberOfVoters} PollID={newPollID} IsAccountVoted={Voted} SetIsAccountVoted={setVoted}
-              isOwnerAddress={IsOwnerAddress} voteFactory ={VoteFactory}/>} />
+              isOwnerAddress={IsOwnerAddress} voteFactory ={VoteFactory}
+              />} />
               <Route path="/borrow" element={<Borrow setPage={setPage} />} />
             <Route path="/borrow/:id" element={<BorrowDetail setPage={setPage} />} />
             <Route path="/discover" element={<Discover setPage={setPage} />} />

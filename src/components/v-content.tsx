@@ -29,6 +29,7 @@ function VContent(props : any) {
     const update = async () => {
         let myPolls : any = await VoteContract.getListPoll()
         setCount( myPolls.length);
+        console.log('This is count and mypolls.length',count, myPolls.length);
         for(let k=0;k<myPolls.length;k++){
             if(myPolls.length>m.current){
                 polls.push(myPolls[m.current]);
@@ -36,18 +37,9 @@ function VContent(props : any) {
                 m.current++;
             }
         }
-        // myPolls.forEach(()=>{
-        //     if(count>m.current){
-        //         polls.push(myPolls[m.current]);
-                
-        //         m.current++;
-        //     }
-            
-            
-        // })
         setPolls(Object.assign([],polls));
         console.log('already added',polls);
-        while(i.current<count){
+        while(i.current<myPolls.length){
                     
                     list.push(i.current);
                     setList(Object.assign([],list))
@@ -68,14 +60,10 @@ function VContent(props : any) {
     return (
         <section className="vote-section">
             <h2 className="vs-title">
-                <div className="vs-title-text">Closed votes</div>
-                <span className="vs-title-count-box">
-                    <span className="vs-title-count">40</span>
-                </span>
                 <div>
                 {CheckOwner ?<button onClick={update} className="v-new-vote-btn">Start Vote</button> : null}
-                <button onClick={Count} className="v-new-vote-btn">Counting</button>
-                {CheckOwner ?<button onClick={stopVote} className="v-new-vote-btn">End Vote</button> : null}
+                
+                {CheckOwner ?<button onClick={stopVote} className="v-new-vote-btn end-vote-btn">End Vote</button> : null}
             </div>
             </h2>
             
