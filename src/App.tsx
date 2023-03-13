@@ -26,7 +26,6 @@ interface Network {
   name: string,
   type: 0,
 }
-
 function App() {
   const [network, setNetwork] = useState({ name: "Ethereum", type: 0 } as Network);
   const [page, setPage] = useState("home");
@@ -54,6 +53,7 @@ function App() {
   const [Agree , setAgree] = useState(1 as number);
   const [Disagree , setDisagree] = useState(1 as number);
   const [Voted , setVoted] = useState(false);
+  const [WalletAddress , setWalletAddress] = useState('');
     const i = useRef(0);
     const m = useRef(0);
     const [MyCount , setMyCount] = useState(0);
@@ -76,6 +76,8 @@ function App() {
         SetIsOwnerAddress={setIsOwnerAddress}
         SetCheckLogIn = {setCheckLogIn} 
         setIsVoted={setVoted}
+        MyWalletAddress = {WalletAddress}
+        SetMyWalletAddress = {setWalletAddress}
         />
           <Routes>
               <Route path="/" element={<Welcome setPage={setPage} network={network}/>} />
@@ -96,12 +98,16 @@ function App() {
               <Route path="/app-center-detail" element={<AppCenterDetail />} />
               <Route path="/vote-detail" element={<VotingDetail AgreeVoter={Agree} SetAgreeVoter={setAgree} MyPolls={polls} 
               DisagreeVoter={Disagree} SetDisagreeVoter={setDisagree}
+              IsLogedIn={CheckLogIn}
               MyNumberOfVoter={NumberOfVoters} PollID={newPollID} IsAccountVoted={Voted} SetIsAccountVoted={setVoted}
               isOwnerAddress={IsOwnerAddress} voteFactory ={VoteFactory}
               CreatePollID = {newPollID}
               />} />
               <Route path="/borrow" element={<Borrow setPage={setPage} />} />
-            <Route path="/borrow/:id" element={<BorrowDetail setPage={setPage} />} />
+            <Route path="/borrow/:id" element={<BorrowDetail setPage={setPage}
+              MyWalletAddress = {WalletAddress}
+              SetMyWalletAddress = {setWalletAddress}
+            />} />
             <Route path="/discover" element={<Discover setPage={setPage} />} />
           </Routes>
         </BrowserRouter>

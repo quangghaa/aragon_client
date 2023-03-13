@@ -11,7 +11,7 @@ function NewvoteModal(props : any) {
     let PollID = props.MyPollID;
     let SetPollID= props.SetMyPollID;
     let setMyNumberOfVoter = props.SetMyNumberOfVotes;
-    let myInit : string = '0'+PollID;    
+    let myInit : string = '0'+PollID;
     const CatchQuestion = async (e:any) =>{
         e.preventDefault();
         let message : any = document.getElementById('vote question') as HTMLInputElement | null;

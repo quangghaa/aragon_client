@@ -176,8 +176,10 @@ function VHeader(props : any) {
             </div>
         </div>
         <NewvoteModal MyPollID={PollID} SetMyNumberOfVotes={setMyNumberOfQuestion}
-        SetMyPollID={SetPollID} SetMyCheckNewPoll={SetCheckNewPoll} finnalQuestion={MyQuestion} FinnalSetQuestion={MySetQuestion}
-         setCheckQuestion = {SetQuestionExist} FinnalCreatePoll ={VoteFactoryContract}/>
+        SetMyPollID={SetPollID} SetMyCheckNewPoll={SetCheckNewPoll} finnalQuestion={MyQuestion} 
+         FinnalSetQuestion={MySetQuestion}
+         setCheckQuestion = {SetQuestionExist} FinnalCreatePoll ={VoteFactoryContract}
+         />
         </>
     )
 }

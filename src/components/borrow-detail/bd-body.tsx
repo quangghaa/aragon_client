@@ -12,13 +12,13 @@ import {
 import DssProxyActionAbi from "../../abis/dai/liquidation-auction-module/DssProxyActions.sol/DssProxyActions.json";
 import VatAddress from "../../abis/Vat-address.json";
 import BatAdress from "../../abis/BAT-address.json";
-import BatAbi from "../../abis/dai/liquidation-auction-module/token.sol/DSToken.json";
+import BatAbi from "../../abis/BAT.json";
 import CDPManagerAddress from "../../abis/DssCdpManager-address.json";
 import JugAddress from "../../abis/Jug-address.json";
-import DaiJoinAddress from "../../abis/DAI-address.json";
-import MedianAbi from "../../abis/dai/oracle-module/median.sol/Median.json";
+import DaiJoinAddress from "../../abis/DaiJoin-address.json";
+import MedianAbi from "../../abis/Median.json";
 import MedianAddress from "../../abis/Median-address.json";
-import { deployGemContract, requestAuth, requestFund } from "../../apis/api";
+import { deployGemJoinContract, requestAuth, requestFund } from "../../apis/api";
 declare global {
   interface Window {
     ethereum: any;
@@ -50,7 +50,7 @@ function BDBody(props: any) {
 
     //Deploy GemJoin by contract owner(must done in Backend)
     //Send DeployGem params to Backend
-    const deployGemRequest = {
+    const deployGemJoinRequest = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -59,8 +59,8 @@ function BDBody(props: any) {
         batAddress: BatAdress.address,
       }),
     };
-    const gemAddress = await deployGemContract(deployGemRequest);
-    console.log("gemAddress", gemAddress);
+    const gemJoinAddress = await deployGemJoinContract(deployGemJoinRequest);
+    console.log("gemAddress", gemJoinAddress);
 
     //ToDo: switch case for each GemToken
     //For simplicity hardFix gem is Bat Token
@@ -80,9 +80,11 @@ function BDBody(props: any) {
       }),
     };
 
-    await requestAuth(authRequest);
+    const authResult=await requestAuth(authRequest);
+    console.log("auth result",authResult)
 
-    //ToDo: move request fund to another flow (must done before Lock gem and draw Dai)
+    if(authResult=="auth ok"){
+//ToDo: move request fund to another flow (must done before Lock gem and draw Dai)
     //Contract owner mint Bat To signer(must done in BackEnd)
     //Send Request Fund to Backend
     const fundRequest = {
@@ -95,23 +97,35 @@ function BDBody(props: any) {
       }),
     };
 
-    await requestFund(fundRequest);
-
+    const fundResult=await requestFund(fundRequest);
+    console.log("fund result",fundResult)
+    if(fundResult=="fund ok"){
     //ToDO: Check account balance must greater than Lock Amount Before Lock
     //ToDo: Check amount Dai Draw is available compare to liquidation ratio
 
-    //ToDo: get numer Bat and Dai From text field
+    //ToDo: get number Bat and Dai From text field
     //Lock 1.5 BAT and draw Dai
     await dssProxyAction.openLockGemAndDraw(
       CDPManagerAddress.address,
       JugAddress.address,
-      gemAddress,
+      gemJoinAddress,
       DaiJoinAddress.address,
       priceType,
       ethers.utils.parseEther("1.5"),
       ethers.utils.parseEther("400"),
       true
     );
+    }else{
+      console.log("error")
+       //Do something PopUp error
+    }
+
+    }else{
+      //Do something PopUp error
+      console.log("error")
+
+    }
+    
   };
   return (
     <div className="bd-body-wrapper">

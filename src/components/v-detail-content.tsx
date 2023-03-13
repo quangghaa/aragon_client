@@ -1,5 +1,5 @@
 import { Progress } from "antd";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState , useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { NavVote, PermVoting } from "../utils/image";
 import { Back, Clock, FTIQuestion, Pass } from "../utils/svg-icons";
@@ -17,10 +17,25 @@ function VDetailContent(props : any) {
     let MyPollID = props.PollID;
     let CheckAccountVoted = props.IsAccountVoted;
     let setCheckAccountVoted = props.setIsAccountVoted;
-    // const [MyNumberAgree , setMyNumberAgree] = useState(0);
     const MyNumberAgree = useRef(0);
-    // const [MyNumberDisagree, setMyNumberDisagree] = useState(0);
     const MyNumberDisagree = useRef(0);
+    const [tempVar , setTempVar] = useState(0);
+    const [VotedNum , setVotedNum] = useState(1);
+    
+    const [PollsLinkedWithID , setPollsLinkedWithID] = useState([] as any)
+    useEffect(()=>{
+        const GetList = async () =>{
+            if(tempVar<VotedNum){
+                    (window as any).ethereum.on('accountsChanged', function (accounts : any){
+                    console.log("connected to account : ",accounts[0])
+                });
+                let Link = await VoteContract.getListPollWithID();
+                setPollsLinkedWithID(Link);
+                setTempVar(tempVar+1);
+            }
+        }
+        setInterval(GetList,3000);
+    })
     function backClick(e: any) {
         e.preventDefault();
         navigate("/voting")
@@ -33,8 +48,11 @@ function VDetailContent(props : any) {
             MyNumberAgree.current=MyNumberAgree.current+1;
             await VoteContract.doVote(true,MyPollID);
             setAgree(MyNumberAgree);
-            console.log('Agree Voter', MyNumberAgree , 'Number of voters' , NumberOfVoter);
-            setCheckAccountVoted(true)
+            if(PollsLinkedWithID.length>0){
+                console.log('Agree Voter', MyNumberAgree , 'Number of voters' , PollsLinkedWithID[MyPollID-1].countResult.toNumber());
+            }
+            setVotedNum(VotedNum+1);
+            setCheckAccountVoted(true);
         }
     }
     const diagreeVoter = async () =>{
@@ -45,8 +63,14 @@ function VDetailContent(props : any) {
             MyNumberDisagree.current=MyNumberDisagree.current+1;
             await VoteContract.doVote(false,MyPollID);
             setDisagree(MyNumberDisagree);
-            setCheckAccountVoted(true)
+            setCheckAccountVoted(true);
+            setVotedNum(VotedNum+1);
         }
+    }
+    const NumberAgreeFromContract = async () =>{
+        let MyListOfPolls = await VoteContract.getListPollWithID();
+        console.log(typeof(MyPollID));
+        console.log(MyListOfPolls[MyPollID-1].countResult.toString());
     }
     return (
         <div>
@@ -75,14 +99,14 @@ function VDetailContent(props : any) {
                             <div className="Vote-option-container">
                                 <div>
                                     <h1 className="dc-id">
-                                        <span className="dc-id-text">Vote #{MyPollID+1}</span>
+                                        <span className="dc-id-text">Vote #{MyPollID}</span>
                                     </h1>
                                 </div>
                                 {checkOwner ? null : <div>
                                 <button className="v-new-vote-btn" style={{marginRight: '30px'} } onClick={agreeVoter}>Yes</button>
                                 <button className="v-new-vote-btn" onClick={diagreeVoter}>No</button>
                                 </div>}
-                                {/* <button className="v-new-vote-btn" onClick={GetListPolls}>Get list polls</button> */}
+                                <button className="v-new-vote-btn" onClick={NumberAgreeFromContract}>Get agree</button>
                             </div>
                             <div className="des-cre-section">
                                 <div className="des-section">
@@ -102,7 +126,7 @@ function VDetailContent(props : any) {
                         <div className="progress-vote-section">
                             <h1 className="des-sec-title">votes</h1>
                             <div className="mb">
-                                <Progress percent={(MyNumberAgree.current/NumberOfVoter)*100} />
+                                {PollsLinkedWithID.length>0 ? <Progress percent={(PollsLinkedWithID[MyPollID-1].countResult.toNumber()/PollsLinkedWithID[MyPollID-1].totalVoter.toNumber())*100} /> : null}
                             </div>
 
                             <div className="yesno-box">
@@ -110,7 +134,7 @@ function VDetailContent(props : any) {
                                     <div className="yn-col-a">
                                         <div className="draw-dash"></div>
                                         <div className="yn-col-text">Yes</div>
-                                        <div className="yn-col-value">{(MyNumberAgree.current/NumberOfVoter)*100}%</div>
+                                        {PollsLinkedWithID.length>0 ? <div className="yn-col-value">{(PollsLinkedWithID[MyPollID-1].countResult.toNumber()/PollsLinkedWithID[MyPollID-1].totalVoter.toNumber())*100}%</div> : null}
                                     </div>
 
                                     <div className="yn-col-b">
@@ -122,7 +146,7 @@ function VDetailContent(props : any) {
                                     <div className="yn-col-a">
                                         <div className="draw-dash red-dash"></div>
                                         <div className="yn-col-text">No</div>
-                                        <div className="yn-col-value">{((MyNumberAgree.current/NumberOfVoter))*100}%</div>
+                                        {PollsLinkedWithID.length>0 ? <div className="yn-col-value">{((PollsLinkedWithID[MyPollID-1].totalVote.toNumber()-PollsLinkedWithID[MyPollID-1].countResult.toNumber())/PollsLinkedWithID[MyPollID-1].totalVoter.toNumber())*100}%</div>:null}
                                     </div>
 
                                     <div className="yn-col-b">
@@ -142,7 +166,7 @@ function VDetailContent(props : any) {
                         <div className="vd-pd-box-content">
                             <span className="vd-status">
                                 <Pass />
-                                Passed
+                                <p>passed</p>
                             </span>
                             <div className="vd-time">
                                 <Clock />
@@ -161,11 +185,11 @@ function VDetailContent(props : any) {
 
                         <div className="vd-pd-box-content">
                             <div className="per-box">
-                                {(MyNumberAgree.current/NumberOfVoter)*100}
+                                {PollsLinkedWithID.length>0 ? <p>{(PollsLinkedWithID[MyPollID-1].countResult.toNumber()/PollsLinkedWithID[MyPollID-1].totalVoter.toNumber())*100}%</p> : <p>0%</p>}
                                 <span className="per-light-text">(&gt;50% needed)</span>
                             </div>
                             <div className="pro-box">
-                                <Progress percent={(MyNumberAgree.current/NumberOfVoter)*100} />    
+                                {PollsLinkedWithID.length>0? <Progress percent={(PollsLinkedWithID[MyPollID-1].countResult.toNumber()/PollsLinkedWithID[MyPollID-1].totalVoter.toNumber())*100} /> : null}   
                             </div>
                         </div>
                     </section>
@@ -180,11 +204,11 @@ function VDetailContent(props : any) {
 
                         <div className="vd-pd-box-content">
                             <div className="per-box">
-                                {(MyNumberDisagree.current/NumberOfVoter)*100}
+                                {PollsLinkedWithID.length>0 ? <p>{((PollsLinkedWithID[MyPollID-1].totalVote.toNumber()-PollsLinkedWithID[MyPollID-1].countResult.toNumber())/PollsLinkedWithID[MyPollID-1].totalVoter.toNumber())*100}</p> : <p>0%</p>}
                                 <span className="per-light-text">(&gt;0% needed)</span>
                             </div>
                             <div className="pro-box">
-                                <Progress percent={(MyNumberDisagree.current/NumberOfVoter)*100} />    
+                                {PollsLinkedWithID.length>0? <Progress percent={((PollsLinkedWithID[MyPollID-1].totalVote.toNumber()-PollsLinkedWithID[MyPollID-1].countResult.toNumber())/PollsLinkedWithID[MyPollID-1].totalVoter.toNumber())*100} />   : null} 
                             </div>
                         </div>
                     </section>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ADetailContent from "../components/a-detail-content";
 import ADetailHeader from "../components/a-detail-header";
 import FContent from "../components/f-content";
@@ -10,6 +10,7 @@ import PDetailHeader from "../components/p-detail-header";
 import PHeader from "../components/p-header";
 import VDetailContent from "../components/v-detail-content";
 import VDetailHeader from "../components/v-detail-header";
+import {useEffect}  from "react";
 function VotingDetail(props : any) {
     let VoteContract = props.voteFactory;
     let checkOwner = props.isOwnerAddress;
@@ -22,6 +23,7 @@ function VotingDetail(props : any) {
     let myPollID = props.PollID;
     let CheckVoted = props.IsAccountVoted;
     let setCheckVoted = props.SetIsAccountVoted;
+    let CheckLogIn = props.IsLogedIn;
     window.onclick = function (event: any) {
         console.log("Permission page clicked")
         if (!event.target.matches('.v-nav-btn')) {

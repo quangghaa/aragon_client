@@ -18,12 +18,14 @@ function Header(props: any) {
     let setIsOwnerAddress = props.SetIsOwnerAddress;
     let setCheckLogIn = props.SetCheckLogIn
     let setCheckVoted = props.setIsVoted;
-    const [WalletAddress , setWalletAddress] = useState('');
+    // const [WalletAddress , setWalletAddress] = useState('');
     const [ConnectStatus , setConnectStatus] = useState(false);
     // const [VoteFactory , setMyVoteFactory] = useState({});
     let simpleTransaction = props.SimpleTransaction
     let setMyVoteFactory= props.SetMyVoteFactory;
     let setSimpleTransaction=props.SetSimpleTransaction
+    let WalletAddress = props.MyWalletAddress;
+    let setWalletAddress = props.SetMyWalletAddress;
     // const [simpleTransaction, setSimpleTransaction] = useState({})
     setOwnerAddress(contractOwnerAddress.ownerAddress)
     if(WalletAddress == OwnerAddress.toLowerCase()){

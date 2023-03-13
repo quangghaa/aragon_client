@@ -64,7 +64,11 @@ function Voting(props : any) {
                 </div>
                 <div className="voting-bg">
                     <div className="voting">
-                        <VHeader MyNumberOfVoter={NumberOfVoter} setNumberOfVoter={SetMyNumberOfVoter} MyPollID={PollID} SetMyPollID={setPollID} CheckOwner={IsOwnerAddress} Question={question} SetQuestion={setQuestion} VoteFactory={VoteFactoryContract} SetIsNewPoll={setIsNewPoll}/>
+                        <VHeader MyNumberOfVoter={NumberOfVoter} setNumberOfVoter={SetMyNumberOfVoter} 
+                        MyPollID={PollID} SetMyPollID={setPollID} 
+                        CheckOwner={IsOwnerAddress} Question={question} 
+                        SetQuestion={setQuestion} VoteFactory={VoteFactoryContract} 
+                        SetIsNewPoll={setIsNewPoll}/>
                         <VContent checkOwner={IsOwnerAddress} myCount={MyCount} SetMyCount ={setMyCount} MyI={i} MyM={m} MyPoll={polls} SetMyPoll={setPolls} VoteFactory={VoteFactoryContract} isNewPoll={IsNewPoll} Question={question} MyPollID={PollID} MyList={myList} SetMyList={setMyList}/>
                     </div>
                 </div>
