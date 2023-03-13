@@ -12,11 +12,11 @@ import {
 import DssProxyActionAbi from "../../abis/dai/liquidation-auction-module/DssProxyActions.sol/DssProxyActions.json";
 import VatAddress from "../../abis/Vat-address.json";
 import BatAdress from "../../abis/BAT-address.json";
-import BatAbi from "../../abis/dai/liquidation-auction-module/token.sol/DSToken.json";
+import BatAbi from "../../abis/BAT.json";
 import CDPManagerAddress from "../../abis/DssCdpManager-address.json";
 import JugAddress from "../../abis/Jug-address.json";
-import DaiJoinAddress from "../../abis/DAI-address.json";
-import MedianAbi from "../../abis/dai/oracle-module/median.sol/Median.json";
+import DaiJoinAddress from "../../abis/DaiJoin-address.json";
+import MedianAbi from "../../abis/Median.json";
 import MedianAddress from "../../abis/Median-address.json";
 import { deployGemJoinContract, requestAuth, requestFund } from "../../apis/api";
 declare global {
