@@ -57,6 +57,7 @@ function App() {
   const [Agree , setAgree] = useState(1 as number);
   const [Disagree , setDisagree] = useState(1 as number);
   const [Voted , setVoted] = useState(false);
+  const [WalletAddress , setWalletAddress] = useState('');
     const i = useRef(0);
     const m = useRef(0);
     const [MyCount , setMyCount] = useState(0);
@@ -79,6 +80,8 @@ function App() {
         SetIsOwnerAddress={setIsOwnerAddress}
         SetCheckLogIn = {setCheckLogIn} 
         setIsVoted={setVoted}
+        MyWalletAddress = {WalletAddress}
+        SetMyWalletAddress = {setWalletAddress}
         />
           <Routes>
               <Route path="/" element={<Welcome setPage={setPage} network={network}/>} />
@@ -104,7 +107,10 @@ function App() {
               isOwnerAddress={IsOwnerAddress} voteFactory ={VoteFactory}
               />} />
               <Route path="/borrow" element={<Borrow setPage={setPage} />} />
-            <Route path="/borrow/:id" element={<BorrowDetail setPage={setPage} />} />
+            <Route path="/borrow/:id" element={<BorrowDetail setPage={setPage}
+              MyWalletAddress = {WalletAddress}
+              SetMyWalletAddress = {setWalletAddress}
+            />} />
             <Route path="/discover" element={<Discover setPage={setPage} />} />
           </Routes>
         </BrowserRouter>

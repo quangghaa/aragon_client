@@ -24,22 +24,7 @@ function VDetailContent(props : any) {
     const [VotedNum , setVotedNum] = useState(1);
     
     const [PollsLinkedWithID , setPollsLinkedWithID] = useState([] as any)
-    // useEffect(()=>{
-    //     (async ()=>{
-    //         let Link = await VoteContract.getListPollWithID();
-    //         console.log("before set",Link);
-    //         setPollsLinkedWithID(Link);
-    //     })()
-    // },[])
     useEffect(()=>{
-        // const GetList = async ()=>{
-        //     (window as any).ethereum.on('accountsChanged', function (accounts : any){
-        //         console.log("connected to account : ",accounts[0])
-        //     });
-        //     let Link = await VoteContract.getListPollWithID();
-        //     setPollsLinkedWithID(Link);
-        // }
-        // setInterval(GetList,3000);
         const GetList = async () =>{
             if(tempVar<VotedNum){
                     (window as any).ethereum.on('accountsChanged', function (accounts : any){
