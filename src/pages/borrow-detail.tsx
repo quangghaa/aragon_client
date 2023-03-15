@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import BDBody from "../components/borrow-detail/bd-body";
 import BDHead from "../components/borrow-detail/bd-head";
 import BorrowItem from "../components/borrow/borrow-item";
@@ -8,6 +8,7 @@ import Navigation from "../components/navigation";
 import "../components/borrow-detail/style.css";
 
 function BorrowDetail(props: any) {
+    const [CheckFund , setCheckFund] = useState("");
     useEffect(() => {
         props.setPage("borrow")
     }, [])
@@ -20,8 +21,8 @@ function BorrowDetail(props: any) {
                 </div>
                 <div className="borrow-bg borrow-padding">
                     <div className="borrow">
-                        <BDHead />
-                        <BDBody />
+                        <BDHead setMyCheckFund = {setCheckFund} />
+                        <BDBody MyCheckFund = {CheckFund} />
                     </div>
                 </div>
             </div>

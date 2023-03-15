@@ -1,7 +1,32 @@
 import React from "react";
+import { ethers, Signer } from "ethers";
 import { ColorETHIcon, InfoIcon } from "../../utils/borrow-detail";
-
+import BatAdress from "../../abis/BAT-address.json";
+import BatAbi from "../../abis/BAT.json";
+import { deployGemJoinContract, requestAuth, requestFund } from "../../apis/api";
 function BDHead(props: any) {
+    let setCheckFund=props.setMyCheckFund;
+    const RequestFund = async () =>{
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        // Set signer
+        const signer = provider.getSigner();
+        const signerAddress = await signer.getAddress();
+        console.log("signer", signerAddress);
+        const fundRequest = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                receiver: signerAddress,
+                amount: "100",
+                gemAddress: BatAdress.address,
+        })
+    };
+
+    const fundResult=await requestFund(fundRequest);
+    console.log("fund result",fundResult); 
+    setCheckFund(fundResult);
+    alert("you have recieved BAT ");
+    }
     return (
         <div className="bd-head-wrapper">
             <div className="hr-1">
@@ -80,7 +105,9 @@ function BDHead(props: any) {
                         </div>
                     </div>
                 </div>
-
+                <div className="fund-BAT">
+                    <button className="cf-btn" onClick={RequestFund} style={{marginLeft : '40px'}}>Request Fund</button>
+                </div>
             </div>
         </div>
     )
