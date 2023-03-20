@@ -1,17 +1,65 @@
-import React from "react";
+import React, { useEffect , useState} from "react";
 import { ethers, Signer } from "ethers";
 import { ColorETHIcon, InfoIcon } from "../../utils/borrow-detail";
 import BatAdress from "../../abis/BAT-address.json";
 import BatAbi from "../../abis/BAT.json";
+import VatAddress from "../../abis/Vat-address.json";
+import VatAbi from "../../abis/Vat.json"
+import MedianAbi from "../../abis/Median.json";
+import MedianAddress from "../../abis/Median-address.json";
 import { deployGemJoinContract, requestAuth, requestFund } from "../../apis/api";
+function ConvertToNumberBAT (NumberFromContract : string){
+    let FinnalNum : any=0;
+    let StringLength : any= NumberFromContract.length-18;
+    for(let i =0 ;i<StringLength;i++){
+      FinnalNum = FinnalNum*10 + (Number(NumberFromContract[i])-0)
+    }
+    return FinnalNum;
+  }
+  
 function BDHead(props: any) {
     let setCheckFund=props.setMyCheckFund;
+    let setSpotPrice = props.setMySpotPrice;
+    let setPriceType = props.setMyPriceType;
+    let CheckFund = props.myCheckFund;
+    const [MyBat , setMyBat] = useState(0);
+    let CurrentPrice = props.MyCurrentPrice;
+    let setCurrentPrice = props.setMyCurrentPrice
+    const [signerAddress , setSignerAddress] =useState("");
+    let myOraclePrice;
+    let BATContract = props.myBATContract;
+    //4 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    useEffect(()=>{
+        const foo = async () =>{
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            // Set signer
+            const signer = provider.getSigner();
+            const MySignerAddress = await signer.getAddress();
+            setSignerAddress(MySignerAddress);
+            console.log("signer", signerAddress);
+            const vat = new ethers.Contract(VatAddress.address,VatAbi.abi,signer);
+            const median = new ethers.Contract(
+                MedianAddress.address,
+                MedianAbi.abi,
+                signer
+            );
+            let priceType = await median.getWat();
+            let spotPrice = await vat.getIlkSpotPrice(priceType);
+            let newOraclePrice = await median.connect(signerAddress).peek();
+            myOraclePrice = newOraclePrice[0].toString();
+            setCurrentPrice(ConvertToNumberBAT(myOraclePrice));
+            setPriceType(priceType);
+            setSpotPrice(spotPrice);
+            console.log(myOraclePrice);
+        }
+        foo();
+    },[])
+    useEffect(()=>{
+        setMyBat(CheckFund)
+        console.log(MyBat);
+        
+    },[CheckFund]);
     const RequestFund = async () =>{
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        // Set signer
-        const signer = provider.getSigner();
-        const signerAddress = await signer.getAddress();
-        console.log("signer", signerAddress);
         const fundRequest = {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -24,8 +72,7 @@ function BDHead(props: any) {
 
     const fundResult=await requestFund(fundRequest);
     console.log("fund result",fundResult); 
-    setCheckFund(fundResult);
-    alert("you have recieved BAT ");
+    setCheckFund(ConvertToNumberBAT(fundResult));
     }
     return (
         <div className="bd-head-wrapper">
@@ -43,12 +90,12 @@ function BDHead(props: any) {
                 <div className="hr1-right">
                     <div className="r-a">
                         <span className="ra-label">Current Price</span>
-                        <span className="ra-value">$1,628.60</span>
+                        <span className="ra-value">${CurrentPrice}</span>
                     </div>
 
                     <div className="r-b">
                         <span className="ra-label">Next Price</span>
-                        <span className="ra-value">$1,628.60</span>
+                        <span className="ra-value">$NaN</span>
                         <span className="rb-text">in 29 min</span>
                         <span className="rb-text">(0.00%)</span>
                     </div>
@@ -105,9 +152,18 @@ function BDHead(props: any) {
                         </div>
                     </div>
                 </div>
+                <div className="hr2-item-box">
+                    <div className="hr2-item">
+                        <p>Your current BAT : {MyBat} BAT</p>
+                        <div className="hr2-icon">
+                            <InfoIcon />
+                        </div>
+                    </div>
+                </div>
                 <div className="fund-BAT">
                     <button className="cf-btn" onClick={RequestFund} style={{marginLeft : '40px'}}>Request Fund</button>
                 </div>
+                
             </div>
         </div>
     )

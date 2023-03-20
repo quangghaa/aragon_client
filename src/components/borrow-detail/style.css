@@ -808,6 +808,13 @@
 .borrow-padding {
     padding: 1.5rem 2rem;
 }
+.Current-BAT{
+    font-size: 20px;
+    display: flex;
+    margin-left: 50px;
+    justify-content: center;
+    text-align: center;
+}
 
 
 

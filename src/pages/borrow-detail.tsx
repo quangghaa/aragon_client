@@ -8,7 +8,12 @@ import Navigation from "../components/navigation";
 import "../components/borrow-detail/style.css";
 
 function BorrowDetail(props: any) {
-    const [CheckFund , setCheckFund] = useState("");
+    let walletAddress = props.MyWalletAddress;
+    const [CheckFund , setCheckFund] = useState(0);
+    const [spotPrice , setSpotPrice] = useState("");
+    const [priceType , setPriceType] = useState(0 as any)
+    const [CurrentPrice , setMyCurrentPrice] = useState("");
+    const [BATContract , setBATContract] = useState([] as any);
     useEffect(() => {
         props.setPage("borrow")
     }, [])
@@ -21,8 +26,16 @@ function BorrowDetail(props: any) {
                 </div>
                 <div className="borrow-bg borrow-padding">
                     <div className="borrow">
-                        <BDHead setMyCheckFund = {setCheckFund} />
-                        <BDBody MyCheckFund = {CheckFund} />
+                        <BDHead MyCurrentPrice={CurrentPrice} setMyCurrentPrice={setMyCurrentPrice} setMyCheckFund = {setCheckFund} 
+                        setMySpotPrice={setSpotPrice} setMyPriceType={setPriceType} 
+                        myCheckFund={CheckFund}
+                        myBATContract ={BATContract}
+                        />
+                        <BDBody MyCheckFund = {CheckFund} myWalletAddress={walletAddress} 
+                        mySpotPrice={spotPrice} myPriceType={priceType}
+                        MyCurrentPrice={CurrentPrice} setMyCheckFund = {setCheckFund}
+                        setMyBATContract = {setBATContract} myBATContract ={BATContract}
+                        />
                     </div>
                 </div>
             </div>
