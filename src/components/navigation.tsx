@@ -38,7 +38,7 @@ function Navigation() {
     function toDiscover() {
         navigate("/discover")
     }
-    
+
     return (
         <nav className="ex-nav">
             <h1 className="nav-title">apps</h1>

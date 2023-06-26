@@ -27,14 +27,13 @@
 }
 
 .header {
-  position: absolute;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: #fff;
   width: 100%;
   height: 64px;
-  box-shadow: rgb(0 0 0 / 5%) 0px 2px 3px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 3px;
   z-index: 3;
 }
 
@@ -65,6 +64,11 @@
     border: 0px;
     outline: 0px;
     cursor: pointer;
+}
+
+.logo-title {
+  font-size: 16px;
+  padding-left: 32px;
 }
 
 .logo {
@@ -533,11 +537,11 @@ ul li {
 
 .ex-body {
   width: 100%;
-  height: calc(100% - 66px);
+  height: calc(100vh - 88px);
   display: flex;
-  user-select: none;
-  /* margin-top: 2px; */
-  padding-top: 66px;
+  justify-content: center;
+  background: url(/static/media/eagle.715b0344.svg) 50% 100% / 1241px 833px no-repeat fixed;
+  background-color: white;
 }
 
 /* .app-box {
@@ -552,12 +556,10 @@ ul li {
   flex: 1 1 0px;
   display: flex;
   background-color: #fff;
-  width: 224px;
-  height: calc(100% - 24px);
+  height: calc(100vh - 88px);
   padding-top: 24px;
   position: relative;
   flex-direction: column;
-
   box-shadow: rgb(0 0 0 / 5%) 2px 0px 3px;
 }
 
@@ -639,6 +641,7 @@ ul li {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
+  color: black;
 }
 
 .child-list {
@@ -646,16 +649,7 @@ ul li {
 }
 
 .ex-content {
-  flex-grow: 1;
-  /* display: flex; */
-  display: grid;
-  align-items: center;
-  /* flex-direction: column; */
-  position: relative;
-  z-index: 1;
-  background: url("./assets/eagle.svg") 50% 100% / 1241px 833px no-repeat fixed;
-  justify-content: center;
-  align-items: center;
+  width: 1104px;
 }
 
 .exc-wrapper {

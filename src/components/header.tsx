@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Fortmatic, Frame, Logo, Metamask, NoNotification, Portis, SettingBtn1, SettingBtn2, SettingBtn3, WalletConnect } from "../utils/image";
 import { Bell, Connect, Setting } from "../utils/svg-icons";
 import ConnectForm from "./connect-form";
-import {Contract, ethers, Signer} from 'ethers';
+import { Contract, ethers, Signer } from 'ethers';
 import NetworkModal from "./network-modal";
 import VoteFactoryAbi from "../abis/VoteFactory.json";
 import VoteFactoryAddress from "../abis/VoteFactory-address.json"
@@ -19,29 +19,29 @@ function Header(props: any) {
     let setCheckLogIn = props.SetCheckLogIn
     let setCheckVoted = props.setIsVoted;
     // const [WalletAddress , setWalletAddress] = useState('');
-    const [ConnectStatus , setConnectStatus] = useState(false);
+    const [ConnectStatus, setConnectStatus] = useState(false);
     // const [VoteFactory , setMyVoteFactory] = useState({});
     let simpleTransaction = props.SimpleTransaction
-    let setMyVoteFactory= props.SetMyVoteFactory;
-    let setSimpleTransaction=props.SetSimpleTransaction
+    let setMyVoteFactory = props.SetMyVoteFactory;
+    let setSimpleTransaction = props.SetSimpleTransaction
     let WalletAddress = props.MyWalletAddress;
     let setWalletAddress = props.SetMyWalletAddress;
     // const [simpleTransaction, setSimpleTransaction] = useState({})
     setOwnerAddress(contractOwnerAddress.ownerAddress)
-    if(WalletAddress == OwnerAddress.toLowerCase()){
+    if (WalletAddress == OwnerAddress.toLowerCase()) {
         setIsOwnerAddress(true);
-    }else {
+    } else {
         setIsOwnerAddress(false);
     }
-    const ConnectMetaMask = async () =>{
-        if((window as any).ethereum){
+    const ConnectMetaMask = async () => {
+        if ((window as any).ethereum) {
             const MetaMaskAccount = await (window as any).ethereum.request({ method: 'eth_requestAccounts' })
-            // .then((accounts : string[]) => {
-            //     setWalletAddress(accounts[0]);
-                
-            // });
-            .then(HandleAccountCHange);
-            
+                // .then((accounts : string[]) => {
+                //     setWalletAddress(accounts[0]);
+
+                // });
+                .then(HandleAccountCHange);
+
             const provider = new ethers.providers.Web3Provider((window as any).ethereum)
             const signer = provider.getSigner()
             loadContract(signer)
@@ -52,25 +52,25 @@ function Header(props: any) {
 
     (window as any).ethereum.on('accountsChanged', HandleAccountCHange);
 
-    function HandleAccountCHange (accounts : any){
-        if(accounts.length == 0){
+    function HandleAccountCHange(accounts: any) {
+        if (accounts.length == 0) {
             alert("Please connect Meta Mask")
-        }else if(accounts[0] !== WalletAddress){
-            setWalletAddress(accounts[0]);            
+        } else if (accounts[0] !== WalletAddress) {
+            setWalletAddress(accounts[0]);
             setConnectStatus(true);
         }
         setCheckVoted(false);
     }
 
-    const loadContract = async (signer : any) =>{
+    const loadContract = async (signer: any) => {
         const myVoteFactory = new ethers.Contract(
             VoteFactoryAddress.address,
             VoteFactoryAbi.abi,
             signer
-            )
-            setMyVoteFactory(myVoteFactory);
-            // const myBalance = await myVoteFactory.Retrieve(WalletAddress)
-            // console.log(myBalance)
+        )
+        setMyVoteFactory(myVoteFactory);
+        // const myBalance = await myVoteFactory.Retrieve(WalletAddress)
+        // console.log(myBalance)
     }
     function connectEvent(e: any) {
         e.stopPropagation();
@@ -79,29 +79,6 @@ function Header(props: any) {
         id.classList.toggle("show");
     }
 
-    useEffect(() => {
-        console.log("DEBUG page: ", props.page)
-        switch (props.page) {
-            case "home":
-                {
-                    var id = (document.getElementById("header-id")) as HTMLSelectElement;
-                    if (!id.classList.contains("h-home")) {
-                        id.classList.add("h-home")
-                    }
-                    break;
-                }
-            case "explore":
-                {
-                    var id = (document.getElementById("header-id")) as HTMLSelectElement;
-                    // if (!id.classList.contains("h-home")) {
-                        id.classList.remove("h-home")
-                    // }
-                    // if(id.classList.contains("h-explore"))
-                    break;
-                }
-        }
-    }, [props.page])
-
     const navigate = useNavigate()
     function toHome() {
         props.setPage("home")
@@ -109,7 +86,7 @@ function Header(props: any) {
     }
 
     function onChange() {
-        
+
     }
 
     const connectPopup = (
@@ -188,7 +165,7 @@ function Header(props: any) {
                     </div>
                 </li>
             </ul>
-            
+
         </div>
     )
 
@@ -210,11 +187,11 @@ function Header(props: any) {
 
     const showModal = () => {
         setIsModalOpen(true);
-      };
-    
-      const handleOk = () => {
+    };
+
+    const handleOk = () => {
         setIsModalOpen(false);
-      };
+    };
 
     const handleCancel = () => {
         setIsModalOpen(false);
@@ -226,15 +203,15 @@ function Header(props: any) {
 
         if (n == "Goerli" || n == "Mumbai" || n == "BSC TestNet" ||
             n == "Stardust" || n == "Harmony Testnet") {
-                tipe = 1
-            }
+            tipe = 1
+        }
 
-        props.setNet({name: name, type: tipe})
+        props.setNet({ name: name, type: tipe })
         setIsModalOpen(false)
     }
 
     useEffect(() => {
-        if(props.network.type == 1) {
+        if (props.network.type == 1) {
             var id = (document.getElementById("network-btn-id")) as HTMLSelectElement;
             if (!id.classList.contains("testnet-bg")) {
                 id.classList.add("testnet-bg");
@@ -253,11 +230,12 @@ function Header(props: any) {
                     <button className="logo-btn" onClick={toHome}>
                         <Logo />
                     </button>
+                    <span className="logo-title">Aragon Governance</span>
                 </div>
                 <div className="user-box">
                     <div className="connect-box">
                         <button id="network-btn-id" className="btn name" onClick={showModal}>{props.network.name}</button>
-                        
+
                         <Popover id="wl-id" placement="bottomRight" content={connectPopup} trigger="click">
                             {/* <button className="btn connect connect-space">
                                 <span className="connect-icon"><Connect /></span>
@@ -266,7 +244,7 @@ function Header(props: any) {
                             {ConnectStatus ? (<button className="btn connect connect-space">
                                 <span className="connect-icon"><Connect /></span>
                                 Connected : {WalletAddress}
-                            </button>):(<button className="btn connect connect-space">
+                            </button>) : (<button className="btn connect connect-space">
                                 <span className="connect-icon"><Connect /></span>
                                 Connect account
                             </button>)}
@@ -274,24 +252,24 @@ function Header(props: any) {
 
                     </div>
 
-                    {props.page =="explore" && <>
-                    <div className="setting-box">
-                        <Popover id="setting-id" placement="bottomRight" content={settingPopup} trigger="click">
-                            <button className="setting-box">
-                                <span><Setting /></span>
-                            </button>
-                        </Popover>
-                    </div>
+                    <>
+                        <div className="setting-box">
+                            <Popover id="setting-id" placement="bottomRight" content={settingPopup} trigger="click">
+                                <button className="setting-box">
+                                    <span><Setting /></span>
+                                </button>
+                            </Popover>
+                        </div>
 
-                    <div className="setting-box">
-                        <Popover id="setting-id" placement="bottomRight" content={bellPopup} trigger="click">
-                            <button className="setting-box">
-                                <span><Bell /></span>
-                            </button>
-                        </Popover>
-                    </div>
+                        <div className="setting-box">
+                            <Popover id="setting-id" placement="bottomRight" content={bellPopup} trigger="click">
+                                <button className="setting-box">
+                                    <span><Bell /></span>
+                                </button>
+                            </Popover>
+                        </div>
 
-                    </>}
+                    </>
                 </div>
             </div>
 

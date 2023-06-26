@@ -25,7 +25,7 @@ function WhatTodo() {
                     </div>
                     <p className="todo-name">New Payment</p>
                 </div>
-                
+
             </div>
         </>
     )
