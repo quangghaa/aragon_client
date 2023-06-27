@@ -5,6 +5,7 @@ import {
     FinanceIcon, NavAppIcon, NavHomeIcon,
     NavOrgIcon, NavVoteIcon, PermissionIcon
 } from "../utils/image";
+import { useNavigate } from "react-router-dom";
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -40,9 +41,18 @@ const items: MenuProps['items'] = [
         getItem('Organization', 'ss-3', <NavOrgIcon />),
     ])
 ];
+
+const urls = new Map<string, string>()
+urls.set('1', '/explore')
+urls.set('sv-1', '/vote')
+urls.set('sv-2', '/vote')
+urls.set('3', '/finance')
+
 const MainMenu = () => {
+    const navigate = useNavigate()
     const onClick: MenuProps['onClick'] = (e) => {
         console.log('click ', e);
+        navigate(urls.get(e.key) || '/')
     };
 
     return (

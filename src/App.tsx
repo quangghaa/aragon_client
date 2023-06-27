@@ -4,7 +4,7 @@ import { Layout, Space } from 'antd';
 import Welcome from './pages_deprecated/welcome';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import Explore from './components_deprecated/explore';
-import ExplorePage from './pages_deprecated/explore-page';
+import ExplorePage from './pages/explore';
 import Header from './components_deprecated/header';
 import OpenExistingOrg from './pages_deprecated/open-existing-org';
 import Voting from './pages_deprecated/voting';
@@ -22,7 +22,9 @@ import VoteFactoryAddress from "./abis/VoteFactory-address.json"
 import Borrow from './pages_deprecated/borrow';
 import BorrowDetail from './pages_deprecated/borrow-detail';
 import Discover from './pages_deprecated/discover';
-import AragonClient from './layout/aragon-client';
+import AragonClient from './layout/aragon_client';
+import VotePage from './pages/vote';
+import FinancePage from './pages/finance';
 interface Network {
   name: string,
   type: 0,
@@ -71,6 +73,8 @@ function App() {
             <Route path="/" element={<AragonClient />}>
               <Route path="/home" element={<Welcome setPage={setPage} network={network} />} />
               <Route path="/explore" element={<ExplorePage />} />
+              <Route path="/vote" element={<VotePage />} />
+              <Route path="/finance" element={<FinancePage />} />
             </Route>
           </Routes>
         </BrowserRouter>

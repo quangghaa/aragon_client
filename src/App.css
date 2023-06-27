@@ -27,6 +27,7 @@
 }
 
 .header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -43,13 +44,11 @@
 }
 
 .logo-btn {
-  position: absolute;
+    position: absolute;
     top: 8px;
     left: 8px;
     display: flex;
-    -webkit-box-align: center;
     align-items: center;
-    -webkit-box-pack: center;
     justify-content: center;
     padding: 8px;
     border-radius: 4px;
@@ -542,6 +541,7 @@ ul li {
   justify-content: center;
   background: url(./assets/eagle.svg) 50% 100% / 1241px 833px no-repeat fixed;
   background-color: white;
+  overflow-y: scroll;
 }
 
 /* .app-box {
@@ -651,6 +651,7 @@ ul li {
 
 .ex-content {
   width: 1104px;
+  text-align: left;
 }
 
 .exc-wrapper {
@@ -3431,7 +3432,7 @@ position: relative;
   font-size: 15px;
   border-radius: 1%;
 }
-.ant-btn-primary{
+/* .ant-btn-primary{
   background-color: red !important;
   position: relative;
     text-decoration: none;
@@ -3492,7 +3493,7 @@ position: relative;
     transition-property: transform, box-shadow;
     transition-duration: 50ms;
     transition-timing-function: ease-in-out;
-}
+} */
 .Vote-option-container{
   display: flex;
   justify-content: space-between;

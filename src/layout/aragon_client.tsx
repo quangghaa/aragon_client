@@ -4,7 +4,7 @@ import Header from "../components_deprecated/header";
 import Sider from "antd/es/layout/Sider";
 import { Outlet } from "react-router-dom";
 import Navigation from "../components_deprecated/navigation";
-import MainMenu from "../components_deprecated/menu";
+import MainMenu from "../components/menu";
 
 interface Network {
     name: string,
@@ -22,8 +22,7 @@ const siderStyle: React.CSSProperties = {
     textAlign: 'center',
     color: '#fff',
     width: '256px',
-    height: '100%',
-    background: 'white'
+    // height: '100%'
 };
 const AragonClient = () => {
     const [network, setNetwork] = useState({ name: "Ethereum", type: 0 } as Network);
