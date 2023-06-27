@@ -1,8 +1,14 @@
 import React from "react";
-import OContent from "../components/o-content";
-import OHeader from "../components/o-header";
-import Navigation from "../components/navigation";
-function OrgSetting() {
+import ADetailContent from "../components_deprecated/a-detail-content";
+import ADetailHeader from "../components_deprecated/a-detail-header";
+import FContent from "../components_deprecated/f-content";
+import FHeader from "../components_deprecated/f-header";
+import Navigation from "../components_deprecated/navigation";
+import PContent from "../components_deprecated/p-content";
+import PDetailContent from "../components_deprecated/p-detail-content";
+import PDetailHeader from "../components_deprecated/p-detail-header";
+import PHeader from "../components_deprecated/p-header";
+function AppCenterDetail() {
     window.onclick = function (event: any) {
         console.log("Permission page clicked")
         if (!event.target.matches('.v-nav-btn')) {
@@ -21,10 +27,10 @@ function OrgSetting() {
             var dropdowns = document.getElementsByClassName("vm-bg");
             var i;
             for (i = 0; i < dropdowns.length; i++) {
-              var openDropdown = dropdowns[i];
-              if (openDropdown.classList.contains('vm-show')) {
-                openDropdown.classList.remove('vm-show');
-              }
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('vm-show')) {
+                    openDropdown.classList.remove('vm-show');
+                }
             }
 
         }
@@ -32,16 +38,16 @@ function OrgSetting() {
         // -------------
         console.log("Close question popup")
         var dropdowns = document.getElementsByClassName("question-popup");
-          var i;
-          for (i = 0; i < dropdowns.length; i++) {
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
             var openDropdown = dropdowns[i];
             if (openDropdown.classList.contains('qp-show')) {
-              openDropdown.classList.remove('qp-show');
+                openDropdown.classList.remove('qp-show');
             }
-          }
-        
+        }
+
         // close type button popup
-        
+
     }
 
     return (
@@ -52,8 +58,8 @@ function OrgSetting() {
                 </div>
                 <div className="voting-bg">
                     <div className="voting">
-                        <OHeader />
-                        <OContent />
+                        <ADetailHeader />
+                        <ADetailContent />
                     </div>
                 </div>
             </div>
@@ -61,4 +67,4 @@ function OrgSetting() {
     )
 }
 
-export default OrgSetting;
+export default AppCenterDetail;

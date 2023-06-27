@@ -1,8 +1,8 @@
 import { PropertySafetyFilled } from "@ant-design/icons";
 import React, { useEffect } from "react";
-import FContent from "../components/f-content";
-import FHeader from "../components/f-header";
-import Navigation from "../components/navigation";
+import FContent from "../components_deprecated/f-content";
+import FHeader from "../components_deprecated/f-header";
+import Navigation from "../components_deprecated/navigation";
 function Finance(props: any) {
     window.onclick = function (event: any) {
         console.log("Finance page clicked: ", event.target.className)
@@ -22,10 +22,10 @@ function Finance(props: any) {
             var dropdowns = document.getElementsByClassName("vm-bg");
             var i;
             for (i = 0; i < dropdowns.length; i++) {
-              var openDropdown = dropdowns[i];
-              if (openDropdown.classList.contains('vm-show')) {
-                openDropdown.classList.remove('vm-show');
-              }
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('vm-show')) {
+                    openDropdown.classList.remove('vm-show');
+                }
             }
 
             // remove highlight
@@ -46,16 +46,16 @@ function Finance(props: any) {
         // -------------
         console.log("Close question popup")
         var dropdowns = document.getElementsByClassName("question-popup");
-          var i;
-          for (i = 0; i < dropdowns.length; i++) {
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
             var openDropdown = dropdowns[i];
             if (openDropdown.classList.contains('qp-show')) {
-              openDropdown.classList.remove('qp-show');
+                openDropdown.classList.remove('qp-show');
             }
-          }
-        
+        }
+
         // close type button popup
-        
+
     }
 
     useEffect(() => {

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import BorrowItem from "../components/borrow/borrow-item";
-import "../components/borrow/style.css"
-import Tokens from "../components/borrow/tokens";
-import FHeader from "../components/f-header";
-import Navigation from "../components/navigation";
+import BorrowItem from "../components_deprecated/borrow/borrow-item";
+import "../components_deprecated/borrow/style.css"
+import Tokens from "../components_deprecated/borrow/tokens";
+import FHeader from "../components_deprecated/f-header";
+import Navigation from "../components_deprecated/navigation";
 
 function Borrow(props: any) {
     useEffect(() => {
@@ -23,15 +23,15 @@ function Borrow(props: any) {
                                 Oasis Borrow
                             </h1>
                             <div className="br-head-sub">
-                            Borrow Dai against your favorite crypto assets. Use the Dai however you like. Browse the featured, or select an asset to view our products.
-                            <br/>
-                            <a href="#">Learn more about Borrow -&gt;</a>
+                                Borrow Dai against your favorite crypto assets. Use the Dai however you like. Browse the featured, or select an asset to view our products.
+                                <br />
+                                <a href="#">Learn more about Borrow -&gt;</a>
                             </div>
                         </div>
 
                         <Tokens />
                         <BorrowItem />
-                        
+
                     </div>
                 </div>
             </div>

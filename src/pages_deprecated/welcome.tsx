@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import logo from './logo.svg';
 import { DatePicker, message } from 'antd';
-import Header from '../components/header';
-import Main from '../components/main';
-import Explore from '../components/explore';
+import Header from '../components_deprecated/header';
+import Main from '../components_deprecated/main';
+import Explore from '../components_deprecated/explore';
 
 function Welcome(props: any) {
 
@@ -35,7 +35,7 @@ function Welcome(props: any) {
       }
     }
   }
-  
+
   useEffect(() => {
     props.setPage("home")
   }, [])

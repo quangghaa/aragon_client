@@ -1,7 +1,7 @@
 import { Select } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Voting from "../pages/voting";
+import Voting from "../pages_deprecated/voting";
 import { NavVote, PermFinance, PermVault, PermVoting } from "../utils/image";
 import { Export, Pass, Search } from "../utils/svg-icons";
 import FTokenBalance from "./f-token-balance";
@@ -49,7 +49,7 @@ function OContent() {
     function toDetail() {
         navigate("/permission-detail")
     }
- 
+
     return (
         <section className="vote-section">
             <section className="org-addr-section">
@@ -64,16 +64,16 @@ function OContent() {
 
                     <div className="od-addr-box">
                         <div className="od-addr-small-box">
-                        <div className="od-addr-icon"></div>
-                        <span className="od-addr">0x2dE83b50Af29678774D5AbC4a7Cb2a588762f28C</span>
+                            <div className="od-addr-icon"></div>
+                            <span className="od-addr">0x2dE83b50Af29678774D5AbC4a7Cb2a588762f28C</span>
                         </div>
                     </div>
 
                     <div className="od-note-box">
                         <strong>Do not send ETH or ERC20 tokens to this address.</strong>
                         <span>
-                        If you’d like to deposit funds into this organization, you can do so from
-                        <button className="od-text-btn">Finance</button>
+                            If you’d like to deposit funds into this organization, you can do so from
+                            <button className="od-text-btn">Finance</button>
                         </span>
                     </div>
                 </div>

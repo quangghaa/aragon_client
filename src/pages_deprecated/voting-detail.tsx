@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import ADetailContent from "../components/a-detail-content";
-import ADetailHeader from "../components/a-detail-header";
-import FContent from "../components/f-content";
-import FHeader from "../components/f-header";
-import Navigation from "../components/navigation";
-import PContent from "../components/p-content";
-import PDetailContent from "../components/p-detail-content";
-import PDetailHeader from "../components/p-detail-header";
-import PHeader from "../components/p-header";
-import VDetailContent from "../components/v-detail-content";
-import VDetailHeader from "../components/v-detail-header";
-import {useEffect}  from "react";
-function VotingDetail(props : any) {
+import ADetailContent from "../components_deprecated/a-detail-content";
+import ADetailHeader from "../components_deprecated/a-detail-header";
+import FContent from "../components_deprecated/f-content";
+import FHeader from "../components_deprecated/f-header";
+import Navigation from "../components_deprecated/navigation";
+import PContent from "../components_deprecated/p-content";
+import PDetailContent from "../components_deprecated/p-detail-content";
+import PDetailHeader from "../components_deprecated/p-detail-header";
+import PHeader from "../components_deprecated/p-header";
+import VDetailContent from "../components_deprecated/v-detail-content";
+import VDetailHeader from "../components_deprecated/v-detail-header";
+import { useEffect } from "react";
+function VotingDetail(props: any) {
     let VoteContract = props.voteFactory;
     let checkOwner = props.isOwnerAddress;
     let polls = props.MyPolls;
@@ -42,10 +42,10 @@ function VotingDetail(props : any) {
             var dropdowns = document.getElementsByClassName("vm-bg");
             var i;
             for (i = 0; i < dropdowns.length; i++) {
-              var openDropdown = dropdowns[i];
-              if (openDropdown.classList.contains('vm-show')) {
-                openDropdown.classList.remove('vm-show');
-              }
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('vm-show')) {
+                    openDropdown.classList.remove('vm-show');
+                }
             }
 
         }
@@ -53,16 +53,16 @@ function VotingDetail(props : any) {
         // -------------
         console.log("Close question popup")
         var dropdowns = document.getElementsByClassName("question-popup");
-          var i;
-          for (i = 0; i < dropdowns.length; i++) {
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
             var openDropdown = dropdowns[i];
             if (openDropdown.classList.contains('qp-show')) {
-              openDropdown.classList.remove('qp-show');
+                openDropdown.classList.remove('qp-show');
             }
-          }
-        
+        }
+
         // close type button popup
-        
+
     }
 
     return (
@@ -74,9 +74,9 @@ function VotingDetail(props : any) {
                 <div className="voting-bg">
                     <div className="voting">
                         <VDetailHeader />
-                        <VDetailContent AgreeVoter={agree} setAgreeVoter={setAgree} MyPolls={polls} 
-                        DisagreeVoter={disagree} setDisagreeVoter={setDisagree} PollID={myPollID}
-                        MyNumberOfVoter={NumberOfVoter} check={checkOwner} voteContract={VoteContract} setIsAccountVoted={setCheckVoted} IsAccountVoted={CheckVoted}/>
+                        <VDetailContent AgreeVoter={agree} setAgreeVoter={setAgree} MyPolls={polls}
+                            DisagreeVoter={disagree} setDisagreeVoter={setDisagree} PollID={myPollID}
+                            MyNumberOfVoter={NumberOfVoter} check={checkOwner} voteContract={VoteContract} setIsAccountVoted={setCheckVoted} IsAccountVoted={CheckVoted} />
                     </div>
                 </div>
             </div>

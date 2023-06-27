@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import Navigation from "../components/navigation";
-import VContent from "../components/v-content";
-import VHeader from "../components/v-header";
+import Navigation from "../components_deprecated/navigation";
+import VContent from "../components_deprecated/v-content";
+import VHeader from "../components_deprecated/v-header";
 
-function Voting(props : any) {
+function Voting(props: any) {
     let IsOwnerAddress = props.isOwnerAddress
-    const [question , setQuestion] = useState("");
+    const [question, setQuestion] = useState("");
     let VoteFactoryContract = props.voteFactory;
     let PollID = props.CreatePollID;
     let setPollID = props.SetCreatePollID;
@@ -17,16 +17,16 @@ function Voting(props : any) {
     let setMyList = props.SetNumberOfPoll;
     let polls = props.myPolls;
     let setPolls = props.setMyPolls;
-    let i=props.MyI;
-    let m=props.MyM;
+    let i = props.MyI;
+    let m = props.MyM;
     let MyCount = props.Count;
     let setMyCount = props.SetCount;
 
     const CurrentPoll = useRef(0);
-    const [IsNewPoll , setIsNewPoll] = useState(false);
+    const [IsNewPoll, setIsNewPoll] = useState(false);
     window.onclick = function (event: any) {
         console.log("Voting page clicked")
-        
+
         if (!event.target.matches('.v-nav-btn')) {
             var dropdowns = document.getElementsByClassName("v-btn-popup");
             var i;
@@ -44,10 +44,10 @@ function Voting(props : any) {
             var dropdowns = document.getElementsByClassName("vm-bg");
             var i;
             for (i = 0; i < dropdowns.length; i++) {
-              var openDropdown = dropdowns[i];
-              if (openDropdown.classList.contains('vm-show')) {
-                openDropdown.classList.remove('vm-show');
-              }
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('vm-show')) {
+                    openDropdown.classList.remove('vm-show');
+                }
             }
         }
     }
@@ -64,12 +64,12 @@ function Voting(props : any) {
                 </div>
                 <div className="voting-bg">
                     <div className="voting">
-                        <VHeader MyNumberOfVoter={NumberOfVoter} setNumberOfVoter={SetMyNumberOfVoter} 
-                        MyPollID={PollID} SetMyPollID={setPollID} 
-                        CheckOwner={IsOwnerAddress} Question={question} 
-                        SetQuestion={setQuestion} VoteFactory={VoteFactoryContract} 
-                        SetIsNewPoll={setIsNewPoll}/>
-                        <VContent checkOwner={IsOwnerAddress} myCount={MyCount} SetMyCount ={setMyCount} MyI={i} MyM={m} MyPoll={polls} SetMyPoll={setPolls} VoteFactory={VoteFactoryContract} isNewPoll={IsNewPoll} Question={question} MyPollID={PollID} MyList={myList} SetMyList={setMyList}/>
+                        <VHeader MyNumberOfVoter={NumberOfVoter} setNumberOfVoter={SetMyNumberOfVoter}
+                            MyPollID={PollID} SetMyPollID={setPollID}
+                            CheckOwner={IsOwnerAddress} Question={question}
+                            SetQuestion={setQuestion} VoteFactory={VoteFactoryContract}
+                            SetIsNewPoll={setIsNewPoll} />
+                        <VContent checkOwner={IsOwnerAddress} myCount={MyCount} SetMyCount={setMyCount} MyI={i} MyM={m} MyPoll={polls} SetMyPoll={setPolls} VoteFactory={VoteFactoryContract} isNewPoll={IsNewPoll} Question={question} MyPollID={PollID} MyList={myList} SetMyList={setMyList} />
                     </div>
                 </div>
             </div>

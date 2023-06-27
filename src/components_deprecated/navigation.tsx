@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { BorrowIcon } from "../utils/borrow";
-import { Finance, NavApp, NavHome, NavOrg, NavVote, Permission } from "../utils/image";
 import { Down } from "../utils/svg-icons";
+import { FinanceIcon, NavAppIcon, NavHomeIcon, NavOrgIcon, NavVoteIcon, PermissionIcon } from "../utils/image";
 
 function Navigation() {
     const navigate = useNavigate()
@@ -47,7 +47,7 @@ function Navigation() {
                 <div className="home-box">
                     <div className="nav-item">
                         <span className="nav-icon-box">
-                            <NavHome />
+                            <NavHomeIcon />
                         </span>
                         <span className="nav-item-name" onClick={toHome}>Home</span>
                     </div>
@@ -56,7 +56,7 @@ function Navigation() {
                 <div className="other-box">
                     <div className="nav-item">
                         <span className="nav-icon-box">
-                            <NavVote />
+                            <NavVoteIcon />
                         </span>
                         <span className="nav-item-name" onClick={toVotePage}>Voting</span>
                     </div>
@@ -66,7 +66,7 @@ function Navigation() {
                     </ul>
                     <div className="nav-item">
                         <span className="nav-icon-box">
-                            <Finance />
+                            <FinanceIcon />
                         </span>
                         <span className="nav-item-name" onClick={toFinance}>
                             Finance
@@ -99,19 +99,19 @@ function Navigation() {
                 <div className="system-list">
                     <div className="nav-item" onClick={toPermission}>
                         <span className="nav-icon-box">
-                            <Permission />
+                            <PermissionIcon />
                         </span>
                         <span className="nav-item-name">Permissions</span>
                     </div>
                     <div className="nav-item" onClick={toAppCenter}>
                         <span className="nav-icon-box">
-                            <NavApp />
+                            <NavAppIcon />
                         </span>
                         <span className="nav-item-name">App Center</span>
                     </div>
                     <div className="nav-item" onClick={toOrgSetting}>
                         <span className="nav-icon-box">
-                            <NavOrg />
+                            <NavOrgIcon />
                         </span>
                         <span className="nav-item-name">Organization</span>
                     </div>

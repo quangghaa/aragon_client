@@ -1,12 +1,6 @@
 import React from 'react';
-import { useState } from 'react';
-import logo from './logo.svg';
-import { DatePicker, message } from 'antd';
-import Header from '../components/header';
-import Navigation from '../components/navigation';
-import WhatTodo from '../components/whatodo';
 import { HomeImg1, HomeImg2, HomeImg3 } from '../utils/image';
-import ExploreItem from '../components/explore-item';
+import ExploreItem from '../components_deprecated/explore-item';
 
 function ExplorePage() {
   const data = [

@@ -83,37 +83,37 @@ function WalletConnect() {
     )
 }
 
-function NavHome() {
+function NavHomeIcon() {
     return (
         <img src={navhome} alt="home-icon" className="nav-icon-style" />
     )
 }
 
-function NavVote() {
+function NavVoteIcon() {
     return (
         <img src={navvote} alt="vote-icon" className="nav-icon-style" />
     )
 }
 
-function Finance() {
+function FinanceIcon() {
     return (
         <img src={finance} alt="finance-icon" className="nav-icon-style" />
     )
 }
 
-function Permission() {
+function PermissionIcon() {
     return (
         <img src={perm} alt="perm-icon" className="nav-icon-style" />
     )
 }
 
-function NavApp() {
+function NavAppIcon() {
     return (
         <img src={app} alt="app-icon" className="nav-icon-style" />
     )
 }
 
-function NavOrg() {
+function NavOrgIcon() {
     return (
         <img src={org} alt="org-icon" className="nav-icon-style" />
     )
@@ -204,11 +204,13 @@ function NoNotification() {
 }
 
 
-export {Logo, ImageCreate, ImageOpen, ExploreItem,
+export {
+    Logo, ImageCreate, ImageOpen, ExploreItem,
     Metamask, Frame, Fortmatic, Portis, WalletConnect,
-    NavHome, NavVote, Finance, Permission, NavApp, NavOrg,
+    NavHomeIcon, NavVoteIcon, FinanceIcon, PermissionIcon, NavAppIcon, NavOrgIcon,
     HomeImg1, HomeImg2, HomeImg3,
     WalletProvider, ETH, USDT,
     PermVoting, PermFinance, PermVault,
     SettingBtn1, SettingBtn2, SettingBtn3,
-    NoNotification, CustomLabelBtn};
+    NoNotification, CustomLabelBtn
+};

@@ -540,7 +540,7 @@ ul li {
   height: calc(100vh - 88px);
   display: flex;
   justify-content: center;
-  background: url(/static/media/eagle.715b0344.svg) 50% 100% / 1241px 833px no-repeat fixed;
+  background: url(./assets/eagle.svg) 50% 100% / 1241px 833px no-repeat fixed;
   background-color: white;
 }
 
@@ -632,6 +632,7 @@ ul li {
 
 .nav-icon-style {
   width: 24px;
+  border-radius: 4px;
 }
 
 .nav-item-name {

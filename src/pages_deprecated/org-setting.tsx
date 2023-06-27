@@ -1,12 +1,8 @@
 import React from "react";
-import AContent from "../components/a-content";
-import AHeader from "../components/a-header";
-import FContent from "../components/f-content";
-import FHeader from "../components/f-header";
-import Navigation from "../components/navigation";
-import PContent from "../components/p-content";
-import PHeader from "../components/p-header";
-function AppCenter() {
+import OContent from "../components_deprecated/o-content";
+import OHeader from "../components_deprecated/o-header";
+import Navigation from "../components_deprecated/navigation";
+function OrgSetting() {
     window.onclick = function (event: any) {
         console.log("Permission page clicked")
         if (!event.target.matches('.v-nav-btn')) {
@@ -25,10 +21,10 @@ function AppCenter() {
             var dropdowns = document.getElementsByClassName("vm-bg");
             var i;
             for (i = 0; i < dropdowns.length; i++) {
-              var openDropdown = dropdowns[i];
-              if (openDropdown.classList.contains('vm-show')) {
-                openDropdown.classList.remove('vm-show');
-              }
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('vm-show')) {
+                    openDropdown.classList.remove('vm-show');
+                }
             }
 
         }
@@ -36,16 +32,16 @@ function AppCenter() {
         // -------------
         console.log("Close question popup")
         var dropdowns = document.getElementsByClassName("question-popup");
-          var i;
-          for (i = 0; i < dropdowns.length; i++) {
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
             var openDropdown = dropdowns[i];
             if (openDropdown.classList.contains('qp-show')) {
-              openDropdown.classList.remove('qp-show');
+                openDropdown.classList.remove('qp-show');
             }
-          }
-        
+        }
+
         // close type button popup
-        
+
     }
 
     return (
@@ -56,8 +52,8 @@ function AppCenter() {
                 </div>
                 <div className="voting-bg">
                     <div className="voting">
-                        <AHeader />
-                        <AContent />
+                        <OHeader />
+                        <OContent />
                     </div>
                 </div>
             </div>
@@ -65,4 +61,4 @@ function AppCenter() {
     )
 }
 
-export default AppCenter;
+export default OrgSetting;

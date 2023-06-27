@@ -2,15 +2,15 @@ import { Progress } from "antd";
 import { ethers } from "ethers";
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Voting from "../pages/voting";
+import Voting from "../pages_deprecated/voting";
 import { NavVote } from "../utils/image";
 import { Pass } from "../utils/svg-icons";
 
-function VContent(props : any) {
+function VContent(props: any) {
     const navigate = useNavigate();
     const PollQuestion = props.Question;
-    const IsNewPoll =props.isNewPoll;
-    const PollID=props.MyPollID;
+    const IsNewPoll = props.isNewPoll;
+    const PollID = props.MyPollID;
     const list = props.MyList;
     const setList = props.SetMyList;
     let CheckOwner = props.checkOwner;
@@ -27,49 +27,49 @@ function VContent(props : any) {
         navigate("/vote-detail")
     }
     const update = async () => {
-        let myPolls : any = await VoteContract.getListPoll()
-        setCount( myPolls.length);
-        console.log('This is count and mypolls.length',count, myPolls.length);
-        for(let k=0;k<myPolls.length;k++){
-            if(myPolls.length>m.current){
+        let myPolls: any = await VoteContract.getListPoll()
+        setCount(myPolls.length);
+        console.log('This is count and mypolls.length', count, myPolls.length);
+        for (let k = 0; k < myPolls.length; k++) {
+            if (myPolls.length > m.current) {
                 polls.push(myPolls[m.current]);
-                
+
                 m.current++;
             }
         }
-        setPolls(Object.assign([],polls));
-        console.log('already added',polls);
-        while(i.current<myPolls.length){
-                    
-                    list.push(i.current);
-                    setList(Object.assign([],list))
-                    i.current++;
+        setPolls(Object.assign([], polls));
+        console.log('already added', polls);
+        while (i.current < myPolls.length) {
+
+            list.push(i.current);
+            setList(Object.assign([], list))
+            i.current++;
         }
-        console.log(typeof(polls[0]))
+        console.log(typeof (polls[0]))
         await VoteContract.startVote(PollID);
-        console.log('started poll id :' , PollID);
+        console.log('started poll id :', PollID);
     }
-    const stopVote = async () =>{
+    const stopVote = async () => {
         await VoteContract.endVote(PollID)
-        console.log('Ended pollID :' , PollID);
+        console.log('Ended pollID :', PollID);
     }
-    const Count = async () =>{
+    const Count = async () => {
         const NumberOfAgreeVoter = await VoteContract.getListPoll();
-        console.log('This is number of agree voter',ethers.BigNumber.from(NumberOfAgreeVoter[0].countResult));
+        console.log('This is number of agree voter', ethers.BigNumber.from(NumberOfAgreeVoter[0].countResult));
     }
     return (
         <section className="vote-section">
             <h2 className="vs-title">
                 <div>
-                {CheckOwner ?<button onClick={update} className="v-new-vote-btn">Start Vote</button> : null}
-                
-                {CheckOwner ?<button onClick={stopVote} className="v-new-vote-btn end-vote-btn">End Vote</button> : null}
-            </div>
+                    {CheckOwner ? <button onClick={update} className="v-new-vote-btn">Start Vote</button> : null}
+
+                    {CheckOwner ? <button onClick={stopVote} className="v-new-vote-btn end-vote-btn">End Vote</button> : null}
+                </div>
             </h2>
-            
+
             <div className="vote-list">
                 {
-                    list.map((v : any, i : any) => {
+                    list.map((v: any, i: any) => {
                         return (
                             <div className="vote-item" onClick={toDetail}>
                                 <div className="vi-logo">
@@ -82,7 +82,7 @@ function VContent(props : any) {
                                 </div>
 
                                 <div className="vi-content">
-                                    <span className="vi-id">#{i+1}</span>
+                                    <span className="vi-id">#{i + 1}</span>
                                     <span className="vi-content-text">
                                         {polls.length > 0 ? <p>{polls[i].proposal}</p> : <p>sai</p>}
                                     </span>

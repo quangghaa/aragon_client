@@ -1,9 +1,10 @@
 import { Layout } from "antd";
 import React, { useEffect, useRef, useState } from "react";
-import Header from "../components/header";
+import Header from "../components_deprecated/header";
 import Sider from "antd/es/layout/Sider";
 import { Outlet } from "react-router-dom";
-import Navigation from "../components/navigation";
+import Navigation from "../components_deprecated/navigation";
+import MainMenu from "../components_deprecated/menu";
 
 interface Network {
     name: string,
@@ -19,9 +20,10 @@ const headerStyle: React.CSSProperties = {
 };
 const siderStyle: React.CSSProperties = {
     textAlign: 'center',
-    // lineHeight: '120px',
     color: '#fff',
-    backgroundColor: '#3ba0e9',
+    width: '256px',
+    height: '100%',
+    background: 'white'
 };
 const AragonClient = () => {
     const [network, setNetwork] = useState({ name: "Ethereum", type: 0 } as Network);
@@ -69,7 +71,8 @@ const AragonClient = () => {
             />
             <Layout hasSider>
                 <Sider style={siderStyle}>
-                    <Navigation />
+                    {/* <Navigation /> */}
+                    <MainMenu />
                 </Sider>
                 <Outlet />
             </Layout>

@@ -1,14 +1,14 @@
 import { Select } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Voting from "../pages/voting";
+import Voting from "../pages_deprecated/voting";
 import { NavVote, PermFinance, PermVault, PermVoting } from "../utils/image";
 import { Pass, Search } from "../utils/svg-icons";
 import FTokenBalance from "./f-token-balance";
 import FTransferContent from "./f-transfer-content";
 import PTable from "./p-table";
 
-function PContent() {
+function AContent() {
     function toSystemPerm(e: any) {
         e.stopPropagation();
         var id = (document.getElementById("perm-nav-app")) as HTMLSelectElement;
@@ -47,9 +47,9 @@ function PContent() {
 
     const navigate = useNavigate()
     function toDetail() {
-        navigate("/permission-detail")
+        navigate("/app-center-detail")
     }
- 
+
     return (
         <section className="vote-section">
             <div className="perm-tags">
@@ -57,13 +57,13 @@ function PContent() {
                     <ul className="tm-nav-list">
                         <li className="tm-nav-item">
                             <button type="button" className="tm-nav-btn-box" onClick={(e: any) => toAppPerm(e)}>
-                                <span className="tm-btn-text">App Permissions</span>
+                                <span className="tm-btn-text">Installed Apps</span>
                                 <span id="perm-nav-app" className="tm-btn-highlight"></span>
                             </button>
                         </li>
                         <li className="tm-nav-item">
                             <button type="button" className="tm-nav-btn-box" onClick={(e: any) => toSystemPerm(e)}>
-                                <span className="tm-btn-text">System Permissions</span>
+                                <span className="tm-btn-text">Discovered Apps</span>
                                 <span id="perm-nav-sys" className="tm-btn-highlight"></span>
                             </button>
                         </li>
@@ -71,15 +71,16 @@ function PContent() {
                 </div>
             </div>
 
-            <div id="" className="vote-list-box">
+            <div id="" className="a-vote-list-box">
                 <div className="p-vote-item" onClick={toDetail}>
                     <div className="p-vote-icon">
-                        <PermVoting />
+                        <PermVault />
                     </div>
-                    <p className="p-vote-name">Voting</p>
+                    <p className="p-vote-name">Vault</p>
                     <div className="p-vote-subtext-box">
-                        <span className="p-vote-subtext">ant (50%)</span>
+                        <span className="a-vote-subtext">up to date</span>
                     </div>
+                    <p className="a-vote-des">Store an organization's financial assets.</p>
                 </div>
 
                 <div className="p-vote-item">
@@ -88,8 +89,9 @@ function PContent() {
                     </div>
                     <p className="p-vote-name">Voting</p>
                     <div className="p-vote-subtext-box">
-                        <span className="p-vote-subtext">ant (67%)</span>
+                        <span className="a-vote-subtext">up to date</span>
                     </div>
+                    <p className="a-vote-des">Store an organization's financial assets.</p>
                 </div>
 
                 <div className="p-vote-item">
@@ -98,57 +100,14 @@ function PContent() {
                     </div>
                     <p className="p-vote-name">Finance</p>
                     <div className="p-vote-subtext-box">
-                        <span className="p-vote-subtext">0xd970…10ff</span>
+                        <span className="a-vote-subtext">up to date</span>
                     </div>
-                </div>
-
-                <div className="p-vote-item">
-                    <div className="p-vote-icon">
-                        <PermVault />
-                    </div>
-                    <p className="p-vote-name">Vault</p>
-                    <div className="p-vote-subtext-box">
-                        <span className="p-vote-subtext">background app</span>
-                    </div>
+                    <p className="a-vote-des">Store an organization's financial assets.</p>
                 </div>
             </div>
 
-            <div className="">
-                <div className="ft-content">
-                    <div className="ftc-header-wrapper">
-                        <div className="ftc-header">
-                            <div className="ftc-header-title">All assigned permissions</div>
-                            <div className="flex">
-                                <div className="temp-class mr">
-                                <Select
-                                    defaultValue="1"
-                                    style={{ width: 128 }}
-                                    onChange={handleChange}
-                                    options={[
-                                        { value: '1', label: 'All entities' },
-                                        { value: '2', label: 'Account' },
-                                        { value: '3', label: 'App' },
-                                    ]}
-                                />
-                                </div>
-                                <div className="question-input-box">
-                                    <input type="text" placeholder="Search by app or role" className="question-input" />
-                                    <div className="tm-search-icon-box">
-                                        <Search />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div>
-                        <PTable />
-                    </div>
-                </div>
-            </div>
         </section>
     )
 }
 
-export default PContent;
+export default AContent;
