@@ -1,14 +1,14 @@
-import { Select } from "antd";
-import React from "react";
-import { NavVote } from "../utils/image";
-import { DotDotDot, Down } from "../utils/svg-icons";
-import {VButtonPopup} from "./v-btn-popup";
+import { Select } from "antd"
+import React from "react"
+import { NavVote } from "../utils/image"
+import { DotDotDot, Down } from "../utils/svg-icons"
+import { VButtonPopup } from "./v-btn-popup"
 
 function PDetailTable() {
     function vBtnClick(e: any) {
-        e.stopPropagation();
-        var id = (document.getElementById("status-popup-id")) as HTMLSelectElement;
-        id.classList.toggle("show-v-popup");
+        e.stopPropagation()
+        const id = (document.getElementById("status-popup-id")) as HTMLSelectElement
+        id.classList.toggle("show-v-popup")
     }
 
     function handleChange() {
@@ -82,13 +82,13 @@ function PDetailTable() {
                     <td className="tb-item">
                         <div className="tb-item-box">
                             <div className="item-select-box">
-                            <button className="tb-item-btn-box" onClick={(e: any) => vBtnClick(e)}>
-                                <div className="tb-item-btn-text">
-                                    <DotDotDot />
-                                </div>
-                                <div className="tb-item-btn-icon"><Down /></div>
-                                <VButtonPopup />
-                            </button>
+                                <button className="tb-item-btn-box" onClick={(e: any) => vBtnClick(e)}>
+                                    <div className="tb-item-btn-text">
+                                        <DotDotDot />
+                                    </div>
+                                    <div className="tb-item-btn-icon"><Down /></div>
+                                    <VButtonPopup />
+                                </button>
                             </div>
                         </div>
                     </td>
@@ -139,13 +139,13 @@ function PDetailTable() {
                     <td className="tb-item">
                         <div className="tb-item-box">
                             <div className="item-select-box">
-                            <button className="tb-item-btn-box" onClick={(e: any) => vBtnClick(e)}>
-                                <div className="tb-item-btn-text">
-                                    <DotDotDot />
-                                </div>
-                                <div className="tb-item-btn-icon"><Down /></div>
-                                <VButtonPopup />
-                            </button>
+                                <button className="tb-item-btn-box" onClick={(e: any) => vBtnClick(e)}>
+                                    <div className="tb-item-btn-text">
+                                        <DotDotDot />
+                                    </div>
+                                    <div className="tb-item-btn-icon"><Down /></div>
+                                    <VButtonPopup />
+                                </button>
                             </div>
                         </div>
                     </td>
@@ -155,4 +155,4 @@ function PDetailTable() {
     )
 }
 
-export default PDetailTable;
+export default PDetailTable

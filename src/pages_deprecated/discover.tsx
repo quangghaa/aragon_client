@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import DOption from "../components_deprecated/discover/d-option";
-import DSelectHead from "../components_deprecated/discover/d-select-head";
-import DTable from "../components_deprecated/discover/d-table";
+import React, { useEffect } from "react"
+import DOption from "../components_deprecated/discover/d-option"
+import DSelectHead from "../components_deprecated/discover/d-select-head"
+import DTable from "../components_deprecated/discover/d-table"
 import "../components_deprecated/discover/style.css"
-import Navigation from "../components_deprecated/navigation";
+import Navigation from "../components_deprecated/navigation"
 
 function Discover(props: any) {
     useEffect(() => {
@@ -43,4 +43,4 @@ function Discover(props: any) {
     )
 }
 
-export default Discover;
+export default Discover

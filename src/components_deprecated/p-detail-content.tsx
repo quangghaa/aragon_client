@@ -1,7 +1,7 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { Back } from "../utils/svg-icons";
-import PDetailTable from "./p-detail-table";
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import { Back } from "../utils/svg-icons"
+import PDetailTable from "./p-detail-table"
 
 function PDetailContent() {
     const navigate = useNavigate()
@@ -22,20 +22,20 @@ function PDetailContent() {
             </div>
             
             <div className="ft-content">
-                    <div className="ftc-header-wrapper">
-                        <div className="ftc-header">
-                            <div className="ftc-header-title">Available permissions</div>
+                <div className="ftc-header-wrapper">
+                    <div className="ftc-header">
+                        <div className="ftc-header-title">Available permissions</div>
                             
-                        </div>
-
                     </div>
 
-                    <div>
-                        <PDetailTable />
-                    </div>
                 </div>
+
+                <div>
+                    <PDetailTable />
+                </div>
+            </div>
         </div>
     )
 }
 
-export default PDetailContent;
+export default PDetailContent

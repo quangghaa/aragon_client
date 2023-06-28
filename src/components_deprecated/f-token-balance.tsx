@@ -1,12 +1,12 @@
-import React from "react";
-import { ETH, USDT } from "../utils/image";
-import { FTIQuestion } from "../utils/svg-icons";
-import QuestionPopup from "./question-popup";
+import React from "react"
+import { ETH, USDT } from "../utils/image"
+import { FTIQuestion } from "../utils/svg-icons"
+import QuestionPopup from "./question-popup"
 
 function FTokenBalance() {
     function showQuestionPopup(e: any) {
         e.stopPropagation()
-        var id = (document.getElementById("qp-id")) as HTMLElement
+        const id = (document.getElementById("qp-id")) as HTMLElement
         id.classList.add("qp-show")
     }
     
@@ -98,4 +98,4 @@ function FTokenBalance() {
     )
 }
 
-export default FTokenBalance;
+export default FTokenBalance

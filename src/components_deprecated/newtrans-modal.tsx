@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Close, Down, Search } from "../utils/svg-icons";
-import {VButtonPopup} from "./v-btn-popup";
+import React, { useEffect, useState } from "react"
+import { Close, Down, Search } from "../utils/svg-icons"
+import { VButtonPopup } from "./v-btn-popup"
 
 function NewTransModal() {
     const [isDeposit, setIsDeposit] = useState(true)
@@ -13,46 +13,46 @@ function NewTransModal() {
     // }, [])
 
     function selectClick(e: any) {
-        e.stopPropagation();
+        e.stopPropagation()
         console.log("btn click")
     }
 
     function toWithdrawalModal(e: any) {
-        e.stopPropagation();
-        var id = (document.getElementById("tm-nav-deposit")) as HTMLSelectElement;
-        id.classList.remove("show-highlight");
+        e.stopPropagation()
+        var id = (document.getElementById("tm-nav-deposit")) as HTMLSelectElement
+        id.classList.remove("show-highlight")
 
-        var id = (document.getElementById("tm-nav-withdrawal")) as HTMLSelectElement;
-        id.classList.add("show-highlight");
+        var id = (document.getElementById("tm-nav-withdrawal")) as HTMLSelectElement
+        id.classList.add("show-highlight")
 
         // show withdrawal form
-        var id = (document.getElementById("deposit-form")) as HTMLSelectElement;
-        id.classList.remove("form-show");
+        var id = (document.getElementById("deposit-form")) as HTMLSelectElement
+        id.classList.remove("form-show")
 
-        var id = (document.getElementById("withdrawal-form")) as HTMLSelectElement;
-        id.classList.add("form-show");
+        var id = (document.getElementById("withdrawal-form")) as HTMLSelectElement
+        id.classList.add("form-show")
     }
 
     function toDepositModal(e: any) {
-        e.stopPropagation();
-        var id = (document.getElementById("tm-nav-withdrawal")) as HTMLSelectElement;
-        id.classList.remove("show-highlight");
+        e.stopPropagation()
+        var id = (document.getElementById("tm-nav-withdrawal")) as HTMLSelectElement
+        id.classList.remove("show-highlight")
 
-        var id = (document.getElementById("tm-nav-deposit")) as HTMLSelectElement;
-        id.classList.add("show-highlight");
+        var id = (document.getElementById("tm-nav-deposit")) as HTMLSelectElement
+        id.classList.add("show-highlight")
 
         // show deposit form
-        var id = (document.getElementById("withdrawal-form")) as HTMLSelectElement;
-        id.classList.remove("form-show");
+        var id = (document.getElementById("withdrawal-form")) as HTMLSelectElement
+        id.classList.remove("form-show")
 
-        var id = (document.getElementById("deposit-form")) as HTMLSelectElement;
-        id.classList.add("form-show");
+        var id = (document.getElementById("deposit-form")) as HTMLSelectElement
+        id.classList.add("form-show")
     }
 
     function vBtnClick(e: any) {
-        e.stopPropagation();
-        var id = (document.getElementById("status-popup-id")) as HTMLSelectElement;
-        id.classList.toggle("show-v-popup");
+        e.stopPropagation()
+        const id = (document.getElementById("status-popup-id")) as HTMLSelectElement
+        id.classList.toggle("show-v-popup")
     }
 
     return (
@@ -107,8 +107,8 @@ function NewTransModal() {
                         </button>
 
                         <section className="vn-note">
-                        <p>Remember, Mainnet organizations use <strong>real funds</strong>.</p>
-                        <p>Configure your deposit above, and sign the transaction with your wallet after clicking “Submit Transfer”. It will then show up in your Finance app once processed.</p>
+                            <p>Remember, Mainnet organizations use <strong>real funds</strong>.</p>
+                            <p>Configure your deposit above, and sign the transaction with your wallet after clicking “Submit Transfer”. It will then show up in your Finance app once processed.</p>
                         </section>
                     </form>
 
@@ -151,4 +151,4 @@ function NewTransModal() {
     )
 }
 
-export default NewTransModal;
+export default NewTransModal

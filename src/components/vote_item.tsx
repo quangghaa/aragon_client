@@ -1,7 +1,7 @@
-import React from "react";
-import { NavVoteIcon } from "../utils/image";
-import { Progress } from "antd";
-import { Pass } from "../utils/svg-icons";
+import React from "react"
+import { NavVoteIcon } from "../utils/image"
+import { Progress } from "antd"
+import { Pass } from "../utils/svg-icons"
 
 interface VoteItemProps {
     item: any

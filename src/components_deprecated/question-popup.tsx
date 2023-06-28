@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 function QuestionPopup() {
     return (
@@ -11,4 +11,4 @@ function QuestionPopup() {
     )
 }
 
-export default QuestionPopup;
+export default QuestionPopup

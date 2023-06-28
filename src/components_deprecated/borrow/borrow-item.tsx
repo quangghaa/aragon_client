@@ -1,6 +1,6 @@
-import React from "react";
-import { useNavigate } from "react-router";
-import { BTCImg, ETHImg } from "../../utils/borrow";
+import React from "react"
+import { useNavigate } from "react-router"
+import { BTCImg, ETHImg } from "../../utils/borrow"
 
 function BorrowItem(props: any) {
     const navigate = useNavigate()
@@ -202,7 +202,7 @@ function BorrowItem(props: any) {
                 </div>
             </div>
             <div className="br-item-bg br-item-bg-blue">
-            <div className="br-item">
+                <div className="br-item">
                     <div className="item-head">
                         <div className="head-tag">
                             <div className="head-tag-text">

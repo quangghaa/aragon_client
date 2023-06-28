@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import logo from "../assets/logo.png"
 import create from "../assets/main1.png"
 import open from "../assets/main2.png"
@@ -213,4 +213,4 @@ export {
     PermVoting, PermFinance, PermVault,
     SettingBtn1, SettingBtn2, SettingBtn3,
     NoNotification, CustomLabelBtn
-};
+}

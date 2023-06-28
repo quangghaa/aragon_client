@@ -1,5 +1,5 @@
-import React from "react";
-import { HomeImg1, HomeImg2, HomeImg3 } from "../utils/image";
+import React from "react"
+import { HomeImg1, HomeImg2, HomeImg3 } from "../utils/image"
 
 function WhatTodo() {
     return (
@@ -31,4 +31,4 @@ function WhatTodo() {
     )
 }
 
-export default WhatTodo;
+export default WhatTodo

@@ -1,5 +1,5 @@
-import React from "react";
-import { ColorETHIcon, InfoIcon } from "../../utils/borrow-detail";
+import React from "react"
+import { ColorETHIcon, InfoIcon } from "../../utils/borrow-detail"
 
 function BDHead(props: any) {
     return (
@@ -86,4 +86,4 @@ function BDHead(props: any) {
     )
 }
 
-export default BDHead;
+export default BDHead

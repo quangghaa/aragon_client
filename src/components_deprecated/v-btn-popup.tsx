@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 function VButtonPopup() {
     return (
@@ -39,4 +39,4 @@ function FButtonTokenPopup() {
     )
 }
 
-export {VButtonPopup, FButtonTypePopup, FButtonTokenPopup};
+export { VButtonPopup, FButtonTypePopup, FButtonTokenPopup }

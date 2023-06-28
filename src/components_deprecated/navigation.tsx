@@ -1,8 +1,8 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { BorrowIcon } from "../utils/borrow";
-import { Down } from "../utils/svg-icons";
-import { FinanceIcon, NavAppIcon, NavHomeIcon, NavOrgIcon, NavVoteIcon, PermissionIcon } from "../utils/image";
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import { BorrowIcon } from "../utils/borrow"
+import { Down } from "../utils/svg-icons"
+import { FinanceIcon, NavAppIcon, NavHomeIcon, NavOrgIcon, NavVoteIcon, PermissionIcon } from "../utils/image"
 
 function Navigation() {
     const navigate = useNavigate()
@@ -121,4 +121,4 @@ function Navigation() {
     )
 }
 
-export default Navigation;
+export default Navigation

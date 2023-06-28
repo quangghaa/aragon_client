@@ -1,46 +1,46 @@
-import { Modal, Popover, Result, Switch } from "antd";
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Fortmatic, Frame, Logo, Metamask, NoNotification, Portis, SettingBtn1, SettingBtn2, SettingBtn3, WalletConnect } from "../utils/image";
-import { Bell, Connect, Setting } from "../utils/svg-icons";
-import ConnectForm from "./connect-form";
-import { Contract, ethers, Signer } from 'ethers';
-import NetworkModal from "./network-modal";
-import VoteFactoryAbi from "../abis/VoteFactory.json";
+import { Modal, Popover, Result, Switch } from "antd"
+import React, { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { Fortmatic, Frame, Logo, Metamask, NoNotification, Portis, SettingBtn1, SettingBtn2, SettingBtn3, WalletConnect } from "../utils/image"
+import { Bell, Connect, Setting } from "../utils/svg-icons"
+import ConnectForm from "./connect-form"
+import { Contract, ethers, Signer } from "ethers"
+import NetworkModal from "./network-modal"
+import VoteFactoryAbi from "../abis/VoteFactory.json"
 import VoteFactoryAddress from "../abis/VoteFactory-address.json"
-import contractOwnerAddress from "../abis/contractOwner.json";
-import { text } from "stream/consumers";
-import { useEthers, useEtherBalance } from "@usedapp/core";
+import contractOwnerAddress from "../abis/contractOwner.json"
+import { text } from "stream/consumers"
+import { useEthers, useEtherBalance } from "@usedapp/core"
 function Header(props: any) {
-    let OwnerAddress = props.ownerAddress;
-    let setOwnerAddress = props.SetOwnerAddress;
-    let IsOwnerAddress = props.isOwnerAddress;
-    let setIsOwnerAddress = props.SetIsOwnerAddress;
-    let setCheckLogIn = props.SetCheckLogIn
-    let setCheckVoted = props.setIsVoted;
+    const OwnerAddress = props.ownerAddress
+    const setOwnerAddress = props.SetOwnerAddress
+    const IsOwnerAddress = props.isOwnerAddress
+    const setIsOwnerAddress = props.SetIsOwnerAddress
+    const setCheckLogIn = props.SetCheckLogIn
+    const setCheckVoted = props.setIsVoted
     // const [WalletAddress , setWalletAddress] = useState('');
-    const [ConnectStatus, setConnectStatus] = useState(false);
+    const [ConnectStatus, setConnectStatus] = useState(false)
     // const [VoteFactory , setMyVoteFactory] = useState({});
-    let simpleTransaction = props.SimpleTransaction
-    let setMyVoteFactory = props.SetMyVoteFactory;
-    let setSimpleTransaction = props.SetSimpleTransaction
-    let WalletAddress = props.MyWalletAddress;
-    let setWalletAddress = props.SetMyWalletAddress;
+    const simpleTransaction = props.SimpleTransaction
+    const setMyVoteFactory = props.SetMyVoteFactory
+    const setSimpleTransaction = props.SetSimpleTransaction
+    const WalletAddress = props.MyWalletAddress
+    const setWalletAddress = props.SetMyWalletAddress
     // const [simpleTransaction, setSimpleTransaction] = useState({})
     setOwnerAddress(contractOwnerAddress.ownerAddress)
     if (WalletAddress == OwnerAddress.toLowerCase()) {
-        setIsOwnerAddress(true);
+        setIsOwnerAddress(true)
     } else {
-        setIsOwnerAddress(false);
+        setIsOwnerAddress(false)
     }
     const ConnectMetaMask = async () => {
         if ((window as any).ethereum) {
-            const MetaMaskAccount = await (window as any).ethereum.request({ method: 'eth_requestAccounts' })
-                // .then((accounts : string[]) => {
-                //     setWalletAddress(accounts[0]);
+            const MetaMaskAccount = await (window as any).ethereum.request({ method: "eth_requestAccounts" })
+            // .then((accounts : string[]) => {
+            //     setWalletAddress(accounts[0]);
 
                 // });
-                .then(HandleAccountCHange);
+                .then(HandleAccountCHange)
 
             const provider = new ethers.providers.Web3Provider((window as any).ethereum)
             const signer = provider.getSigner()
@@ -50,16 +50,16 @@ function Header(props: any) {
     }
     //Handle change Account
 
-    (window as any).ethereum.on('accountsChanged', HandleAccountCHange);
+    (window as any).ethereum.on("accountsChanged", HandleAccountCHange)
 
     function HandleAccountCHange(accounts: any) {
         if (accounts.length == 0) {
             alert("Please connect Meta Mask")
         } else if (accounts[0] !== WalletAddress) {
-            setWalletAddress(accounts[0]);
-            setConnectStatus(true);
+            setWalletAddress(accounts[0])
+            setConnectStatus(true)
         }
-        setCheckVoted(false);
+        setCheckVoted(false)
     }
 
     const loadContract = async (signer: any) => {
@@ -68,15 +68,15 @@ function Header(props: any) {
             VoteFactoryAbi.abi,
             signer
         )
-        setMyVoteFactory(myVoteFactory);
+        setMyVoteFactory(myVoteFactory)
         // const myBalance = await myVoteFactory.Retrieve(WalletAddress)
         // console.log(myBalance)
     }
     function connectEvent(e: any) {
-        e.stopPropagation();
+        e.stopPropagation()
         console.log("connect event click")
-        var id = (document.getElementById("wallet-list")) as HTMLSelectElement;
-        id.classList.toggle("show");
+        const id = (document.getElementById("wallet-list")) as HTMLSelectElement
+        id.classList.toggle("show")
     }
 
     const navigate = useNavigate()
@@ -183,23 +183,23 @@ function Header(props: any) {
         </div>
     )
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
     const showModal = () => {
-        setIsModalOpen(true);
-    };
+        setIsModalOpen(true)
+    }
 
     const handleOk = () => {
-        setIsModalOpen(false);
-    };
+        setIsModalOpen(false)
+    }
 
     const handleCancel = () => {
-        setIsModalOpen(false);
-    };
+        setIsModalOpen(false)
+    }
 
     function handleNetworkClick(n: any) {
-        var name = n
-        var tipe = 0
+        const name = n
+        let tipe = 0
 
         if (n == "Goerli" || n == "Mumbai" || n == "BSC TestNet" ||
             n == "Stardust" || n == "Harmony Testnet") {
@@ -212,14 +212,13 @@ function Header(props: any) {
 
     useEffect(() => {
         if (props.network.type == 1) {
-            var id = (document.getElementById("network-btn-id")) as HTMLSelectElement;
+            var id = (document.getElementById("network-btn-id")) as HTMLSelectElement
             if (!id.classList.contains("testnet-bg")) {
-                id.classList.add("testnet-bg");
+                id.classList.add("testnet-bg")
             }
-        }
-        else {
-            var id = (document.getElementById("network-btn-id")) as HTMLSelectElement;
-            id.classList.remove("testnet-bg");
+        } else {
+            var id = (document.getElementById("network-btn-id")) as HTMLSelectElement
+            id.classList.remove("testnet-bg")
         }
     }, [props.network.type])
 
@@ -280,4 +279,4 @@ function Header(props: any) {
     )
 }
 
-export default Header;
+export default Header

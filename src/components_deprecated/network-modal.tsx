@@ -55,4 +55,4 @@ function NetworkModal(props: any) {
     )
 }
 
-export default NetworkModal;
+export default NetworkModal

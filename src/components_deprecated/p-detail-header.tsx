@@ -1,15 +1,15 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { NavVote } from "../utils/image";
-import { Back } from "../utils/svg-icons";
-import PDetailTable from "./p-detail-table";
-import NewPermModal from "./perm-modal";
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import { NavVote } from "../utils/image"
+import { Back } from "../utils/svg-icons"
+import PDetailTable from "./p-detail-table"
+import NewPermModal from "./perm-modal"
 
 function PDetailHeader() { 
     function openTransferModal(e: any) {
-        e.stopPropagation();
-        var id = (document.getElementById("perm-modal")) as HTMLSelectElement;
-        id.classList.toggle("vm-show");
+        e.stopPropagation()
+        const id = (document.getElementById("perm-modal")) as HTMLSelectElement
+        id.classList.toggle("vm-show")
     }
 
     return (
@@ -38,4 +38,4 @@ function PDetailHeader() {
     )
 }
 
-export default PDetailHeader;
+export default PDetailHeader

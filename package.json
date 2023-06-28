@@ -24,6 +24,7 @@
     "@usedapp/core": "^1.2.6",
     "antd": "^5.1.7",
     "chai": "^4.2.0",
+    "eslint-config-react-app": "^7.0.1",
     "ethers": "^5.4.7",
     "hardhat": "^2.12.7",
     "hardhat-gas-reporter": "^1.0.8",
@@ -40,7 +41,9 @@
     "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
   },
   "eslintConfig": {
     "extends": [
@@ -63,8 +66,16 @@
   "devDependencies": {
     "@types/chai": "^4.3.4",
     "@types/mocha": "^10.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "@typescript-eslint/parser": "^5.60.1",
     "chai": "^4.3.7",
+    "eslint": "^8.43.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
     "hardhat": "^2.12.7",
+    "prettier": "^2.8.8",
     "ts-node": "^10.9.1"
   }
 }

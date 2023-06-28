@@ -1,9 +1,9 @@
-import React from "react";
-import { Close, Down } from "../utils/svg-icons";
+import React from "react"
+import { Close, Down } from "../utils/svg-icons"
 
 function NewPermModal() {
     function selectClick(e: any) {
-        e.stopPropagation();
+        e.stopPropagation()
         console.log("btn click")
     }
 
@@ -52,4 +52,4 @@ function NewPermModal() {
     )
 }
 
-export default NewPermModal;
+export default NewPermModal

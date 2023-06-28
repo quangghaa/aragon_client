@@ -1,21 +1,21 @@
-import { Select } from "antd";
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import Voting from "../pages_deprecated/voting";
-import { NavVote, PermFinance, PermVault, PermVoting } from "../utils/image";
-import { Pass, Search } from "../utils/svg-icons";
-import FTokenBalance from "./f-token-balance";
-import FTransferContent from "./f-transfer-content";
-import PTable from "./p-table";
+import { Select } from "antd"
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import Voting from "../pages_deprecated/voting"
+import { NavVote, PermFinance, PermVault, PermVoting } from "../utils/image"
+import { Pass, Search } from "../utils/svg-icons"
+import FTokenBalance from "./f-token-balance"
+import FTransferContent from "./f-transfer-content"
+import PTable from "./p-table"
 
 function PContent() {
     function toSystemPerm(e: any) {
-        e.stopPropagation();
-        var id = (document.getElementById("perm-nav-app")) as HTMLSelectElement;
-        id.classList.remove("show-highlight");
+        e.stopPropagation()
+        var id = (document.getElementById("perm-nav-app")) as HTMLSelectElement
+        id.classList.remove("show-highlight")
 
-        var id = (document.getElementById("perm-nav-sys")) as HTMLSelectElement;
-        id.classList.add("show-highlight");
+        var id = (document.getElementById("perm-nav-sys")) as HTMLSelectElement
+        id.classList.add("show-highlight")
 
         // show system perm
         // var id = (document.getElementById("app-perm-id")) as HTMLSelectElement;
@@ -26,12 +26,12 @@ function PContent() {
     }
 
     function toAppPerm(e: any) {
-        e.stopPropagation();
-        var id = (document.getElementById("perm-nav-sys")) as HTMLSelectElement;
-        id.classList.remove("show-highlight");
+        e.stopPropagation()
+        var id = (document.getElementById("perm-nav-sys")) as HTMLSelectElement
+        id.classList.remove("show-highlight")
 
-        var id = (document.getElementById("perm-nav-app")) as HTMLSelectElement;
-        id.classList.add("show-highlight");
+        var id = (document.getElementById("perm-nav-app")) as HTMLSelectElement
+        id.classList.add("show-highlight")
 
         // show app perm
         // var id = (document.getElementById("sys-perm-id")) as HTMLSelectElement;
@@ -125,9 +125,9 @@ function PContent() {
                                         style={{ width: 128 }}
                                         onChange={handleChange}
                                         options={[
-                                            { value: '1', label: 'All entities' },
-                                            { value: '2', label: 'Account' },
-                                            { value: '3', label: 'App' },
+                                            { value: "1", label: "All entities" },
+                                            { value: "2", label: "Account" },
+                                            { value: "3", label: "App" },
                                         ]}
                                     />
                                 </div>
@@ -151,4 +151,4 @@ function PContent() {
     )
 }
 
-export default PContent;
+export default PContent

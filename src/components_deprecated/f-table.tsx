@@ -1,9 +1,9 @@
-import { CopyOutlined } from "@ant-design/icons";
-import { Modal, Popover } from "antd";
-import React, { useEffect, useState } from "react";
-import { CustomLabelBtn, SettingBtn1 } from "../utils/image";
-import { DotDotDot, DotEditLabel, DotTransaction, Down } from "../utils/svg-icons";
-import { VButtonPopup } from "./v-btn-popup";
+import { CopyOutlined } from "@ant-design/icons"
+import { Modal, Popover } from "antd"
+import React, { useEffect, useState } from "react"
+import { CustomLabelBtn, SettingBtn1 } from "../utils/image"
+import { DotDotDot, DotEditLabel, DotTransaction, Down } from "../utils/svg-icons"
+import { VButtonPopup } from "./v-btn-popup"
 
 interface Transfer {
     label: string,
@@ -15,15 +15,15 @@ interface Transfer {
 
 function FTable() {
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [selectedIndex, setSelectedIndex] = useState(-1);
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [selectedIndex, setSelectedIndex] = useState(-1)
 
     const handleOk = () => {
-        var id = (document.getElementById("c-label")) as HTMLInputElement
+        const id = (document.getElementById("c-label")) as HTMLInputElement
         console.log("LABEL: ", id.value)
 
         if (id.value.length == 0) {
-            setIsModalOpen(false);
+            setIsModalOpen(false)
             return
         }
 
@@ -31,12 +31,12 @@ function FTable() {
         
         setTrans(Object.assign([], trans))
 
-        setIsModalOpen(false);
-    };
+        setIsModalOpen(false)
+    }
 
     const handleCancel = () => {
-        setIsModalOpen(false);
-    };
+        setIsModalOpen(false)
+    }
 
     const [trans, setTrans] = useState(
         [
@@ -106,7 +106,7 @@ function FTable() {
         // console.log("Check id: ", id)
         // id.classList.add("hide-x")
         
-        console.log("selected ind",index)
+        console.log("selected ind", index)
         setSelectedIndex(index)
         setRowIndex(index)
         
@@ -122,17 +122,17 @@ function FTable() {
     const dotBtn = (ind: any) => {
         return (
             <>
-            <div className="dot-btn-wrapper" style={isModalOpen ? {display:"none"}: {}}>
-                <button className="dot-btn">
-                    <span><DotTransaction /></span>
-                    <span className="dot-btn-name">View transaction</span>
-                </button>
+                <div className="dot-btn-wrapper" style={isModalOpen ? { display:"none" } : {}}>
+                    <button className="dot-btn">
+                        <span><DotTransaction /></span>
+                        <span className="dot-btn-name">View transaction</span>
+                    </button>
     
-                <button className="dot-btn" onClick={() => demo(ind)}>
-                    <span><DotEditLabel /></span>
-                    <span className="dot-btn-name">Edit custom label</span>
-                </button>
-            </div>
+                    <button className="dot-btn" onClick={() => demo(ind)}>
+                        <span><DotEditLabel /></span>
+                        <span className="dot-btn-name">Edit custom label</span>
+                    </button>
+                </div>
             </>
         )
     }
@@ -277,4 +277,4 @@ function FTable() {
     )
 }
 
-export default FTable;
+export default FTable

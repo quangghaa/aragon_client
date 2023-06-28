@@ -1,0 +1,47 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "jest": true
+    },
+    "extends": [
+        "react-app",
+        "react-app/jest",
+        "airbnb-typescript/base",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "prettier"
+    ],
+    "ignorePatterns": ["dist/", "node_modules/", "pages_deprecated/", "components_deprecated"],
+    "rules": {
+        "semi": ["error", "never"],
+        "@typescript-eslint/semi": "off",
+        "@typescript-eslint/indent": [
+            "error",
+            4,
+            {
+              "SwitchCase": 1
+            }
+          ],
+        "no-unexpected-multiline": "error",
+        "@typescript-eslint/quotes": ["error", "double"],
+        "@typescript-eslint/comma-dangle": "off",
+        "import/extensions": "off",
+        "react/react-in-jsx-scope": ["off"],
+        "react/jsx-uses-react": ["off"],
+        "react/jsx-props-no-spreading": ["off"],
+        "react/no-unescaped-entities": ["off"]
+    }
+}

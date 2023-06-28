@@ -1,7 +1,7 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { PermVoting } from "../utils/image";
-import { Back } from "../utils/svg-icons";
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import { PermVoting } from "../utils/image"
+import { Back } from "../utils/svg-icons"
 
 function ADetailContent() {
     const navigate = useNavigate()
@@ -83,4 +83,4 @@ function ADetailContent() {
     )
 }
 
-export default ADetailContent;
+export default ADetailContent

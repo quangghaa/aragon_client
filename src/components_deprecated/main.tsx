@@ -1,17 +1,17 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import OpenExistingOrg from "../pages_deprecated/open-existing-org";
-import { ImageCreate, ImageOpen } from "../utils/image";
-import ConnectModal from "./connect-modal";
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import OpenExistingOrg from "../pages_deprecated/open-existing-org"
+import { ImageCreate, ImageOpen } from "../utils/image"
+import ConnectModal from "./connect-modal"
 
 function Main(props: any) {
     const navigate = useNavigate()
 
     function openConnectModal(e: any) {
-        e.stopPropagation();
+        e.stopPropagation()
         console.log("modal click")
-        var id = (document.getElementById("connect-modal-id")) as HTMLSelectElement;
-        id.classList.toggle("show-modal");
+        const id = (document.getElementById("connect-modal-id")) as HTMLSelectElement
+        id.classList.toggle("show-modal")
     }
 
     function openOrg(e: any) {
@@ -46,4 +46,4 @@ function Main(props: any) {
     )
 }
 
-export default Main;
+export default Main

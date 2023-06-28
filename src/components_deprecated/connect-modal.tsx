@@ -1,6 +1,6 @@
-import React from "react";
-import { WalletProvider } from "../utils/image";
-import { Close } from "../utils/svg-icons";
+import React from "react"
+import { WalletProvider } from "../utils/image"
+import { Close } from "../utils/svg-icons"
 
 function ConnectModal() {
     return (
@@ -23,4 +23,4 @@ function ConnectModal() {
     )
 }
 
-export default ConnectModal;
+export default ConnectModal

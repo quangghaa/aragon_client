@@ -1,6 +1,6 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { Back } from "../utils/svg-icons";
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import { Back } from "../utils/svg-icons"
 
 function ExistingOrg() {
     const navigate = useNavigate()
@@ -38,4 +38,4 @@ function ExistingOrg() {
     )
 }
 
-export default ExistingOrg;
+export default ExistingOrg

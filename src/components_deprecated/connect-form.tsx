@@ -1,5 +1,5 @@
-import React from "react";
-import { Fortmatic, Frame, Metamask, Portis, WalletConnect } from "../utils/image";
+import React from "react"
+import { Fortmatic, Frame, Metamask, Portis, WalletConnect } from "../utils/image"
 
 function ConnectForm() {
     function metamaskClick(e: any) {
@@ -38,4 +38,4 @@ function ConnectForm() {
     )
 }
 
-export default ConnectForm;
+export default ConnectForm

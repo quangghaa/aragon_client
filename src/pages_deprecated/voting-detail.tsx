@@ -1,50 +1,50 @@
-import React, { useState } from "react";
-import ADetailContent from "../components_deprecated/a-detail-content";
-import ADetailHeader from "../components_deprecated/a-detail-header";
-import FContent from "../components_deprecated/f-content";
-import FHeader from "../components_deprecated/f-header";
-import Navigation from "../components_deprecated/navigation";
-import PContent from "../components_deprecated/p-content";
-import PDetailContent from "../components_deprecated/p-detail-content";
-import PDetailHeader from "../components_deprecated/p-detail-header";
-import PHeader from "../components_deprecated/p-header";
-import VDetailContent from "../components_deprecated/v-detail-content";
-import VDetailHeader from "../components_deprecated/v-detail-header";
-import { useEffect } from "react";
+import React, { useState } from "react"
+import ADetailContent from "../components_deprecated/a-detail-content"
+import ADetailHeader from "../components_deprecated/a-detail-header"
+import FContent from "../components_deprecated/f-content"
+import FHeader from "../components_deprecated/f-header"
+import Navigation from "../components_deprecated/navigation"
+import PContent from "../components_deprecated/p-content"
+import PDetailContent from "../components_deprecated/p-detail-content"
+import PDetailHeader from "../components_deprecated/p-detail-header"
+import PHeader from "../components_deprecated/p-header"
+import VDetailContent from "../components_deprecated/v-detail-content"
+import VDetailHeader from "../components_deprecated/v-detail-header"
+import { useEffect } from "react"
 function VotingDetail(props: any) {
-    let VoteContract = props.voteFactory;
-    let checkOwner = props.isOwnerAddress;
-    let polls = props.MyPolls;
-    let NumberOfVoter = props.MyNumberOfVoter;
-    let agree = props.Agree;
-    let setAgree = props.SetAgreeVoter;
-    let disagree = props.DisagreeVoter;
-    let setDisagree = props.SetDisagreeVoter;
-    let myPollID = props.PollID;
-    let CheckVoted = props.IsAccountVoted;
-    let setCheckVoted = props.SetIsAccountVoted;
-    let CheckLogIn = props.IsLogedIn;
+    const VoteContract = props.voteFactory
+    const checkOwner = props.isOwnerAddress
+    const polls = props.MyPolls
+    const NumberOfVoter = props.MyNumberOfVoter
+    const agree = props.Agree
+    const setAgree = props.SetAgreeVoter
+    const disagree = props.DisagreeVoter
+    const setDisagree = props.SetDisagreeVoter
+    const myPollID = props.PollID
+    const CheckVoted = props.IsAccountVoted
+    const setCheckVoted = props.SetIsAccountVoted
+    const CheckLogIn = props.IsLogedIn
     window.onclick = function (event: any) {
         console.log("Permission page clicked")
-        if (!event.target.matches('.v-nav-btn')) {
-            var dropdowns = document.getElementsByClassName("v-btn-popup");
-            var i;
+        if (!event.target.matches(".v-nav-btn")) {
+            var dropdowns = document.getElementsByClassName("v-btn-popup")
+            var i
             for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show-v-popup')) {
-                    openDropdown.classList.remove('show-v-popup');
+                var openDropdown = dropdowns[i]
+                if (openDropdown.classList.contains("show-v-popup")) {
+                    openDropdown.classList.remove("show-v-popup")
                 }
             }
         }
         // close modal
-        if (event.target.matches('.vm-bg')) {
+        if (event.target.matches(".vm-bg")) {
             console.log("close permission modal")
-            var dropdowns = document.getElementsByClassName("vm-bg");
-            var i;
+            var dropdowns = document.getElementsByClassName("vm-bg")
+            var i
             for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('vm-show')) {
-                    openDropdown.classList.remove('vm-show');
+                var openDropdown = dropdowns[i]
+                if (openDropdown.classList.contains("vm-show")) {
+                    openDropdown.classList.remove("vm-show")
                 }
             }
 
@@ -52,12 +52,12 @@ function VotingDetail(props: any) {
 
         // -------------
         console.log("Close question popup")
-        var dropdowns = document.getElementsByClassName("question-popup");
-        var i;
+        var dropdowns = document.getElementsByClassName("question-popup")
+        var i
         for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('qp-show')) {
-                openDropdown.classList.remove('qp-show');
+            var openDropdown = dropdowns[i]
+            if (openDropdown.classList.contains("qp-show")) {
+                openDropdown.classList.remove("qp-show")
             }
         }
 
@@ -84,4 +84,4 @@ function VotingDetail(props: any) {
     )
 }
 
-export default VotingDetail;
+export default VotingDetail

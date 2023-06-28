@@ -1,8 +1,8 @@
-import React from "react";
+import React from "react"
 
 function ColorETHIcon() {
     return (
-        <svg style={{width: "27px"}} viewBox="0 0 32 32" display="inline-block" focusable="false" role="presentation"><path d="M16 29.3332C23.3638 29.3332 29.3333 23.3636 29.3333 15.9998C29.3333 8.63604 23.3638 2.6665 16 2.6665C8.63616 2.6665 2.66663 8.63604 2.66663 15.9998C2.66663 23.3636 8.63616 29.3332 16 29.3332Z" fill="rgb(113, 113, 235)"></path><path d="M15.9999 8V19.0509L10.6667 16.1484L15.9999 8Z" fill="white"></path><path d="M15.9999 8L21.3332 16.1484L15.9999 19.0509V8Z" fill="white"></path><path d="M15.9998 19.9811V23.9999L10.6666 17.08L15.9998 19.9811Z" fill="white"></path><path d="M15.9998 23.9999V19.9811L21.3333 17.08L15.9998 23.9999Z" fill="white"></path></svg>
+        <svg style={{ width: "27px" }} viewBox="0 0 32 32" display="inline-block" focusable="false" role="presentation"><path d="M16 29.3332C23.3638 29.3332 29.3333 23.3636 29.3333 15.9998C29.3333 8.63604 23.3638 2.6665 16 2.6665C8.63616 2.6665 2.66663 8.63604 2.66663 15.9998C2.66663 23.3636 8.63616 29.3332 16 29.3332Z" fill="rgb(113, 113, 235)"></path><path d="M15.9999 8V19.0509L10.6667 16.1484L15.9999 8Z" fill="white"></path><path d="M15.9999 8L21.3332 16.1484L15.9999 19.0509V8Z" fill="white"></path><path d="M15.9998 19.9811V23.9999L10.6666 17.08L15.9998 19.9811Z" fill="white"></path><path d="M15.9998 23.9999V19.9811L21.3333 17.08L15.9998 23.9999Z" fill="white"></path></svg>
     )
 }
 
@@ -20,13 +20,13 @@ function QuestionIcon() {
 
 function SwapIcon() {
     return (
-        <svg style={{width:"25px"}} viewBox="0 0 32 32" display="inline-block" focusable="false" role="presentation"><g fill="currentColor"><path d="M18.4308 6.40002L22.271 11.2003H6.39984L4.79999 14.4L25.6 14.4003C26.215 14.4003 26.7756 14.0478 27.0421 13.4934C27.3085 12.9391 27.2336 12.2811 26.8494 11.8008L22.5288 6.40002H18.4308Z"></path><path d="M9.47124 25.6003H13.5692L9.729 20.8H25.6002L27.2 17.6003L6.4 17.6C5.78495 17.6 5.22435 17.9526 4.95792 18.5069C4.69149 19.0613 4.7664 19.7193 5.15061 20.1995L9.47124 25.6003Z"></path></g></svg>
+        <svg style={{ width:"25px" }} viewBox="0 0 32 32" display="inline-block" focusable="false" role="presentation"><g fill="currentColor"><path d="M18.4308 6.40002L22.271 11.2003H6.39984L4.79999 14.4L25.6 14.4003C26.215 14.4003 26.7756 14.0478 27.0421 13.4934C27.3085 12.9391 27.2336 12.2811 26.8494 11.8008L22.5288 6.40002H18.4308Z"></path><path d="M9.47124 25.6003H13.5692L9.729 20.8H25.6002L27.2 17.6003L6.4 17.6C5.78495 17.6 5.22435 17.9526 4.95792 18.5069C4.69149 19.0613 4.7664 19.7193 5.15061 20.1995L9.47124 25.6003Z"></path></g></svg>
     )
 }
 
 function ResetIcon() {
     return (
-        <svg style={{width:"16px"}} viewBox="0 0 16 15" display="inline-block" focusable="false" role="presentation"><path d="M14.4027 10.8298C15.8352 7.6001 14.6285 3.74335 11.4999 1.93704C10.0464 1.09788 8.41707 0.839208 6.88035 1.0891L7.40171 3.03483C8.43934 2.909 9.52498 3.10624 10.4999 3.66909C12.6706 4.92235 13.546 7.55749 12.6566 9.82176L11.321 9.05066L11.696 13.5973L15.821 11.6487L14.4027 10.8298Z" fill="currentColor"></path><path d="M4.49986 14.0614C1.37124 12.2551 0.164503 8.39833 1.59707 5.16859L0.178711 4.3497L4.30371 2.40114L4.67871 6.94777L3.34313 6.17667C2.45369 8.44094 3.32915 11.0761 5.49986 12.3293C6.47475 12.8922 7.56039 13.0894 8.59802 12.9636L9.11937 14.9093C7.58266 15.1592 5.95333 14.9006 4.49986 14.0614Z" fill="currentColor"></path></svg>
+        <svg style={{ width:"16px" }} viewBox="0 0 16 15" display="inline-block" focusable="false" role="presentation"><path d="M14.4027 10.8298C15.8352 7.6001 14.6285 3.74335 11.4999 1.93704C10.0464 1.09788 8.41707 0.839208 6.88035 1.0891L7.40171 3.03483C8.43934 2.909 9.52498 3.10624 10.4999 3.66909C12.6706 4.92235 13.546 7.55749 12.6566 9.82176L11.321 9.05066L11.696 13.5973L15.821 11.6487L14.4027 10.8298Z" fill="currentColor"></path><path d="M4.49986 14.0614C1.37124 12.2551 0.164503 8.39833 1.59707 5.16859L0.178711 4.3497L4.30371 2.40114L4.67871 6.94777L3.34313 6.17667C2.45369 8.44094 3.32915 11.0761 5.49986 12.3293C6.47475 12.8922 7.56039 13.0894 8.59802 12.9636L9.11937 14.9093C7.58266 15.1592 5.95333 14.9006 4.49986 14.0614Z" fill="currentColor"></path></svg>
     )
 }
 
@@ -36,4 +36,4 @@ function SmallArrowIcon() {
     )
 }
 
-export {ColorETHIcon, InfoIcon, QuestionIcon, SwapIcon, ResetIcon, SmallArrowIcon}
+export { ColorETHIcon, InfoIcon, QuestionIcon, SwapIcon, ResetIcon, SmallArrowIcon }

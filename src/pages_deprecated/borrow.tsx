@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import BorrowItem from "../components_deprecated/borrow/borrow-item";
+import React, { useEffect } from "react"
+import BorrowItem from "../components_deprecated/borrow/borrow-item"
 import "../components_deprecated/borrow/style.css"
-import Tokens from "../components_deprecated/borrow/tokens";
-import FHeader from "../components_deprecated/f-header";
-import Navigation from "../components_deprecated/navigation";
+import Tokens from "../components_deprecated/borrow/tokens"
+import FHeader from "../components_deprecated/f-header"
+import Navigation from "../components_deprecated/navigation"
 
 function Borrow(props: any) {
     useEffect(() => {
@@ -39,4 +39,4 @@ function Borrow(props: any) {
     )
 }
 
-export default Borrow;
+export default Borrow

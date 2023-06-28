@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { ColorETHIcon } from "../../utils/borrow-detail";
-import { CheckIcon } from "../../utils/discover";
+import React, { useState } from "react"
+import { ColorETHIcon } from "../../utils/borrow-detail"
+import { CheckIcon } from "../../utils/discover"
 
 interface SelectItem {
     id: number,
@@ -68,13 +68,13 @@ function DSelectHead(props: any) {
 
     function checkItemClick(e: any, id: any, listId: any) {
         e.stopPropagation()
-        var targetList = [] as any[]
-        switch(listId) {
+        let targetList = [] as any[]
+        switch (listId) {
             case idList[0]:
                 targetList = selectToken
                 targetList.forEach((s: SelectItem) => {
-                    if(s.id == id) {
-                        if(s.checked == 0) {
+                    if (s.id == id) {
+                        if (s.checked == 0) {
                             s.checked = 1
                             setSelectToken(Object.assign([], selectToken))
                         } else {
@@ -83,13 +83,13 @@ function DSelectHead(props: any) {
                         }
                     }
                 })
-                break;
+                break
             case idList[1]:
                 targetList = selectSize
 
                 targetList.forEach((s: SelectItem) => {
-                    if(s.id == id) {
-                        if(s.checked == 0) {
+                    if (s.id == id) {
+                        if (s.checked == 0) {
                             s.checked = 1
                             setSelectSize(Object.assign([], selectSize))
                         } else {
@@ -107,34 +107,34 @@ function DSelectHead(props: any) {
     }
 
     function currentSelected(listId: any) {
-        var count = 0
-        var lastSelectedName = ""
-        var targetList
+        let count = 0
+        let lastSelectedName = ""
+        let targetList
 
         switch (listId) {
             case idList[0]:
                 targetList = selectToken
-                break;
+                break
             case idList[1]:
                 targetList = selectSize
                 break
             default:
-                break;
+                break
         }
 
-        if(targetList == undefined) {
+        if (targetList == undefined) {
             console.log("target list undefined")
             return
         }
         targetList.forEach((s: any) => {
-            if(s.checked != 0) {
+            if (s.checked != 0) {
                 count++
                 lastSelectedName = s.name
             }
         })
 
-        var values = ["All assets", "Selected assets: "]
-        switch(count) {
+        const values = ["All assets", "Selected assets: "]
+        switch (count) {
             case 0: {
                 return values[0]
             }
@@ -148,8 +148,8 @@ function DSelectHead(props: any) {
     }
 
     function showList(listId: any) {
-        var id = (document.getElementById(listId)) as HTMLElement
-        if(id != null && !id.classList.contains("show-ds-list")) {
+        const id = (document.getElementById(listId)) as HTMLElement
+        if (id != null && !id.classList.contains("show-ds-list")) {
             id.classList.add("show-ds-list")
         } else {
             id.classList.remove("show-ds-list")
@@ -157,8 +157,8 @@ function DSelectHead(props: any) {
     }
 
     function hideList(listId: any) {
-        var id = (document.getElementById(listId)) as HTMLElement
-        if(id != null && id.classList.contains("show-ds-list")) {
+        const id = (document.getElementById(listId)) as HTMLElement
+        if (id != null && id.classList.contains("show-ds-list")) {
             id.classList.remove("show-ds-list")
         }
     }
@@ -168,7 +168,7 @@ function DSelectHead(props: any) {
         e.stopPropagation()
         showList(listId)
         idList.forEach((i: any) => {
-            if(i != listId) {
+            if (i != listId) {
                 hideList(i)
             }
         })
@@ -247,4 +247,4 @@ function DSelectHead(props: any) {
     )
 }
 
-export default DSelectHead;
+export default DSelectHead

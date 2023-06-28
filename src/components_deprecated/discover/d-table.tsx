@@ -1,5 +1,5 @@
-import React from "react";
-import { ETHIcon36, ForwardIcon, StarIcon } from "../../utils/discover";
+import React from "react"
+import { ETHIcon36, ForwardIcon, StarIcon } from "../../utils/discover"
 
 function DTable(props: any) {
     const listRow = [1, 2, 3, 4, 5]
@@ -104,9 +104,9 @@ function DTable(props: any) {
                         {
                             listRow.map((r: any) => {
                                 return <li className="tl-item">
-                                <ul className="tli-list">
-                                    <li className="tli-list-item">
-                                        <div className="tli-head-row">
+                                    <ul className="tli-list">
+                                        <li className="tli-list-item">
+                                            <div className="tli-head-row">
                                                 <button className="c1-btn">
                                                     <StarIcon />
                                                 </button>
@@ -117,55 +117,55 @@ function DTable(props: any) {
                                                     <span className="c1-text-1">eth</span>
                                                     <span className="c1-text-2">Position #30040</span>
                                                 </div>
-                                        </div>
-                                    </li>
+                                            </div>
+                                        </li>
     
-                                    <li className="tli-row">
-                                        <div>
-                                            <p>Liquidation price</p>
+                                        <li className="tli-row">
+                                            <div>
+                                                <p>Liquidation price</p>
                                             $1,605.05
-                                        </div>
-                                    </li>
+                                            </div>
+                                        </li>
     
-                                    <li className="tli-row">
-                                        <div>
-                                            <p>Next OSM price</p>
+                                        <li className="tli-row">
+                                            <div>
+                                                <p>Next OSM price</p>
                                             $1,639.81
-                                        </div>
-                                    </li>
+                                            </div>
+                                        </li>
     
-                                    <li className="tli-row">
-                                        <div>
-                                            <p>Max liquidation amount</p>
+                                        <li className="tli-row">
+                                            <div>
+                                                <p>Max liquidation amount</p>
                                             $99,954.30
-                                        </div>
-                                    </li>
+                                            </div>
+                                        </li>
     
-                                    <li className="tli-row">
-                                        <div>
-                                            <p>Status</p>
-                                            <span className="status-item">
+                                        <li className="tli-row">
+                                            <div>
+                                                <p>Status</p>
+                                                <span className="status-item">
                                                 0.12% until liquidation
-                                            </span>
-                                        </div>
-                                    </li>
+                                                </span>
+                                            </div>
+                                        </li>
 
-                                    <li className="tli-row last-row ">
-                                        <div className="tli-last-item">
-                                            <a href="#" className="a-view grow">
-                                                <button>
+                                        <li className="tli-row last-row ">
+                                            <div className="tli-last-item">
+                                                <a href="#" className="a-view grow">
+                                                    <button>
                                                     View
-                                                </button>
-                                            </a>
-                                            <a href="#" className="a-for">
-                                                <button>
-                                                    <ForwardIcon />
-                                                </button>
-                                            </a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
+                                                    </button>
+                                                </a>
+                                                <a href="#" className="a-for">
+                                                    <button>
+                                                        <ForwardIcon />
+                                                    </button>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
                             })
                         }
                     </ul>
@@ -175,4 +175,4 @@ function DTable(props: any) {
     )
 }
 
-export default DTable;
+export default DTable

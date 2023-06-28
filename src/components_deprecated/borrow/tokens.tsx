@@ -1,5 +1,5 @@
-import React from "react";
-import { BTCIcon, ETHIcon, FeatureIcon } from "../../utils/borrow";
+import React from "react"
+import { BTCIcon, ETHIcon, FeatureIcon } from "../../utils/borrow"
 
 function Tokens(props: any) {
     return (
@@ -41,4 +41,4 @@ function Tokens(props: any) {
     )
 }
 
-export default Tokens;
+export default Tokens

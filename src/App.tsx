@@ -1,85 +1,85 @@
-import React, { useState, useEffect, useRef } from 'react';
-import './App.css';
-import { Layout, Space } from 'antd';
-import Welcome from './pages_deprecated/welcome';
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
-import Explore from './components_deprecated/explore';
-import ExplorePage from './pages/explore';
-import Header from './components_deprecated/header';
-import OpenExistingOrg from './pages_deprecated/open-existing-org';
-import Voting from './pages_deprecated/voting';
-import Finance from './pages_deprecated/finance';
-import Permissions from './pages_deprecated/permissions';
-import PDetail from './components_deprecated/p-detail-header';
-import PermissionDetail from './pages_deprecated/permission-detail';
-import AppCenter from './pages_deprecated/app-center';
-import OrgSetting from './pages_deprecated/org-setting';
-import AppCenterDetail from './pages_deprecated/app-center-detail';
-import VotingDetail from './pages_deprecated/voting-detail';
-import { ethers } from 'ethers';
-import VoteFactoryAbi from "./abis/VoteFactory.json";
+import React, { useState, useEffect, useRef } from "react"
+import "./App.css"
+import { Layout, Space } from "antd"
+import Welcome from "./pages_deprecated/welcome"
+import { Route, BrowserRouter, Routes } from "react-router-dom"
+import Explore from "./components_deprecated/explore"
+import ExplorePage from "./pages/explore"
+import Header from "./components_deprecated/header"
+import OpenExistingOrg from "./pages_deprecated/open-existing-org"
+import Voting from "./pages_deprecated/voting"
+import Finance from "./pages_deprecated/finance"
+import Permissions from "./pages_deprecated/permissions"
+import PDetail from "./components_deprecated/p-detail-header"
+import PermissionDetail from "./pages_deprecated/permission-detail"
+import AppCenter from "./pages_deprecated/app-center"
+import OrgSetting from "./pages_deprecated/org-setting"
+import AppCenterDetail from "./pages_deprecated/app-center-detail"
+import VotingDetail from "./pages_deprecated/voting-detail"
+import { ethers } from "ethers"
+import VoteFactoryAbi from "./abis/VoteFactory.json"
 import VoteFactoryAddress from "./abis/VoteFactory-address.json"
-import Borrow from './pages_deprecated/borrow';
-import BorrowDetail from './pages_deprecated/borrow-detail';
-import Discover from './pages_deprecated/discover';
-import AragonClient from './layout/aragon_client';
-import VotePage from './pages/vote';
-import FinancePage from './pages/finance';
+import Borrow from "./pages_deprecated/borrow"
+import BorrowDetail from "./pages_deprecated/borrow-detail"
+import Discover from "./pages_deprecated/discover"
+import AragonClient from "./layout/aragon_client"
+import VotePage from "./pages/vote"
+import FinancePage from "./pages/finance"
 interface Network {
-  name: string,
-  type: 0,
+    name: string,
+    type: 0,
 }
 interface MyCount {
-  agree: number,
-  disagree: number,
+    agree: number,
+    disagree: number,
 }
 function App() {
-  const [network, setNetwork] = useState({ name: "Ethereum", type: 0 } as Network);
-  const [page, setPage] = useState("home");
-  const [OwnerAddress, setOwnerAddress] = useState("");
-  const [IsOwnerAddress, setIsOwnerAddress] = useState(false);
-  const [VoteFactory, setMyVoteFactory] = useState({});
-  useEffect(() => {
-    var aId = (document.getElementById("app-id")) as HTMLElement
-    if (aId != null && page == "borrow") {
-      if (!aId.classList.contains("bg-white")) {
-        aId.classList.add("bg-white")
-      }
-    } else {
-      if (aId != null && aId.classList.contains("bg-white")) {
-        aId.classList.remove("bg-white")
-      }
-    }
-  }, [page])
+    const [network, setNetwork] = useState({ name: "Ethereum", type: 0 } as Network)
+    const [page, setPage] = useState("home")
+    const [OwnerAddress, setOwnerAddress] = useState("")
+    const [IsOwnerAddress, setIsOwnerAddress] = useState(false)
+    const [VoteFactory, setMyVoteFactory] = useState({})
+    useEffect(() => {
+        const aId = (document.getElementById("app-id")) as HTMLElement
+        if (aId != null && page == "borrow") {
+            if (!aId.classList.contains("bg-white")) {
+                aId.classList.add("bg-white")
+            }
+        } else {
+            if (aId != null && aId.classList.contains("bg-white")) {
+                aId.classList.remove("bg-white")
+            }
+        }
+    }, [page])
 
-  const [NumberOfPoll, setNumberOfPoll] = useState([] as number[]);
-  const [newPollID, setNewPollID] = useState(0);
-  const [CheckLogIn, setCheckLogIn] = useState(false);
-  const [NumberOfVoters, setNumberOfVoter] = useState(0);
-  const [polls, setPolls] = useState([] as any[]);
-  const [Agree, setAgree] = useState(1 as number);
-  const [Disagree, setDisagree] = useState(1 as number);
-  const [Voted, setVoted] = useState(false);
-  const [WalletAddress, setWalletAddress] = useState('');
-  const i = useRef(0);
-  const m = useRef(0);
-  const [MyCount, setMyCount] = useState(0);
-  return (
-    <>
-      <div id="app-id" className='App'>
-        <div className='line'></div>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<AragonClient />}>
-              <Route path="/home" element={<Welcome setPage={setPage} network={network} />} />
-              <Route path="/explore" element={<ExplorePage />} />
-              <Route path="/vote" element={<VotePage />} />
-              <Route path="/finance" element={<FinancePage />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
+    const [NumberOfPoll, setNumberOfPoll] = useState([] as number[])
+    const [newPollID, setNewPollID] = useState(0)
+    const [CheckLogIn, setCheckLogIn] = useState(false)
+    const [NumberOfVoters, setNumberOfVoter] = useState(0)
+    const [polls, setPolls] = useState([] as any[])
+    const [Agree, setAgree] = useState(1 as number)
+    const [Disagree, setDisagree] = useState(1 as number)
+    const [Voted, setVoted] = useState(false)
+    const [WalletAddress, setWalletAddress] = useState("")
+    const i = useRef(0)
+    const m = useRef(0)
+    const [MyCount, setMyCount] = useState(0)
+    return (
+        <>
+            <div id="app-id" className='App'>
+                <div className='line'></div>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<AragonClient />}>
+                            <Route path="/home" element={<Welcome setPage={setPage} network={network} />} />
+                            <Route path="/explore" element={<ExplorePage />} />
+                            <Route path="/vote" element={<VotePage />} />
+                            <Route path="/finance" element={<FinancePage />} />
+                        </Route>
+                    </Routes>
+                </BrowserRouter>
 
-        {/* <BrowserRouter>
+                {/* <BrowserRouter>
           <Header
             page={page}
             setPage={setPage}
@@ -127,9 +127,9 @@ function App() {
             <Route path="/discover" element={<Discover setPage={setPage} />} />
           </Routes>
         </BrowserRouter> */}
-      </div>
-    </>
-  );
+            </div>
+        </>
+    )
 }
 
-export default App;
+export default App

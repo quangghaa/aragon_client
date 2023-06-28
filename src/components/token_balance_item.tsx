@@ -1,6 +1,6 @@
-import React from "react";
-import { USDT } from "../utils/image";
-import { ETH } from "../utils/image";
+import React from "react"
+import { USDT } from "../utils/image"
+import { ETH } from "../utils/image"
 
 interface TokenBalanceItemProps {
     item: any
@@ -10,11 +10,11 @@ const TokenBalanceItem = ({ item }: TokenBalanceItemProps) => {
         <div className="ft-item">
             <div className="ft-item-box">
                 <div className="fti-head-box">
-                    {item.token === 'eth' &&
+                    {item.token === "eth" &&
                         <span className="fti-icon-box">
                             <ETH />
                         </span>}
-                    {item.token === 'usdt' &&
+                    {item.token === "usdt" &&
                         <span className="fti-icon-box">
                             <USDT />
                         </span>}

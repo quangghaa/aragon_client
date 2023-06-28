@@ -1,9 +1,9 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { NavVote } from "../utils/image";
-import { Back } from "../utils/svg-icons";
-import PDetailTable from "./p-detail-table";
-import NewPermModal from "./perm-modal";
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import { NavVote } from "../utils/image"
+import { Back } from "../utils/svg-icons"
+import PDetailTable from "./p-detail-table"
+import NewPermModal from "./perm-modal"
 
 function VDetailHeader() { 
     return (
@@ -20,4 +20,4 @@ function VDetailHeader() {
     )
 }
 
-export default VDetailHeader;
+export default VDetailHeader

@@ -1,6 +1,6 @@
-import React from "react";
-import { BTCIcon, ETHIcon, FeatureIcon } from "../../utils/borrow";
-import { HMIcon, HRIcon, LDIcon, MYEIcon } from "../../utils/discover";
+import React from "react"
+import { BTCIcon, ETHIcon, FeatureIcon } from "../../utils/borrow"
+import { HMIcon, HRIcon, LDIcon, MYEIcon } from "../../utils/discover"
 
 function DOption(props: any) {
     return (
@@ -53,4 +53,4 @@ function DOption(props: any) {
     )
 }
 
-export default DOption;
+export default DOption

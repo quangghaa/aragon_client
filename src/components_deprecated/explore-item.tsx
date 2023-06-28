@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 const ExploreItem = (props: any) => {
     const { image, label } = props
