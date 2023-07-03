@@ -1,8 +1,8 @@
 import { Select } from "antd"
 import React from "react"
-import { NavVote } from "../utils/image"
 import { DotDotDot, Down } from "../utils/svg-icons"
 import { VButtonPopup } from "./v-btn-popup"
+import { NavVoteIcon } from "../utils/image"
 
 function PDetailTable() {
     function vBtnClick(e: any) {
@@ -20,7 +20,7 @@ function PDetailTable() {
             <thead className="ftb-head">
                 <tr>
                     <th className="th-item">
-                        
+
                     </th>
                     <th className="th-item">
                         Action
@@ -32,7 +32,7 @@ function PDetailTable() {
                         managed by
                     </th>
                     <th className="th-item">
-                        
+
                     </th>
                 </tr>
             </thead>
@@ -41,7 +41,7 @@ function PDetailTable() {
                 <tr className="body-row">
                     <td className="tb-item">
                         <div className="tb-item-box">
-                            
+
                         </div>
                     </td>
 
@@ -56,7 +56,7 @@ function PDetailTable() {
                             <div className="vote-with-icon-box">
                                 <button className="vote-with-icon">
                                     <div className="vwi-small-box">
-                                        <span className="vwi-icon"><NavVote /></span>
+                                        <span className="vwi-icon"><NavVoteIcon /></span>
                                         <span className="vwi-text">Voting</span>
                                     </div>
                                 </button>
@@ -70,7 +70,7 @@ function PDetailTable() {
                                 <div className="vote-with-icon-box">
                                     <button className="vote-with-icon">
                                         <div className="vwi-small-box">
-                                            <span className="vwi-icon"><NavVote /></span>
+                                            <span className="vwi-icon"><NavVoteIcon /></span>
                                             <span className="vwi-text">Voting</span>
                                         </div>
                                     </button>
@@ -98,7 +98,7 @@ function PDetailTable() {
                 <tr className="body-row">
                     <td className="tb-item">
                         <div className="tb-item-box">
-                            
+
                         </div>
                     </td>
 
@@ -113,7 +113,7 @@ function PDetailTable() {
                             <div className="vote-with-icon-box">
                                 <button className="vote-with-icon">
                                     <div className="vwi-small-box">
-                                        <span className="vwi-icon"><NavVote /></span>
+                                        <span className="vwi-icon"><NavVoteIcon /></span>
                                         <span className="vwi-text">Voting</span>
                                     </div>
                                 </button>
@@ -127,7 +127,7 @@ function PDetailTable() {
                                 <div className="vote-with-icon-box">
                                     <button className="vote-with-icon">
                                         <div className="vwi-small-box">
-                                            <span className="vwi-icon"><NavVote /></span>
+                                            <span className="vwi-icon"><NavVoteIcon /></span>
                                             <span className="vwi-text">Voting</span>
                                         </div>
                                     </button>

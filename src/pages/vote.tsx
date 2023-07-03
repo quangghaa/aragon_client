@@ -3,42 +3,6 @@ import React from "react"
 import PrimaryButton from "../components/primary_button"
 import VoteItem from "../components/vote_item"
 
-const VotePage = () => {
-    const filterList = [
-        {
-            id: 1,
-            options: [{ value: 1, label: "Label A" }, { value: 2, label: "Label B" }]
-        },
-        {
-            id: 2,
-            options: [{ value: 1, label: "Label A" }, { value: 2, label: "Label B" }]
-        },
-        {
-            id: 3,
-            options: [{ value: 1, label: "Label A" }, { value: 2, label: "Label B" }]
-        },
-    ]
-    const itemList = []
-    for (let i = 1; i <= 16; i++) itemList.push({ index: i, label: "My name" })
-
-    return (
-        <div className='ex-body' style={{ backgroundImage: "none", background: "rgb(249, 250, 252)" }}>
-            <div className="ex-content">
-                <VoteHead {...{ title: "Voting" }} />
-                <VoteFilter {...{ filterList: filterList }} />
-                <div>Closed votes <span>40</span></div>
-                <Row gutter={[16, 16]}>
-                    {itemList.map((item: any) => (
-                        <Col span={6}>
-                            <VoteItem key={item.index} item={item} />
-                        </Col>
-                    ))}
-                </Row>
-            </div>
-        </div>
-    )
-}
-
 interface VoteHeadProps {
     title: string
 }
@@ -80,6 +44,43 @@ const VoteFilter = ({ filterList }: VoteFilterProps) => {
                 <RangePicker />
             </Space>
         </Card>
+    )
+}
+
+// -- 
+const VotePage = () => {
+    const filterList = [
+        {
+            id: 1,
+            options: [{ value: 1, label: "Label A" }, { value: 2, label: "Label B" }]
+        },
+        {
+            id: 2,
+            options: [{ value: 1, label: "Label A" }, { value: 2, label: "Label B" }]
+        },
+        {
+            id: 3,
+            options: [{ value: 1, label: "Label A" }, { value: 2, label: "Label B" }]
+        },
+    ]
+    const itemList = []
+    for (let i = 1; i <= 16; i++) itemList.push({ index: i, label: "My name" })
+
+    return (
+        <div className='ex-body' style={{ backgroundImage: "none", background: "rgb(249, 250, 252)" }}>
+            <div className="ex-content">
+                <VoteHead {...{ title: "Voting" }} />
+                <VoteFilter {...{ filterList: filterList }} />
+                <div>Closed votes <span>40</span></div>
+                <Row gutter={[16, 16]}>
+                    {itemList.map((item: any) => (
+                        <Col span={6}>
+                            <VoteItem key={item.index} item={item} />
+                        </Col>
+                    ))}
+                </Row>
+            </div>
+        </div>
     )
 }
 

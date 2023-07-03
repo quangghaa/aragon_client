@@ -1,6 +1,6 @@
 import { Select } from "antd"
 import React from "react"
-import { NavVote } from "../utils/image"
+import { NavVoteIcon } from "../utils/image"
 import { DotDotDot, Down } from "../utils/svg-icons"
 import { VButtonPopup } from "./v-btn-popup"
 
@@ -20,7 +20,7 @@ function PTable() {
             <thead className="ftb-head">
                 <tr>
                     <th className="th-item">
-                        
+
                     </th>
                     <th className="th-item">
                         Action
@@ -35,7 +35,7 @@ function PTable() {
                         managed by
                     </th>
                     <th className="th-item">
-                        
+
                     </th>
                 </tr>
             </thead>
@@ -44,7 +44,7 @@ function PTable() {
                 <tr className="body-row">
                     <td className="tb-item">
                         <div className="tb-item-box">
-                            
+
                         </div>
                     </td>
 
@@ -59,7 +59,7 @@ function PTable() {
                             <div className="vote-with-icon-box">
                                 <button className="vote-with-icon">
                                     <div className="vwi-small-box">
-                                        <span className="vwi-icon"><NavVote /></span>
+                                        <span className="vwi-icon"><NavVoteIcon /></span>
                                         <span className="vwi-text">Voting</span>
                                     </div>
                                 </button>
@@ -72,7 +72,7 @@ function PTable() {
                             <div className="vote-with-icon-box">
                                 <button className="vote-with-icon">
                                     <div className="vwi-small-box">
-                                        <span className="vwi-icon"><NavVote /></span>
+                                        <span className="vwi-icon"><NavVoteIcon /></span>
                                         <span className="vwi-text">Voting</span>
                                     </div>
                                 </button>
@@ -86,7 +86,7 @@ function PTable() {
                                 <div className="vote-with-icon-box">
                                     <button className="vote-with-icon">
                                         <div className="vwi-small-box">
-                                            <span className="vwi-icon"><NavVote /></span>
+                                            <span className="vwi-icon"><NavVoteIcon /></span>
                                             <span className="vwi-text">Voting</span>
                                         </div>
                                     </button>
@@ -114,7 +114,7 @@ function PTable() {
                 <tr className="body-row">
                     <td className="tb-item">
                         <div className="tb-item-box">
-                            
+
                         </div>
                     </td>
 
@@ -129,7 +129,7 @@ function PTable() {
                             <div className="vote-with-icon-box">
                                 <button className="vote-with-icon">
                                     <div className="vwi-small-box">
-                                        <span className="vwi-icon"><NavVote /></span>
+                                        <span className="vwi-icon"><NavVoteIcon /></span>
                                         <span className="vwi-text">Voting</span>
                                     </div>
                                 </button>
@@ -142,7 +142,7 @@ function PTable() {
                             <div className="vote-with-icon-box">
                                 <button className="vote-with-icon">
                                     <div className="vwi-small-box">
-                                        <span className="vwi-icon"><NavVote /></span>
+                                        <span className="vwi-icon"><NavVoteIcon /></span>
                                         <span className="vwi-text">Voting</span>
                                     </div>
                                 </button>
@@ -156,7 +156,7 @@ function PTable() {
                                 <div className="vote-with-icon-box">
                                     <button className="vote-with-icon">
                                         <div className="vwi-small-box">
-                                            <span className="vwi-icon"><NavVote /></span>
+                                            <span className="vwi-icon"><NavVoteIcon /></span>
                                             <span className="vwi-text">Voting</span>
                                         </div>
                                     </button>

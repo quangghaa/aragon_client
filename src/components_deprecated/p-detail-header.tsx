@@ -1,11 +1,11 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
-import { NavVote } from "../utils/image"
+import { NavVoteIcon } from "../utils/image"
 import { Back } from "../utils/svg-icons"
 import PDetailTable from "./p-detail-table"
 import NewPermModal from "./perm-modal"
 
-function PDetailHeader() { 
+function PDetailHeader() {
     function openTransferModal(e: any) {
         e.stopPropagation()
         const id = (document.getElementById("perm-modal")) as HTMLSelectElement
@@ -21,7 +21,7 @@ function PDetailHeader() {
                         <div className="vote-with-icon-box">
                             <button className="vote-with-icon">
                                 <div className="vwi-small-box">
-                                    <span className="vwi-icon"><NavVote /></span>
+                                    <span className="vwi-icon"><NavVoteIcon /></span>
                                     <span className="vwi-text">Voting</span>
                                 </div>
                             </button>

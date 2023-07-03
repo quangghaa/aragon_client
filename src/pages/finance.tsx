@@ -6,11 +6,78 @@ import DefaultButton from "../components/default_button"
 import { Export } from "../utils/svg-icons"
 import { ColumnsType } from "antd/es/table"
 
+// --
+interface VoteHeadProps {
+    title: string
+}
+const voteHeadStyle: React.CSSProperties = {
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "24px 0",
+}
+const VoteHead = ({ title }: VoteHeadProps) => {
+    return (
+        <div style={voteHeadStyle}>
+            <span style={{ fontSize: "24px" }}>{title}</span>
+            <PrimaryButton {...{ name: "New transfer", event: () => console.log("implement me") }} />
+        </div>
+    )
+}
+
+// --
+interface SummaryProps {
+    summary: any // {token: 'eth', value1: 2.201, value2: 4111.32}[]
+}
+const Summary = ({ summary }: SummaryProps) => {
+    let eth, dana, usdt
+    summary.forEach((e: any) => {
+        if (e.token === "eth") eth = e
+        if (e.token === "dana") dana = e
+        if (e.token === "usdt") usdt = e
+    })
+    return (
+        <Card size="small" title="TOKEN BALANCES">
+            <Space>
+                {summary.map((item: any, ind: number) => (
+                    <TokenBalanceItem key={ind} {...{ item: item }} />
+                ))}
+            </Space>
+        </Card>
+    )
+}
+
+// ---
+interface VoteFilterProps {
+    filterList: any // list data of selects: {id: , options: }[]
+}
+const { RangePicker } = DatePicker
+const { Option } = Select
+const VoteFilter = ({ filterList }: VoteFilterProps) => {
+    return (
+        <Space style={{ padding: "16px 0" }}>
+            {filterList.map((item: any) => {
+                return (
+                    <Select key={item.id}>
+                        {item.options.map((op: any, ind: number) => (
+                            <Option key={item.id + "-" + ind} value={op.value}>{op.label}</Option>
+                        ))}
+                    </Select>
+                )
+            })}
+            <RangePicker />
+        </Space>
+    )
+}
+
 const financeTableHeadlineStyle: React.CSSProperties = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center"
 }
+
+// -- 
 interface DataType {
     key: string
     date: string
@@ -82,6 +149,9 @@ const FinancePage = () => {
                 <VoteHead {...{ title: "Finance" }} />
                 <Summary {...{ summary }} />
                 <Card>
+                    <span className="text-3xl font-bold">
+                        Hello world!xx
+                    </span>
                     <div style={financeTableHeadlineStyle}>
                         <span>Transfers</span>
                         <DefaultButton {...{ name: "Export", event: null, icon: <Export /> }} />
@@ -91,71 +161,6 @@ const FinancePage = () => {
                 </Card>
             </div>
         </div>
-    )
-}
-
-// --
-interface VoteHeadProps {
-    title: string
-}
-const voteHeadStyle: React.CSSProperties = {
-    width: "100%",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "24px 0",
-}
-const VoteHead = ({ title }: VoteHeadProps) => {
-    return (
-        <div style={voteHeadStyle}>
-            <span style={{ fontSize: "24px" }}>{title}</span>
-            <PrimaryButton {...{ name: "New transfer", event: () => console.log("implement me") }} />
-        </div>
-    )
-}
-
-// --
-interface SummaryProps {
-    summary: any // {token: 'eth', value1: 2.201, value2: 4111.32}[]
-}
-const Summary = ({ summary }: SummaryProps) => {
-    let eth, dana, usdt
-    summary.forEach((e: any) => {
-        if (e.token === "eth") eth = e
-        if (e.token === "dana") dana = e
-        if (e.token === "usdt") usdt = e
-    })
-    return (
-        <Card size="small" title="TOKEN BALANCES">
-            <Space>
-                {summary.map((item: any, ind: number) => (
-                    <TokenBalanceItem key={ind} {...{ item: item }} />
-                ))}
-            </Space>
-        </Card>
-    )
-}
-
-// ---
-interface VoteFilterProps {
-    filterList: any // list data of selects: {id: , options: }[]
-}
-const { RangePicker } = DatePicker
-const { Option } = Select
-const VoteFilter = ({ filterList }: VoteFilterProps) => {
-    return (
-        <Space style={{ padding: "16px 0" }}>
-            {filterList.map((item: any) => {
-                return (
-                    <Select key={item.id}>
-                        {item.options.map((op: any, ind: number) => (
-                            <Option key={item.id + "-" + ind} value={op.value}>{op.label}</Option>
-                        ))}
-                    </Select>
-                )
-            })}
-            <RangePicker />
-        </Space>
     )
 }
 

@@ -1,11 +1,11 @@
 import { Progress } from "antd"
 import React, { useRef, useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { NavVote, PermVoting } from "../utils/image"
+import { NavVoteIcon, PermVoting } from "../utils/image"
 import { Back, Clock, FTIQuestion, Pass } from "../utils/svg-icons"
 import contractOwnerAddress from "../abis/contractOwner.json"
 
-function VDetailContent(props : any) {
+function VDetailContent(props: any) {
     const navigate = useNavigate()
     const checkOwner = props.check
     const VoteContract = props.voteContract
@@ -22,12 +22,12 @@ function VDetailContent(props : any) {
     const MyNumberDisagree = useRef(0)
     const [tempVar, setTempVar] = useState(0)
     const [VotedNum, setVotedNum] = useState(1)
-    
+
     const [PollsLinkedWithID, setPollsLinkedWithID] = useState([] as any)
-    useEffect(()=>{
-        const GetList = async () =>{
+    useEffect(() => {
+        const GetList = async () => {
             if (tempVar < VotedNum) {
-                (window as any).ethereum.on("accountsChanged", function (accounts : any) {
+                (window as any).ethereum.on("accountsChanged", function (accounts: any) {
                     console.log("connected to account : ", accounts[0])
                 })
                 const Link = await VoteContract.getListPollWithID()
@@ -41,7 +41,7 @@ function VDetailContent(props : any) {
         e.preventDefault()
         navigate("/voting")
     }
-    const agreeVoter = async ()=>{
+    const agreeVoter = async () => {
         if (CheckAccountVoted) {
             alert("you already voted")
         } else {
@@ -56,7 +56,7 @@ function VDetailContent(props : any) {
             setCheckAccountVoted(true)
         }
     }
-    const diagreeVoter = async () =>{
+    const diagreeVoter = async () => {
         if (CheckAccountVoted) {
             alert("you already voted")
         } else {
@@ -68,9 +68,9 @@ function VDetailContent(props : any) {
             setVotedNum(VotedNum + 1)
         }
     }
-    const NumberAgreeFromContract = async () =>{
+    const NumberAgreeFromContract = async () => {
         const MyListOfPolls = await VoteContract.getListPollWithID()
-        console.log(typeof(MyPollID))
+        console.log(typeof (MyPollID))
         console.log(MyListOfPolls[MyPollID - 1].countResult.toString())
     }
     return (
@@ -90,7 +90,7 @@ function VDetailContent(props : any) {
                         <div className="vote-with-icon-box flex">
                             <button className="vote-with-icon">
                                 <div className="vwi-small-box">
-                                    <span className="vwi-icon"><NavVote /></span>
+                                    <span className="vwi-icon"><NavVoteIcon /></span>
                                     <span className="vwi-text">Voting</span>
                                 </div>
                             </button>
@@ -104,7 +104,7 @@ function VDetailContent(props : any) {
                                     </h1>
                                 </div>
                                 {checkOwner ? null : <div>
-                                    <button className="v-new-vote-btn" style={{ marginRight: "30px" } } onClick={agreeVoter}>Yes</button>
+                                    <button className="v-new-vote-btn" style={{ marginRight: "30px" }} onClick={agreeVoter}>Yes</button>
                                     <button className="v-new-vote-btn" onClick={diagreeVoter}>No</button>
                                 </div>}
                                 <button className="v-new-vote-btn" onClick={NumberAgreeFromContract}>Get agree</button>
@@ -190,7 +190,7 @@ function VDetailContent(props : any) {
                                 <span className="per-light-text">(&gt;50% needed)</span>
                             </div>
                             <div className="pro-box">
-                                {PollsLinkedWithID.length > 0 ? <Progress percent={(PollsLinkedWithID[MyPollID - 1].countResult.toNumber() / PollsLinkedWithID[MyPollID - 1].totalVoter.toNumber()) * 100} /> : null}   
+                                {PollsLinkedWithID.length > 0 ? <Progress percent={(PollsLinkedWithID[MyPollID - 1].countResult.toNumber() / PollsLinkedWithID[MyPollID - 1].totalVoter.toNumber()) * 100} /> : null}
                             </div>
                         </div>
                     </section>
@@ -209,7 +209,7 @@ function VDetailContent(props : any) {
                                 <span className="per-light-text">(&gt;0% needed)</span>
                             </div>
                             <div className="pro-box">
-                                {PollsLinkedWithID.length > 0 ? <Progress percent={((PollsLinkedWithID[MyPollID - 1].totalVote.toNumber() - PollsLinkedWithID[MyPollID - 1].countResult.toNumber()) / PollsLinkedWithID[MyPollID - 1].totalVoter.toNumber()) * 100} />   : null} 
+                                {PollsLinkedWithID.length > 0 ? <Progress percent={((PollsLinkedWithID[MyPollID - 1].totalVote.toNumber() - PollsLinkedWithID[MyPollID - 1].countResult.toNumber()) / PollsLinkedWithID[MyPollID - 1].totalVoter.toNumber()) * 100} /> : null}
                             </div>
                         </div>
                     </section>

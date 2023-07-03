@@ -3,7 +3,7 @@ import { ethers } from "ethers"
 import React, { useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Voting from "../pages_deprecated/voting"
-import { NavVote } from "../utils/image"
+import { NavVoteIcon } from "../utils/image"
 import { Pass } from "../utils/svg-icons"
 
 function VContent(props: any) {
@@ -75,7 +75,7 @@ function VContent(props: any) {
                                 <div className="vi-logo">
                                     <a href="#" className="vi-logo-wrapper">
                                         <div className="vi-logo-box">
-                                            <span className="vi-like-icon-box"><NavVote /></span>
+                                            <span className="vi-like-icon-box"><NavVoteIcon /></span>
                                             <span className="vi-voting-text">Voting</span>
                                         </div>
                                     </a>

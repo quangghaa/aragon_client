@@ -1,12 +1,7 @@
 import { Select } from "antd"
 import React from "react"
 import { useNavigate } from "react-router-dom"
-import Voting from "../pages_deprecated/voting"
-import { NavVote, PermFinance, PermVault, PermVoting } from "../utils/image"
 import { Export, Pass, Search } from "../utils/svg-icons"
-import FTokenBalance from "./f-token-balance"
-import FTransferContent from "./f-transfer-content"
-import PTable from "./p-table"
 
 function OContent() {
     function toSystemPerm(e: any) {
